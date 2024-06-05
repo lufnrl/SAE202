@@ -1,7 +1,13 @@
 <?php
 require '../model/connectBD.php';
-session_start();
+require '../composants/head.php';
+require '../composants/header.php';
+
+
 ?>
+<br>
+<br>
+<br>
 <div>
     Mon profil
 </div>
@@ -20,17 +26,18 @@ session_start();
     <div>
     </div>
     <div>
-        <a href="#">Modifier mon profil</a>
-        <a href="">supprimer mon compte</a>
+        <a href='modifierProfil.php?users=<?php echo $_SESSION['user_id'] ?>'>Modifier mon profil</a>
+        <a href='verifDelCompte.php?users=<?php echo $_SESSION['user_id'] ?>'>Supprimer mon compte</a>
+        <a href='tableReservationUser.php'>Mes réservations</a>
     </div>
 
     <br>
 
     <div>
-        Mes parcelles reservées
+       Vos parcelles
     </div>
     <div>
-        <table>
+        <table border="1">
             <tr>
                 <th>id</th>
                 <th>nom</th>
@@ -39,11 +46,10 @@ session_start();
                 <th>date de reservations</th>
             </tr>
             <?php
-            $requete = $bd->prepare('SELECT * FROM parcelles WHERE _user_id = ?');
-            $requete->bind_param('i', $_SESSION["user_id"]);
-            $requete->execute();
-            $result = $requete->get_result();
-            $parcelles = $result->fetch_all(MYSQLI_ASSOC);
+            $req = $bd->query('SELECT * FROM parcelles WHERE _user_id = '.$_SESSION['user_id'].'');
+            //on récupère le résultat
+            $resultat = $req->fetch();
+
             if (empty($parcelles)) {
                 echo 'Vous n\'avez aucune parcelles.';
             } else {
