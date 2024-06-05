@@ -24,13 +24,15 @@ let currentIndex = 0;
 function moveRight() {
     const carousel = document.querySelector('.carousel');
     const items = document.querySelectorAll('.carousel-item');
-    currentIndex = (currentIndex + 1) % items.length;
-    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+    const totalItems = items.length;
+    currentIndex = (currentIndex + 2) % totalItems; // Move two items
+    carousel.style.transform = `translateX(-${currentIndex * 50}%)`; // 50% because two items are shown at a time
 }
 
 function moveLeft() {
     const carousel = document.querySelector('.carousel');
     const items = document.querySelectorAll('.carousel-item');
-    currentIndex = (currentIndex - 1 + items.length) % items.length;
-    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+    const totalItems = items.length;
+    currentIndex = (currentIndex - 2 + totalItems) % totalItems; // Move two items
+    carousel.style.transform = `translateX(-${currentIndex * 50}%)`; // 50% because two items are shown at a time
 }
