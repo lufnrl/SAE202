@@ -1,0 +1,250 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+
+body{
+    font-family: "Inter", sans-serif;
+}
+
+h1 {
+    margin: 0;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav #lien-inscription{
+    margin: 0 20px;
+}
+
+nav #lien-inscription li{
+    margin: 0 10px;
+}
+
+nav #lien-pages li{
+    margin: 0 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav #lien-pages li a{
+    position: relative;
+}
+  
+nav #lien-pages li a::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 2px;
+    top: 100%;
+    left: 0;
+    background-color: black;
+    transition: transform 0.5s;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+  
+nav #lien-pages a:hover::after {
+    transform: scaleX(1);
+}
+
+nav ul li.current a {
+    color:darkgreen;
+}
+
+nav #lien-pages li.current a::after{
+    background-color: darkgreen;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    transition: top 0.3s;
+}
+
+.navbar.hidden {
+    top: -60px; /* Adjust based on the height of your navbar */
+}
+
+#hero-image{
+    background-image: url("../img/hero.jpg");
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 100px;
+    color: white;
+}
+
+#hero-image h1{
+    font-size: 50px;
+    margin: 20px 0;
+}
+
+#hero-image p{
+    margin: 10px 0;
+    width: 55%;
+    font-size: 20px;
+}
+
+#hero-image a{
+    margin: 20px 0;
+    text-decoration: none;
+    padding: 10px 20px;
+    width: 150px;
+    text-align: center;
+    border-radius: 25px;
+    background-color: darkgreen;
+    color: white;
+    font-size: 20px;
+}
+
+#a-propos-container{
+    margin: 50px;
+}
+
+#a-propos-container h2{
+    font-size: 30px;
+    text-align: center;
+}
+
+#a-propos-container hr{
+    width: 30%;
+}
+
+#a-propos{
+    display: flex;
+    margin: 50px;
+}
+
+#a-propos p{
+    margin-left: 50px;
+}
+
+#a-propos img{
+    width: 50%;
+}
+
+
+.carousel-container {
+    position: relative;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    flex: 0 0 auto; /* Ensures items don't grow or shrink */
+    width: 100%; /* Ensures each item occupies the full width */
+    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+}
+
+.carousel-item img {
+    width: 50%;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.carousel-item p {
+    margin-left: 50px;
+}
+
+.carousel-button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-button.left {
+    left: -10px;
+}
+
+.carousel-button.right {
+    right: -10px;
+}
