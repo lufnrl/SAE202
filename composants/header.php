@@ -17,9 +17,9 @@
                 echo '<a href="/users/compte.php">Mon compte</a>';
             } else {
 
-                echo '<li'.(basename($_SERVER['PHP_SELF']) == '/users/formConnexion.php') ? 'class="current"' : '';'>'.'<a href="/users/formConnexion.php"> Connexion</a>'.'</li>';
-                echo '<li>'."|".'</li>';
-                echo '<li'.(basename($_SERVER['PHP_SELF']) == '/users/formInscription.php') ? 'class="current"' : '';'>'.'<a href="/users/formInscription.php"> Connexion</a>'.'</li>';
+                echo '<li' . (basename($_SERVER['PHP_SELF']) == 'formConnexion.php' ? ' class="current"' : '') . '><a href="/users/formConnexion.php">Connexion</a></li>';
+                echo '<li>|</li>';
+                echo '<li' . (basename($_SERVER['PHP_SELF']) == 'formInscription.php' ? ' class="current"' : '') . '><a href="/users/formInscription.php">Inscription</a></li>';
 
                 // echo '<a href="/users/formConnexion.php">Connexion</a>';
                 // echo '<a href="/users/formInscription.php">Inscription</a>';
