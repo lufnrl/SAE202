@@ -190,19 +190,26 @@ nav #lien-pages li.current a::after{
 
 .carousel-container {
     position: relative;
-    width: 80%;
+    width: 90%;
     margin: auto;
     overflow: hidden;
 }
 
 .carousel-wrapper {
     overflow: hidden;
-    width: 100%;
+    width: 80%;
+    margin: auto;
 }
 
 .carousel {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 1s ease-in-out;
+}
+
+.carousel-content{
+    width: 100%;
+    display: contents;
+    box-sizing: border-box;
 }
 
 .carousel-item {
@@ -211,6 +218,8 @@ nav #lien-pages li.current a::after{
     box-sizing: border-box;
     padding: 20px;
     display: flex;
+    background-color: lightgrey;
+    margin: 20px;
 }
 
 .carousel-item img {
@@ -242,9 +251,9 @@ nav #lien-pages li.current a::after{
 }
 
 .carousel-button.left {
-    left: -10px;
+    left: 10px;
 }
 
 .carousel-button.right {
-    right: -10px;
+    right: 10px;
 }
