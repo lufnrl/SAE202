@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <footer>
 
 <div id="footer-reseaux-sociaux">
@@ -46,3 +47,7 @@
 </div>
 
 </footer>
+=======
+</body>
+</html>
+>>>>>>> 2fc8e7ef548092ebc00b2709dff0dfc630e18c9a

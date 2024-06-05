@@ -11,33 +11,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $verif_password = $_POST['verif_password'];
     $photo = $_POST['photo'];
 
-    // Vérifiez si le nom d'utilisateur ou l'e-mail existe déjà
-    $check_query = "SELECT * FROM users WHERE user_email = ?";
-    $stmt = $bd->prepare($check_query);
-    $stmt->bind_param('s', $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
+    // Vérifiez que les mots de passe correspondent
     if ($password !== $verif_password) {
         echo "Les mots de passe ne correspondent pas.";
         exit();
     }
 
-    if ($result->num_rows > 0) {
+    // Vérifiez si l'e-mail existe déjà
+    $stmt = $bd->prepare("SELECT * FROM users WHERE user_email = :email");
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($result) {
         echo "L'e-mail est déjà pris.";
     } else {
 
         // Insérez le nouvel utilisateur dans la base de données
-        $insert_query = "INSERT INTO users (user_nom, user_prnm, user_login, user_pass, user_email, user_photo) VALUES (?, ?, ?, ?, ?, ?)";
-        $stmt = $bd->prepare($insert_query);
-        $stmt->bind_param('ssssss', $nom, $prenom, $username, $password, $email, $photo);
-        $stmt->execute();
+        $stmt = $bd->prepare("INSERT INTO users (user_nom, user_prnm, user_login, user_pass, user_email, user_photo) VALUES (:nom, :prenom, :username, :password, :email, :photo)");
+        $stmt->bindParam(':nom', $nom);
+        $stmt->bindParam(':prenom', $prenom);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':photo', $photo);
 
-        if ($stmt->affected_rows > 0) {
-            // Inscription réussie, créez une session et redirigez
-            $_SESSION['user_id'] = $stmt->insert_id;
-            $_SESSION['email'] = $email;
-            header('Location: ../../index.php');
+        if ($stmt->execute()) {
+            header('Location: formConnexion.php');
             exit();
         } else {
             echo "Erreur lors de l'inscription.";
