@@ -112,6 +112,7 @@ nav #lien-pages li.current a::after{
 }
 
 .navbar {
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -121,10 +122,11 @@ nav #lien-pages li.current a::after{
     position: fixed;
     top: 0;
     transition: top 0.3s;
+    z-index: 100;
 }
 
 .navbar.hidden {
-    top: -60px; /* Adjust based on the height of your navbar */
+    top: -70px; /* Adjust based on the height of your navbar */
 }
 
 #hero-image{
@@ -165,18 +167,22 @@ nav #lien-pages li.current a::after{
     margin: 50px;
 }
 
-#a-propos-container h2{
+h2{
     font-size: 30px;
-    text-align: center;
 }
 
-#a-propos-container hr{
-    width: 30%;
+hr{
+    width: 100px;
+    margin-bottom: 50px;
+    margin-left:0;
+    height: 3px;
+    background-color: darkgreen;
+    border-radius: 5px;
+    border: 0;
 }
 
 #a-propos{
     display: flex;
-    margin: 50px;
 }
 
 #a-propos p{
@@ -198,7 +204,6 @@ nav #lien-pages li.current a::after{
 .carousel-wrapper {
     overflow: hidden;
     width: 80%;
-    margin: auto;
 }
 
 .carousel {
@@ -213,23 +218,32 @@ nav #lien-pages li.current a::after{
 }
 
 .carousel-item {
-    flex: 0 0 auto; /* Ensures items don't grow or shrink */
-    width: 100%; /* Ensures each item occupies the full width */
+    display: flex;
+    flex: 0 0 auto;
+    width: 100%;
     box-sizing: border-box;
     padding: 20px;
-    display: flex;
-    background-color: lightgrey;
-    margin: 20px;
+    border-right: white 60px solid;
+    border-left: white 60px solid;
+    background-color: rgb(229, 236, 229);
 }
 
 .carousel-item img {
     width: 50%;
     display: block;
+}
+
+.carousel-item div {
+    margin: 20px 50px;
+}
+
+.carousel-item h3{
     margin-bottom: 20px;
+    font-size: 30px;
 }
 
 .carousel-item p {
-    margin-left: 50px;
+    margin-bottom: 20px;
 }
 
 .carousel-button {

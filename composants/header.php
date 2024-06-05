@@ -7,14 +7,15 @@
         </ul>
         <ul id="lien-inscription">
         <?php
-            require 'model/connectBD.php';
-            session_start();
+            //require 'model/connectBD.php';
+            //session_start();
 
             if (isset($_SESSION['user_id'])) {
                 echo $_SESSION['user_nom'];
                 echo $_SESSION['user_prnm'];
                 echo '<a href="/users/deconnexion.php">Déconnexion</a>';
                 echo '<a href="/users/compte.php">Mon compte</a>';
+                
             } else {
 
                 echo '<li' . (basename($_SERVER['PHP_SELF']) == 'formConnexion.php' ? ' class="current"' : '') . '><a href="/users/formConnexion.php">Connexion</a></li>';
