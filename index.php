@@ -12,7 +12,7 @@
 
 <body>
 
-    <?php require('./src/composants/header.php'); ?>
+    <?php require('composants/header.php'); ?>
 
     <div id="hero-image">
         <h1>Potagers Partagés</h1>
