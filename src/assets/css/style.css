@@ -129,9 +129,43 @@ nav #lien-pages li.current a::after{
     top: -70px; /* Adjust based on the height of your navbar */
 }
 
+/* Styles pour les appareils mobiles */
+.navbar {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: white;
+}
+
+.burger-menu {
+    display: block; /* Afficher le bouton burger sur les appareils mobiles */
+    font-size: 24px; /* Taille de l'icône du burger */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#menu-items {
+    display: none; /* Masquer les éléments du menu sur les appareils mobiles */
+}
+
+/* Styles pour les liens du menu burger */
+#lien-pages, #lien-inscription {
+    text-align: center;
+    margin-top: 10px; /* Espacement entre les liens */
+}
+
+#lien-pages li, #lien-inscription li {
+    margin: 10px 0; /* Espacement entre les éléments de liste */
+}
+
+
 #hero-image{
     background-image: url("../img/hero.jpg");
     background-size: cover;
+    background-position-x: right;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -164,14 +198,11 @@ nav #lien-pages li.current a::after{
 }
 
 #a-propos-container{
-    margin: 50px;
+    margin: 20px;
     background-color:rgb(229, 236, 229);
-    padding: 50px;
-}
-
-#a-propos-container h2{
-    margin-bottom: 50px;
+    padding: 20px;
     text-align: center;
+    border-radius: 20px;
 }
 
 h2{
@@ -187,22 +218,55 @@ hr{
     border: 0;
 }
 
-#a-propos{
-    display: flex;
-    justify-content: space-evenly;
+/* Styles pour les appareils mobiles */
+#valeur-container {
+    margin: 50px; /* Réduire la marge pour les appareils mobiles */
 }
 
-#a-propos div{
-    margin: 0 20px;
+#valeur {
+    display: flex;
+    flex-direction: column; /* Afficher les fiches de valeur en colonne pour les appareils mobiles */
+    align-items: center; /* Centrer les éléments horizontalement */
+}
+
+.valeur-fiche {
+    margin: 20px 0; /* Espacement entre les fiches de valeur */
+    text-align: center; /* Centrer le contenu */
+}
+
+.valeur-fiche img {
+    width: 100%; /* Adapter la largeur de l'image à la largeur de son conteneur */
+    max-width: 200px; /* Limiter la largeur de l'image pour éviter le débordement sur les petits écrans */
 }
 
 #a-propos-container p{
     text-align: center;
-    margin: 50px;
+    margin-top: 30px;
 }
 
-#a-propos img{
-    width: 50%;
+
+/* Styles pour les appareils mobiles */
+#galerie-container {
+    margin: 20px; /* Réduire la marge pour les appareils mobiles */
+}
+
+#galerie {
+    display: grid;
+    grid-template-columns: 1fr; /* Afficher une seule colonne sur les appareils mobiles */
+    gap: 20px;
+}
+
+.galerie-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.galerie-item img {
+    width: 100%;
+    height: auto; /* Hauteur automatique pour maintenir les proportions */
+    object-fit: cover;
+    display: block;
+    border-radius: 20px;
 }
 
 
@@ -237,9 +301,13 @@ hr{
     flex: 0 0 50%;
     box-sizing: border-box;
     padding: 20px;
-    border-right: white 60px solid;
-    border-left: white 60px solid;
+    border-right: white 20px solid;
+    border-left: white 20px solid;
     background-color: rgb(229, 236, 229);
+}
+
+.carousel-item p {
+    text-align: right;
 }
 
 .carousel-item div {
@@ -287,7 +355,18 @@ hr{
 }
 
 
+.valeur-fiche{
+    text-align: center;
+}
 
+.valeur-fiche h3{
+    font-size: 20px;
+    padding: 10px;
+}
+
+.valeur-fiche p{
+    margin: 20px;
+}
 
 
 
@@ -301,15 +380,19 @@ footer{
     margin-top: 100px;
 }
 
+footer svg{
+    margin: 10px;
+}
+
 #footer-colonne {
     display:block;
     background-color: black;
     color: white;
 }
 
-/* columns */
 #footer-colonne > * {
     padding: 50px;
+    align-items: center;
 }
 
 #footer-colonne li{
@@ -317,8 +400,7 @@ footer{
 }
 
 #footer-reseaux-sociaux{
-    display: flex;
-    justify-content: space-between;
+    display: block;
     padding: 30px;
     background-color: darkgreen;
     color: white;
@@ -345,4 +427,90 @@ footer a{
         display: flex;
         justify-content: space-between;
     }
+}
+
+
+@media only screen and (min-width: 769px) {
+    .burger-menu {
+        display: none; /* Masquer le bouton burger sur les écrans plus larges */
+    }
+
+    #menu-items {
+        display: flex; /* Afficher les éléments du menu */
+        align-items: center;
+    }
+
+    #lien-pages, #lien-inscription {
+        display: flex; /* Afficher les listes de liens côte à côte */
+        margin: 0; /* Réinitialiser la marge */
+    }
+
+    #lien-pages li, #lien-inscription li {
+        margin: 0 10px; /* Espacement entre les éléments de liste */
+    }
+
+    #valeur {
+        flex-direction: row; /* Afficher les fiches de valeur en ligne pour les écrans plus larges */
+        justify-content: space-evenly; /* Espacement égal entre les fiches de valeur */
+    }
+
+    .valeur-fiche {
+        margin: 0; /* Réinitialiser la marge */
+        width: 30%; /* Répartir les fiches de valeur sur la largeur de l'écran */
+        max-width: none; /* Supprimer la limite de largeur de l'image */
+    }
+
+}
+
+/* Styles pour les écrans plus larges */
+@media only screen and (min-width: 768px) {
+    #galerie {
+        grid-template-columns: 1fr 1fr; /* Afficher deux colonnes sur les écrans plus larges */
+    }
+    
+#galerie-container{
+    margin: 50px;
+}
+
+
+#galerie {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+    padding: 10px;
+}
+
+.galerie-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.galerie-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    border-radius: 20px;
+}
+
+.large {
+    grid-column: span 2;
+}
+
+.small {
+    grid-column: span 1;
+}
+
+
+#footer-reseaux-sociaux{
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+#a-propos-container{
+    margin: 50px;
+    padding: 50px;
+}
+
 }
