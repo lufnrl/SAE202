@@ -1,8 +1,9 @@
+<?php
+require '../composants/head.php';
+require('../composants/header.php');
+?>
+
 <section >
-    <?php
-    require '../composants/head.php';
-    require('../composants/header.php');
-    ?>
     <div>
         <div>
             <div>

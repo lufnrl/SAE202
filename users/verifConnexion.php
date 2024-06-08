@@ -23,7 +23,7 @@ $resultat = $req->fetch();
 
 if ($resultat) {
     // Vérifier le mot de passe
-    if ($password == $resultat['user_pass']) {
+    if (password_verify($password, $resultat['user_pass'])) {
         // Connexion réussie
         $_SESSION['user_id'] = $resultat['user_id'];
         $_SESSION['user_email'] = $resultat['user_email'];

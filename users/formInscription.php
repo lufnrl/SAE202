@@ -1,5 +1,6 @@
 <?php
-session_start();
+require '../composants/head.php';
+require('../composants/header.php');
 
 echo $_SESSION['alert_message'];
 ?>
@@ -24,7 +25,7 @@ echo $_SESSION['alert_message'];
     <input type="password" id="verif_password" name="verif_password" required>
 
     <label for="photo">Photo :</label>
-    <input type="text" id="photo" name="photo" required>
+    <input type="text" id="photo" name="photo">
 
     <button type="submit">S'inscrire</button>
 </form>

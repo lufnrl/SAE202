@@ -8,6 +8,9 @@ require '../composants/header.php';
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
 <div>
     Mon profil
 </div>
@@ -29,12 +32,13 @@ require '../composants/header.php';
         <a href='modifierProfil.php?users=<?php echo $_SESSION['user_id'] ?>'>Modifier mon profil</a>
         <a href='verifDelCompte.php?users=<?php echo $_SESSION['user_id'] ?>'>Supprimer mon compte</a>
         <a href='tableReservationUser.php'>Mes réservations</a>
+        <a href='../parcelles/tableReservation.php'>Nouvelle réservation</a>
     </div>
 
     <br>
 
     <div>
-       Vos parcelles
+        Mes parcelles
     </div>
     <div>
         <table border="1">
@@ -43,13 +47,13 @@ require '../composants/header.php';
                 <th>nom</th>
                 <th>description</th>
                 <th>etat</th>
-                <th>date de reservations</th>
             </tr>
             <?php
-            $req = $bd->query('SELECT * FROM parcelles WHERE _user_id = '.$_SESSION['user_id'].'');
-            //on récupère le résultat
-            $resultat = $req->fetch();
-
+            // afficher les parcelles que possede l'utilisateur avec le _user_id ne PDO
+            $requete = $bd->prepare('SELECT * FROM parcelles WHERE _user_id = ?');
+            $requete->bindParam(1, $_SESSION["user_id"]);
+            $requete->execute();
+            $parcelles = $requete->fetchAll(PDO::FETCH_ASSOC);
             if (empty($parcelles)) {
                 echo 'Vous n\'avez aucune parcelles.';
             } else {
@@ -59,7 +63,6 @@ require '../composants/header.php';
                     echo '<td>' . $parcelle['parcelle_content'] . '</td>';
                     echo '<td>' . $parcelle['parcelle_desc'] . '</td>';
                     echo '<td>' . $parcelle['parcelle_etat'] . '</td>';
-                    echo '<td>' . 'Du ' . $parcelle['parcelle_dateDeb'] . ' au ' . $parcelle['parcelle_dateFin']. '</td>';
                     echo '</tr>';
                 }
             }
