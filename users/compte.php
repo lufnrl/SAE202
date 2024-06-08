@@ -45,6 +45,7 @@ require '../composants/header.php';
             <tr>
                 <th>id</th>
                 <th>nom</th>
+                <th>contenu</th>
                 <th>description</th>
                 <th>etat</th>
             </tr>
@@ -60,6 +61,7 @@ require '../composants/header.php';
                 foreach ($parcelles as $parcelle) {
                     echo '<tr>';
                     echo '<td>' . $parcelle['parcelle_id'] . '</td>';
+                    echo '<td>' . $parcelle['parcelle_nom'] . '</td>';
                     echo '<td>' . $parcelle['parcelle_content'] . '</td>';
                     echo '<td>' . $parcelle['parcelle_desc'] . '</td>';
                     echo '<td>' . $parcelle['parcelle_etat'] . '</td>';

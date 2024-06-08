@@ -14,7 +14,7 @@ if (!isset($_SESSION['user_id'])) {
 $userIdReserva = $_SESSION['user_id'];
 
 // Utilisation de PDO
-$query = "SELECT * FROM parcelles WHERE parcelle_reservation = :userIdReserva";
+$query = "SELECT * FROM parcelles WHERE parcelle_reservation = :userIdReserva AND parcelle_etat = 'RESERVE' OR parcelle_etat = 'ATTENTE'";
 $req = $bd->prepare($query);
 
 // Liaison des paramètres
@@ -35,6 +35,7 @@ $reservations = $req->fetchAll(PDO::FETCH_ASSOC);
             <th>Id</th>
             <th>Propriétaire</th>
             <th>Nom</th>
+            <th>Contenu</th>
             <th>Etat</th>
             <th>Description</th>
             <th>Date de reservations</th>
@@ -58,6 +59,7 @@ $reservations = $req->fetchAll(PDO::FETCH_ASSOC);
                 echo '<tr>';
                 echo '<td>' . $reservation['parcelle_id'] . '</td>';
                 echo '<td>' . $reservation['_user_id'] . '</td>';
+                echo '<td>' . $reservation['parcelle_nom'] . '</td>';
                 echo '<td>' . $reservation['parcelle_content'] . '</td>';
                 echo '<td>' . $reservation['parcelle_etat'] . '</td>';
                 echo '<td>' . $reservation['parcelle_desc'] . '</td>';

@@ -30,6 +30,7 @@ if ($resultat) {
         $_SESSION['user_nom'] = $resultat['user_nom'];
         $_SESSION['user_prnm'] = $resultat['user_prnm'];
         $_SESSION['user_login'] = $resultat['user_login'];
+        $_SESSION['user_photo'] = $resultat['user_photo'];
         header('Location: ../../index.php'); // Redirigez vers la page de tableau de bord ou d'accueil
         //echo "Connexion réussie.";
         exit();
