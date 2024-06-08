@@ -11,11 +11,15 @@
             session_start();
 
             if (isset($_SESSION['user_id'])) {
-                // Afficher le nom de l'utilisateur avec minidenticon
                 echo '<li>';
                 echo '<a href="/users/compte.php">';
-                echo '<minidenticon-svg username="' . htmlspecialchars($_SESSION['user_login']) . '"></minidenticon-svg>';
-                echo htmlspecialchars($_SESSION['user_nom']) . ' ' . htmlspecialchars($_SESSION['user_prnm']);
+
+                if (empty($_SESSION['user_photo'])) {
+                    echo '<img src="https://www.gravatar.com/avatar/' . md5(strtolower(trim($_SESSION['user_email']))) . '?s=48&d=identicon" alt="Photo de profil">';
+                } else {
+                    echo '<img src="/src/assets/img/' . $_SESSION['user_photo'] . '" alt="Photo de profil">';
+                }
+                echo $_SESSION['user_nom'] . ' ' . $_SESSION['user_prnm'];
                 echo '</a>';
                 echo '</li>';
                 echo '<li><a href="/users/deconnexion.php">Déconnexion</a></li>';
@@ -29,12 +33,3 @@
     </div>
     <button class="burger-menu">&#9776;</button>
 </nav>
-
-<style>
-    minidenticon-svg svg {
-        border-radius: 50%;
-        background-color: whitesmoke;
-        height: 48px;
-        width: 48px;
-    };
-</style>
