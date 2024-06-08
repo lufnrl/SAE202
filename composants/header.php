@@ -11,10 +11,14 @@
             session_start();
 
             if (isset($_SESSION['user_id'])) {
-                echo $_SESSION['user_nom'];
-                echo $_SESSION['user_prnm'];
-                echo '<a href="/users/deconnexion.php">Déconnexion</a>';
-                echo '<a href="/users/compte.php">Mon compte</a>';
+                // Afficher le nom de l'utilisateur avec minidenticon
+                echo '<li>';
+                echo '<a href="/users/compte.php">';
+                echo '<minidenticon-svg username="' . htmlspecialchars($_SESSION['user_login']) . '"></minidenticon-svg>';
+                echo htmlspecialchars($_SESSION['user_nom']) . ' ' . htmlspecialchars($_SESSION['user_prnm']);
+                echo '</a>';
+                echo '</li>';
+                echo '<li><a href="/users/deconnexion.php">Déconnexion</a></li>';
             } else {
                 echo '<li' . (basename($_SERVER['PHP_SELF']) == 'formConnexion.php' ? ' class="current"' : '') . '><a href="/users/formConnexion.php">Connexion</a></li>';
                 echo '<li>|</li>';
@@ -25,3 +29,12 @@
     </div>
     <button class="burger-menu">&#9776;</button>
 </nav>
+
+<style>
+    minidenticon-svg svg {
+        border-radius: 50%;
+        background-color: whitesmoke;
+        height: 48px;
+        width: 48px;
+    };
+</style>
