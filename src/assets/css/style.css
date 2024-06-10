@@ -387,7 +387,7 @@ nav img{
     right: 10px;
 }
 
-/*----------------------------------------SECTION CARTE------------------------------------------*/
+/*----------------------------------------CARTE------------------------------------------*/
 
 
 #map-container {
@@ -398,18 +398,15 @@ nav img{
 }
 
 #map {
-    width: 50%;
-    height: 1000px;
-    margin: 0px 100px 100px 100px;
+    width: 60%;
+    height: 500px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 20px;
 }
 
 #locations {
     width: 30%;
-    height: 1000px;
+    height: 500px;
     overflow-y: auto;
-    padding: 10px;
     box-shadow: -2px 0 5px rgba(0,0,0,0.1);
 }
 
@@ -422,10 +419,11 @@ nav img{
     cursor: pointer;
     padding: 5px;
     border-bottom: 1px solid #ccc;
+    padding: 10px;
 }
 
 #location-list li:hover {
-    background-color: #f0f0f0;
+    background-color: #f6f6f6;
 }
 
 
