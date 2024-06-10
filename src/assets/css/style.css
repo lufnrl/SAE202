@@ -1,3 +1,5 @@
+/*----------------------------------------RESET------------------------------------------*/
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -23,40 +25,67 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
+
+/* Réinitialisation du rôle d'affichage HTML5 pour les anciens navigateurs */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
+
 ol, ul {
 	list-style: none;
 }
+
 blockquote, q {
 	quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
 
+/*----------------------------------------GÉNÉRAL------------------------------------------*/
 
-
-
-body{
+/* Style général pour le corps */
+body {
     font-family: "Inter", sans-serif;
 }
 
+/*----------------------------------------TITRES------------------------------------------*/
+
 h1 {
-    margin: 0;
+    text-align: center;
+    font-size: 36px;
+    color: darkgreen;
+    margin-top: 70px;
 }
+
+h2 {
+    font-size: 30px;
+}
+
+hr {
+    width: 100px;
+    margin-left: 0;
+    height: 3px;
+    background-color: darkgreen;
+    border-radius: 5px;
+    border: 0;
+    margin-bottom: 50px;
+}
+
+/*----------------------------------------NAVIGATION------------------------------------------*/
 
 nav ul {
     display: flex;
@@ -65,15 +94,15 @@ nav ul {
     margin: 0;
 }
 
-nav #lien-inscription{
+nav #lien-inscription {
     margin: 0 20px;
 }
 
-nav #lien-inscription li{
+nav #lien-inscription li {
     margin: 0 10px;
 }
 
-nav #lien-pages li{
+nav #lien-pages li {
     margin: 0 30px;
 }
 
@@ -82,10 +111,10 @@ nav a {
     color: inherit;
 }
 
-nav #lien-pages li a{
+nav #lien-pages li a {
     position: relative;
 }
-  
+
 nav #lien-pages li a::after {
     position: absolute;
     content: "";
@@ -98,18 +127,24 @@ nav #lien-pages li a::after {
     transform: scaleX(0);
     transform-origin: left;
 }
-  
+
 nav #lien-pages a:hover::after {
     transform: scaleX(1);
 }
 
 nav ul li.current a {
-    color:darkgreen;
+    color: darkgreen;
 }
 
-nav #lien-pages li.current a::after{
+nav #lien-pages li.current a::after {
     background-color: darkgreen;
 }
+
+nav img{
+    height: 50px;
+}
+
+/*----------------------------------------BARRE DE NAVIGATION------------------------------------------*/
 
 .navbar {
     height: 50px;
@@ -122,47 +157,39 @@ nav #lien-pages li.current a::after{
     position: fixed;
     top: 0;
     transition: top 0.3s;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .navbar.hidden {
-    top: -70px; /* Adjust based on the height of your navbar */
+    top: -70px;
 }
 
-/* Styles pour les appareils mobiles */
-.navbar {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: white;
-}
+/*----------------------------------------MENU BURGER------------------------------------------*/
 
 .burger-menu {
-    display: block; /* Afficher le bouton burger sur les appareils mobiles */
-    font-size: 24px; /* Taille de l'icône du burger */
+    display: block;
+    font-size: 24px;
     background: none;
     border: none;
     cursor: pointer;
 }
 
 #menu-items {
-    display: none; /* Masquer les éléments du menu sur les appareils mobiles */
+    display: none;
 }
 
-/* Styles pour les liens du menu burger */
 #lien-pages, #lien-inscription {
     text-align: center;
-    margin-top: 10px; /* Espacement entre les liens */
+    margin-top: 10px;
 }
 
 #lien-pages li, #lien-inscription li {
-    margin: 10px 0; /* Espacement entre les éléments de liste */
+    margin: 10px 0;
 }
 
+/*----------------------------------------SECTION HÉRO------------------------------------------*/
 
-#hero-image{
+#hero-image {
     background-image: url("../img/hero.jpg");
     background-size: cover;
     background-position-x: right;
@@ -174,18 +201,20 @@ nav #lien-pages li.current a::after{
     color: white;
 }
 
-#hero-image h1{
+#hero-image h1 {
+    color: white;
+    text-align: left;
     font-size: 50px;
     margin: 20px 0;
 }
 
-#hero-image p{
+#hero-image p {
     margin: 10px 0;
     width: 55%;
     font-size: 20px;
 }
 
-#hero-image a{
+#hero-image a {
     margin: 20px 0;
     text-decoration: none;
     padding: 10px 20px;
@@ -197,62 +226,61 @@ nav #lien-pages li.current a::after{
     font-size: 20px;
 }
 
-#a-propos-container{
+/*----------------------------------------SECTION À PROPOS------------------------------------------*/
+
+#a-propos-container {
     margin: 20px;
-    background-color:rgb(229, 236, 229);
+    background-color: rgb(229, 236, 229);
     padding: 20px;
     text-align: center;
     border-radius: 20px;
 }
 
-h2{
-    font-size: 30px;
-}
-
-hr{
-    width: 100px;
-    margin-left:0;
-    height: 3px;
-    background-color: darkgreen;
-    border-radius: 5px;
-    border: 0;
-}
-
-/* Styles pour les appareils mobiles */
-#valeur-container {
-    margin: 50px; /* Réduire la marge pour les appareils mobiles */
-}
-
-#valeur {
-    display: flex;
-    flex-direction: column; /* Afficher les fiches de valeur en colonne pour les appareils mobiles */
-    align-items: center; /* Centrer les éléments horizontalement */
-}
-
-.valeur-fiche {
-    margin: 20px 0; /* Espacement entre les fiches de valeur */
-    text-align: center; /* Centrer le contenu */
-}
-
-.valeur-fiche img {
-    width: 100%; /* Adapter la largeur de l'image à la largeur de son conteneur */
-    max-width: 200px; /* Limiter la largeur de l'image pour éviter le débordement sur les petits écrans */
-}
-
-#a-propos-container p{
+#a-propos-container p {
     text-align: center;
     margin-top: 30px;
 }
 
+/*----------------------------------------SECTION VALEURS------------------------------------------*/
 
-/* Styles pour les appareils mobiles */
+#valeur-container {
+    margin: 50px;
+}
+
+#valeur {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.valeur-fiche {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.valeur-fiche img {
+    width: 100%;
+    max-width: 200px;
+}
+
+.valeur-fiche h3 {
+    font-size: 20px;
+    padding: 10px;
+}
+
+.valeur-fiche p {
+    margin: 20px;
+}
+
+/*----------------------------------------SECTION GALERIE------------------------------------------*/
+
 #galerie-container {
-    margin: 20px; /* Réduire la marge pour les appareils mobiles */
+    margin: 20px;
 }
 
 #galerie {
     display: grid;
-    grid-template-columns: 1fr; /* Afficher une seule colonne sur les appareils mobiles */
+    grid-template-columns: 1fr;
     gap: 20px;
 }
 
@@ -263,27 +291,27 @@ hr{
 
 .galerie-item img {
     width: 100%;
-    height: auto; /* Hauteur automatique pour maintenir les proportions */
+    height: auto;
     object-fit: cover;
     display: block;
     border-radius: 20px;
 }
 
+.large {
+    grid-column: span 2;
+}
+
+.small {
+    grid-column: span 1;
+}
+
+/*----------------------------------------SECTION AVIS------------------------------------------*/
 
 .carousel-container {
     position: relative;
     width: 90%;
-    margin: auto;
+    margin: 50px auto;
     overflow: hidden;
-}
-
-hr{
-    margin-bottom: 50px;
-}
-
-.carousel-wrapper {
-    overflow: hidden;
-    width: 80%;
 }
 
 .carousel {
@@ -292,18 +320,23 @@ hr{
 }
 
 .carousel-content {
-    width: 100%;
-    display: contents;
-    box-sizing: border-box;
+    display: flex;
 }
 
 .carousel-item {
-    flex: 0 0 50%;
+    flex: 0 0 calc(50% - 100px);
     box-sizing: border-box;
     padding: 20px;
-    border-right: white 20px solid;
-    border-left: white 20px solid;
     background-color: rgb(229, 236, 229);
+    box-shadow: 0 0 10px gray;
+}
+
+.left-item {
+    margin: 0 25px 0 75px;
+}
+
+.right-item {
+    margin: 0 75px 0 25px;
 }
 
 .carousel-item p {
@@ -315,7 +348,7 @@ hr{
     align-items: center;
 }
 
-.carousel-item img{
+.carousel-item img {
     width: 10%;
     margin-right: 20px;
 }
@@ -354,38 +387,60 @@ hr{
     right: 10px;
 }
 
+/*----------------------------------------SECTION CARTE------------------------------------------*/
 
-.valeur-fiche{
-    text-align: center;
+
+#map-container {
+    display: flex;
+    padding: 50px;
+    align-items: start;
+    justify-content: center;
 }
 
-.valeur-fiche h3{
-    font-size: 20px;
+#map {
+    width: 50%;
+    height: 1000px;
+    margin: 0px 100px 100px 100px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 20px;
+}
+
+#locations {
+    width: 30%;
+    height: 1000px;
+    overflow-y: auto;
     padding: 10px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
 }
 
-.valeur-fiche p{
-    margin: 20px;
+#location-list {
+    list-style: none;
+    padding: 0;
+}
+
+#location-list li {
+    cursor: pointer;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+#location-list li:hover {
+    background-color: #f0f0f0;
 }
 
 
-
-
-
-
-
-
+/*----------------------------------------PIED DE PAGE------------------------------------------*/
 
 footer{
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
-footer svg{
+footer svg {
     margin: 10px;
 }
 
 #footer-colonne {
-    display:block;
+    display: block;
     background-color: black;
     color: white;
 }
@@ -395,42 +450,42 @@ footer svg{
     align-items: center;
 }
 
-#footer-colonne li{
+#footer-colonne li {
     margin: 10px;
 }
 
-#footer-reseaux-sociaux{
+#footer-reseaux-sociaux {
     display: block;
     padding: 30px;
     background-color: darkgreen;
     color: white;
 }
 
-#footer-reseaux-sociaux ul li{
+#footer-reseaux-sociaux ul li {
     display: inline-block;
 }
 
-#footer-mentions-legales{
+#footer-mentions-legales {
     text-align: center;
     padding: 10px 20px;
     background-color: rgb(23, 23, 23);
     color: white;
 }
 
-footer a{
+footer a {
     color: white;
 }
 
-/* tablet breakpoint */
-@media (min-width:768px) {
+/*----------------------------------------MEDIA QUERIES------------------------------------------*/
+
+/* Point de rupture pour les tablettes */
+@media (min-width: 768px) {
+
     #footer-colonne {
         display: flex;
         justify-content: space-between;
     }
-}
 
-
-@media only screen and (min-width: 769px) {
     .burger-menu {
         display: none; /* Masquer le bouton burger sur les écrans plus larges */
     }
@@ -460,57 +515,176 @@ footer a{
         max-width: none; /* Supprimer la limite de largeur de l'image */
     }
 
-}
-
-/* Styles pour les écrans plus larges */
-@media only screen and (min-width: 768px) {
     #galerie {
         grid-template-columns: 1fr 1fr; /* Afficher deux colonnes sur les écrans plus larges */
     }
     
-#galerie-container{
-    margin: 50px;
+    #galerie-container{
+        margin: 50px;
+    }
+
+
+    #galerie {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 50px;
+        padding: 10px;
+    }
+
+    .galerie-item {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .galerie-item img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        display: block;
+        border-radius: 20px;
+    }
+
+    .large {
+        grid-column: span 2;
+    }
+
+    .small {
+        grid-column: span 1;
+    }
+
+
+    #footer-reseaux-sociaux{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+
+    #a-propos-container{
+        margin: 50px;
+        padding: 50px;
+    }
+
 }
 
 
-#galerie {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 50px;
-    padding: 10px;
+/*----------------------------------------SECTION CONTACT------------------------------------------*/
+
+#contact {
+    padding: 50px 20px;
 }
 
-.galerie-item {
-    position: relative;
-    overflow: hidden;
+#contact .section-header {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: darkgreen;
 }
 
-.galerie-item img {
+.contact-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F9F9F9;
+    border-radius: 10px;
+    height: 400px;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 300px;
-    object-fit: cover;
-    display: block;
-    border-radius: 20px;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.large {
-    grid-column: span 2;
+#contact-form .form-control {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
-.small {
-    grid-column: span 1;
+.form-group{
+    display: flex;
+    justify-content: space-between;
 }
 
-
-#footer-reseaux-sociaux{
-display: flex;
-justify-content: space-between;
-align-items: center;
+#contact-form input, #contact-form textarea {
+    margin-bottom: 10px;
 }
 
-#a-propos-container{
-    margin: 50px;
-    padding: 50px;
+#contact-form textarea {
+    resize: none;
 }
 
+#contact-form button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: darkgreen;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#contact-form button:hover {
+    background-color: green;
+}
+
+#contact-form .alt-send-button {
+    display: flex;
+    align-items: center;
+}
+
+.direct-contact-container {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+.contact-list .list-item {
+    margin-bottom: 20px;
+}
+
+.contact-list .contact-text {
+    font-size: 18px;
+}
+
+.contact-list .contact-text a {
+    color: darkgreen;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-list .contact-text a:hover {
+    color: green;
+}
+
+@media (min-width: 768px) {
+    .contact-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #contact-form, .direct-contact-container {
+        flex: 1;
+    }
+
+    .direct-contact-container {
+        margin-left: 40px;
+        text-align: left;
+    }
 }

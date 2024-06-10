@@ -32,7 +32,7 @@ require '../composants/header.php';
         <a href='modifierProfil.php?users=<?php echo $_SESSION['user_id'] ?>'>Modifier mon profil</a>
         <a href='verifDelCompte.php?users=<?php echo $_SESSION['user_id'] ?>'>Supprimer mon compte</a>
         <a href='tableReservationUser.php'>Mes réservations</a>
-        <a href='../parcelles/tableReservation.php'>Nouvelle réservation</a>
+        <a href='../jardins.php'>Nouvelle réservation</a>
     </div>
 
     <br>

@@ -1,5 +1,4 @@
 <?php
-    //require('model/connectBD.php');
     require('composants/head.php');
     require('composants/header.php');
 ?>
@@ -54,7 +53,7 @@
         <button class="carousel-button left" onclick="moveLeft()">&#10094;</button>
         <div class="carousel">
             <div class="carousel-content">
-                <div class="carousel-item">
+                <div class="carousel-item left-item">
                     <div>
                         <img src="https://media.istockphoto.com/id/1418173645/fr/photo/jardin-potager.jpg?s=612x612&w=0&k=20&c=s7I6neg1CBE0kl0dcBJbv2Y5VpsjySfxCUsS2eLH4zE=" alt="Article Image">
                         <h4>Utilisateur</h4>
@@ -63,7 +62,7 @@
                     <p>Il y a 1h</p>
                 </div>
 
-                <div class="carousel-item">
+                <div class="carousel-item right-item">
                     <div>
                         <img src="https://media.istockphoto.com/id/1418173645/fr/photo/jardin-potager.jpg?s=612x612&w=0&k=20&c=s7I6neg1CBE0kl0dcBJbv2Y5VpsjySfxCUsS2eLH4zE=" alt="Article Image">
                         <h4>Utilisateur</h4>
@@ -72,7 +71,7 @@
                     <p>Il y a 1h</p>
                 </div>
 
-                <div class="carousel-item">
+                <div class="carousel-item left-item">
                     <div>
                         <img src="https://media.istockphoto.com/id/1418173645/fr/photo/jardin-potager.jpg?s=612x612&w=0&k=20&c=s7I6neg1CBE0kl0dcBJbv2Y5VpsjySfxCUsS2eLH4zE=" alt="Article Image">
                         <h4>Utilisateur</h4>
@@ -81,7 +80,7 @@
                     <p>Il y a 1h</p>
                 </div>
 
-                <div class="carousel-item">
+                <div class="carousel-item right-item">
                     <div>
                         <img src="https://media.istockphoto.com/id/1418173645/fr/photo/jardin-potager.jpg?s=612x612&w=0&k=20&c=s7I6neg1CBE0kl0dcBJbv2Y5VpsjySfxCUsS2eLH4zE=" alt="Article Image">
                         <h4>Utilisateur</h4>
