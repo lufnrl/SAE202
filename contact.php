@@ -35,15 +35,10 @@
     <div class="direct-contact-container">
 
     <ul class="contact-list">
-
-        <li class="list-item"><span class="contact-text place">Association des jardins ouvriers et familiaux de Troyes</span></i></li>
-        
-        <li class="list-item"><span class="contact-text place">125 AVENUE ROBERT SCHUMANN 10000 TROYES</span></i></li>
-        
-        <li class="list-item"><span class="contact-text phone"><a href="tel:+33 3 25 80 97 04" title="Appelez">+33 3 25 80 97 04</a></span></i></li>
-        
-        <li class="list-item"><span class="contact-text gmail"><a href="mailto:lesjardinsouvriers3@outlook.fr" title="Envoyez un mail">lesjardinsouvriers3@outlook.fr</a></span></i></li>
-        
+      <li class="list-item"><i class="fas fa-home"></i><p class="contact-text place">Association des jardins ouvriers et familiaux de Troyes</p></li>
+      <li class="list-item"><i class="fas fa-map-marker-alt"></i><p class="contact-text place">125 AVENUE ROBERT SCHUMANN 10000 TROYES</p></li>
+      <li class="list-item"><i class="fas fa-phone-alt"></i><p class="contact-text phone"><a href="tel:+33 3 25 80 97 04" title="Appelez">+33 3 25 80 97 04</a></p></li>
+      <li class="list-item"><i class="fas fa-envelope"></i><p class="contact-text gmail"><a href="mailto:lesjardinsouvriers3@outlook.fr" title="Envoyez un mail">lesjardinsouvriers3@outlook.fr</a></p></li>
     </ul>
 
     </div>
