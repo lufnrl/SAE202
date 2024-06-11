@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     let lastScrollTop = 0;
-    const navbar = document.querySelector('.navbar');
+    const navbar = document.querySelector('#main-header');
 
     window.addEventListener('scroll', function() {
         const currentScroll = window.scrollY || document.documentElement.scrollTop;
@@ -15,6 +15,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
     }, false);
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const burgerMenu = document.querySelector('.burger-menu');
+    const menuItems = document.getElementById('menu-items');
+
+    burgerMenu.addEventListener('click', function () {
+        if (menuItems.style.display === 'block') {
+            menuItems.style.display = 'none';
+        } else {
+            menuItems.style.display = 'block';
+        }
+    });
 });
 
 

@@ -85,37 +85,122 @@ hr {
     margin-bottom: 50px;
 }
 
-/*----------------------------------------NAVIGATION------------------------------------------*/
+/*----------------------------------------BARRE DE NAVIGATION------------------------------------------*/
 
-nav ul {
+
+/**** HEADER ****/
+
+header {
+    margin: 0 auto;
     display: flex;
-    list-style-type: none;
-    padding: 0;
+    height: 100px;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    z-index: 10;
+    width: 100%;
+}
+
+#items-header {
+    max-width: 1250px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+header #logo {
+    color: #000;
+    text-decoration: none;
+    font-size: 10px;
+}
+
+#logo img {
+    width: 50px;
+    filter: grayscale(100%);
+    transition: ease-in-out 0.3s;
+}
+
+#logo img:hover {
+    filter: none;
+    transition: ease-in-out 0.3s;
+}
+
+header nav {
+    left: 0;
+    display: flex;
+    width: 100%;
+    justify-content: end;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
     margin: 0;
+    padding: 0;
 }
 
-nav #lien-inscription {
-    margin: 0 20px;
-}
-
-nav #lien-inscription li {
+header nav ul li {
     margin: 0 10px;
 }
 
-nav #lien-pages li {
-    margin: 0 30px;
-}
-
-nav a {
+header nav ul li a {
+    color: #000;
     text-decoration: none;
-    color: inherit;
+    font-size: 14px;
+    transition: 0.3s;
 }
 
-nav #lien-pages li a {
+#links-header-mobile {
+    display: none;
+}
+
+#mobile-menu-btn {
+    display: none;
+    cursor: pointer;
+    display: block;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#mobile-menu {
+    display: none;
+}
+
+nav ul li.current a {
+    color: darkgreen;
+}
+
+nav #lien-pages li.current a::after {
+    background-color: darkgreen;
+}
+
+#main-header {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    transition: top 0.3s;
+    z-index: 1001;
+}
+
+#main-header.hidden {
+    top: -200px;
+}
+
+#main-header li a {
     position: relative;
 }
 
-nav #lien-pages li a::after {
+#main-header li a::after {
     position: absolute;
     content: "";
     width: 100%;
@@ -128,51 +213,17 @@ nav #lien-pages li a::after {
     transform-origin: left;
 }
 
-nav #lien-pages a:hover::after {
+#main-header a:hover::after {
     transform: scaleX(1);
 }
 
-nav ul li.current a {
-    color: darkgreen;
-}
 
-nav #lien-pages li.current a::after {
-    background-color: darkgreen;
-}
 
-nav img{
+#items-header img{
     height: 50px;
-}
-
-/*----------------------------------------BARRE DE NAVIGATION------------------------------------------*/
-
-.navbar {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    width: 100%;
-    background-color: white;
-    position: fixed;
-    top: 0;
-    transition: top 0.3s;
-    z-index: 1000;
-}
-
-.navbar.hidden {
-    top: -70px;
 }
 
 /*----------------------------------------MENU BURGER------------------------------------------*/
-
-.burger-menu {
-    display: block;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
 
 #menu-items {
     display: none;
@@ -190,7 +241,7 @@ nav img{
 /*----------------------------------------SECTION HÉRO------------------------------------------*/
 
 #hero-image {
-    background-image: url("../img/hero.jpg");
+    background-image: url("/src/assets/img/hero.jpg");
     background-size: cover;
     background-position-x: right;
     height: 100vh;
@@ -310,13 +361,14 @@ nav img{
 .carousel-container {
     position: relative;
     width: 90%;
-    margin: 50px auto;
+    margin: auto;
     overflow: hidden;
 }
 
 .carousel {
     display: flex;
     transition: transform 1s ease-in-out;
+    margin-bottom: 50px;
 }
 
 .carousel-content {
@@ -479,28 +531,28 @@ footer a {
 /* Point de rupture pour les tablettes */
 @media (min-width: 768px) {
 
-    #footer-colonne {
+    /*#footer-colonne {
         display: flex;
         justify-content: space-between;
     }
 
     .burger-menu {
-        display: none; /* Masquer le bouton burger sur les écrans plus larges */
+        display: none;
     }
 
     #menu-items {
-        display: flex; /* Afficher les éléments du menu */
+        display: flex !important ;
         align-items: center;
     }
 
     #lien-pages, #lien-inscription {
-        display: flex; /* Afficher les listes de liens côte à côte */
-        margin: 0; /* Réinitialiser la marge */
+        display: flex;
+        margin: 0;
     }
 
     #lien-pages li, #lien-inscription li {
-        margin: 0 10px; /* Espacement entre les éléments de liste */
-    }
+        margin: 0 10px;
+    }*/
 
     #valeur {
         flex-direction: row; /* Afficher les fiches de valeur en ligne pour les écrans plus larges */
@@ -585,6 +637,8 @@ footer a {
     background-color: #F9F9F9;
     border-radius: 10px;
     height: 400px;
+    width: 80%;
+    margin: auto;
 }
 
 #contact-form {
@@ -608,6 +662,10 @@ footer a {
 .form-group{
     display: flex;
     justify-content: space-between;
+}
+
+.form-group input{
+    width: 45%;
 }
 
 #contact-form input, #contact-form textarea {
@@ -684,5 +742,64 @@ footer a {
     .direct-contact-container {
         margin-left: 40px;
         text-align: left;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #links-header {
+        display: none;
+    }
+
+    #links-header-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #links-header-mobile a {
+        color: gray;
+    }
+    #links-header {
+        display: none;
+    }
+
+    #links-header-mobile {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    #mobile-menu-btn {
+        display: block;
+    }
+
+    #mobile-menu {
+        position: absolute;
+        top: 70px;
+        height: auto;
+        background-color: #fff;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        z-index: 90;
+    }
+
+    #mobile-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+    }
+
+    #mobile-menu li {
+        margin-bottom: 10px;
+    }
+
+    #mobile-menu a {
+        text-decoration: none;
+        color: #000;
+        font-size: 16px;
     }
 }

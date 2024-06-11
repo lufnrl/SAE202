@@ -23,10 +23,9 @@
       <textarea class="form-control" rows="10" placeholder="Message" name="message" required></textarea>
       
       <button class="btn btn-primary send-button" id="submit" type="submit" value="ENVOYER">
-        <div class="alt-send-button">
-          <span class="send-text">ENVOYER</span>
-        </div>
-      
+          <div class="alt-send-button">
+            <span class="send-text">ENVOYER</span>
+          </div>
       </button>
       
     </form>
