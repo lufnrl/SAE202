@@ -27,8 +27,7 @@
                 
                         } else {
                             echo '<li' . (basename($_SERVER['PHP_SELF']) == 'formConnexion.php' ? ' class="current"' : '') . '><a href="/users/formConnexion.php">Connexion</a></li>';
-                            echo '<li>|</li>';
-                            echo '<li' . (basename($_SERVER['PHP_SELF']) == 'formInscription.php' ? ' class="current"' : '') . '><a href="/users/formInscription.php">Inscription</a></li>';
+                            echo '<li' . (basename($_SERVER['PHP_SELF']) == 'formInscription.php' ? ' class="current"' : '') . ' id="link-inscription"><a href="/users/formInscription.php">Inscription</a></li>';
                         }
                     ?>
                 
