@@ -4,24 +4,35 @@ require '../model/connectBD.php';
 
 session_start();
 
-// ajouter l'id de l'utilisateur a la parcelle_reservation et changer l'etat de la parcelle en "en attente"
-
-$userId = $_GET['users'];
-$parcelleId = $_GET['parcelles'];
+// Ajouter l'id de l'utilisateur à la parcelle et changer l'état de la parcelle en "ATTENTE"
+$userId = $_POST['users'];
+$parcelleId = $_POST['parcelles'];
+$reservationDateDeb = $_POST['dateDeb']; // Date actuelle pour la réservation
+$reservationDateFin = $_POST['dateFin']; // Date actuelle pour la réservation
 
 if ($userId && $parcelleId) {
-    // Mettre à jour le champ _user_id pour la réservation
-    $query = "UPDATE parcelles SET parcelle_reservation = :userId, parcelle_etat = 'ATTENTE' WHERE parcelle_id = :parcelleId";
-    $req = $bd->prepare($query);
+    try {
 
-    $req->bindParam(':userId', $userId, PDO::PARAM_INT);
-    $req->bindParam(':parcelleId', $parcelleId, PDO::PARAM_INT);
+        // Mettre à jour le champ _user_id et l'état de la parcelle
+        $req = $bd->prepare('UPDATE parcelles SET parcelle_reservation = ?, parcelle_etat = "ATTENTE" WHERE parcelle_id = ?');
+        $req->bindParam(1, $userId);
+        $req->bindParam(2, $parcelleId);
+        $req->execute();
 
-    if ($req->execute()) {
-        header('Location: ../users/compte.php');
+        // Insérer une nouvelle réservation dans la table reservation
+        $insertReq = $bd->prepare('INSERT INTO reservations (reservation_dateDeb, reservation_dateFin, _parcelle_id, _user_id) VALUES (?, ?, ?, ?)');
+        $insertReq->bindParam(1, $reservationDateDeb);
+        $insertReq->bindParam(2, $reservationDateFin);
+        $insertReq->bindParam(3, $parcelleId);
+        $insertReq->bindParam(4, $userId);
+        $insertReq->execute();
+
+        header('Location: ../parcelles/reservationOk.php');
         exit();
-    } else {
-        echo "Erreur lors de la réservation.";
+    } catch (Exception $e) {
+        // Annuler la transaction en cas d'erreur
+        $bd->rollBack();
+        echo "Erreur lors de la réservation : " . $e->getMessage();
     }
 } else {
     echo "Tous les champs requis doivent être remplis.";

@@ -20,17 +20,23 @@ if (empty($userId) || empty($reservationId)) {
 var_dump($userId, $reservationId);
 
 if ($userId && $reservationId) {
-    // Mettre à jour les champs parcelle_reservation et parcelle_etat pour annuler la réservation
-    $query = "UPDATE parcelles SET parcelle_reservation = NULL, parcelle_etat = 'LIBRE' WHERE parcelle_reservation = :userId AND parcelle_id = :reservationId";
-    $req = $bd->prepare($query);
+    // Mettre à jour les informations de la parcelle
+    $updateQuery = "UPDATE parcelles SET parcelle_reservation = NULL, parcelle_etat = 'LIBRE' WHERE parcelle_reservation = :userId AND parcelle_id = :reservationId";
+    $updateReq = $bd->prepare($updateQuery);
+    $updateReq->bindParam(':userId', $userId, PDO::PARAM_INT);
+    $updateReq->bindParam(':reservationId', $reservationId, PDO::PARAM_INT);
 
-    $req->bindParam(':userId', $userId, PDO::PARAM_INT);
-    $req->bindParam(':reservationId', $reservationId, PDO::PARAM_INT);
+    $updateReq->execute();
 
-    // Debug: Affichez les valeurs bindées pour vérifier qu'elles sont bien passées
-    var_dump($req);
+    // Supprimer la réservation de la table reservation
+    $deleteQuery = "DELETE FROM reservations WHERE _user_id = :userId AND _parcelle_id = :reservationId";
+    $deleteReq = $bd->prepare($deleteQuery);
+    $deleteReq->bindParam(':userId', $userId, PDO::PARAM_INT);
+    $deleteReq->bindParam(':reservationId', $reservationId, PDO::PARAM_INT);
 
-    if ($req->execute()) {
+    $deleteReq->execute();
+
+    if ($deleteReq && $updateReq->execute()) {
         header('Location: compte.php');
         //echo "Réservation annulée avec succès.";
         exit();

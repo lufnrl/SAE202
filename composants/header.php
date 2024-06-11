@@ -10,29 +10,54 @@
                     <li <?php echo (basename($_SERVER['PHP_SELF']) == 'contact.php') ? 'class="current"' : ''; ?>><a href="/contact.php">Contact</a></li>
                 </ul>
 
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        var imgProfile = document.querySelector('.img-profile');
+                        var blockProfile = document.querySelector('.block-profile');
+
+                        imgProfile.addEventListener('click', function () {
+                            if (blockProfile.style.display === 'block') {
+                                blockProfile.style.display = 'none';
+                            } else {
+                                blockProfile.style.display = 'block';
+                            }
+                        });
+                    });
+                </script>
+
                 <ul>
                     <?php
                         session_start();
                         if (isset($_SESSION['user_id'])) {
-                            echo '<li>';
-                            echo '<a href="/users/compte.php">';
-                        if (empty($_SESSION['user_photo'])) {
-                            echo '<img src="https://www.gravatar.com/avatar/' . md5(strtolower(trim($_SESSION['user_email']))).'?s=48&d=identicon" alt="Photo de profil">';
-                        } else {
-                            echo '<img src="/src/assets/img/' . $_SESSION['user_photo'] . '" alt="Photo de profil">';
-                        }
-                        
-                        echo $_SESSION['user_nom'] . ' ' . $_SESSION['user_prnm'];
-                        echo '</a>';
-                        echo '</li>';
-                        echo '<li><a href="/users/deconnexion.php">Déconnexion</a></li>';
-                
+                            if (empty($_SESSION['user_photo'])) {
+                                echo '<div class="img-profile">';
+                                echo '<img src="/src/assets/img/logo.webp" alt="Photo de profil">';
+                                echo '</div>';
+                            } else {
+                                echo '<div class="img-profile">';
+                                echo '<img src="/src/assets/img/' . $_SESSION['user_photo'] . '" alt="Photo de profil">';
+                                echo '</div>';
+                            }
+                            echo'<div class="block-profile">';
+                            echo '<div class="title-block-profile">';
+                            echo '<span>' . $_SESSION['user_nom'] . ' ' . $_SESSION['user_prnm'] . '</span>';
+                            echo '<span><a href="">'. $_SESSION['user_email'] .'</a></span>';
+                            echo '</div>';
+                            echo '<ul>';
+                            echo '<li><a href="/users/compte.php">Mon compte</a></li>';
+                            echo '<li><a href="/users/tableReservationUser.php">Mes réservations</a></li>';
+                            echo '</ul>';
+                            echo '<div class="title-block-profile">';
+                            echo '<a id="btn-logout" href="/users/deconnexion.php">Déconnexion</a>';
+                            echo '</div>';
+                            echo '</div>';
+
                         } else {
                             echo '<li' . (basename($_SERVER['PHP_SELF']) == 'formConnexion.php' ? ' class="current"' : '') . '><a href="/users/formConnexion.php">Connexion</a></li>';
                             echo '<li' . (basename($_SERVER['PHP_SELF']) == 'formInscription.php' ? ' class="current"' : '') . ' id="link-inscription"><a href="/users/formInscription.php">Inscription</a></li>';
                         }
                     ?>
-                
+
                 </ul>
             </nav>
         </div>
@@ -84,3 +109,67 @@
         });
     });
 </script>
+
+<style>
+    .block-profile {
+        display: none;
+        position: absolute;
+        top: 70px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .block-profile ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .block-profile ul li {
+        padding: 10px;
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .img-profile {
+        cursor: pointer;
+    }
+
+    .img-profile img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+    }
+
+    .block-profile span {
+        text-align: left;
+        padding: 10px;
+        font-weight: normal;
+    }
+
+    .block-profile a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .title-block-profile {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+    }
+
+    #btn-logout {
+        background-color: #84A170;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+</style>

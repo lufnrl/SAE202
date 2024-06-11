@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $hashed_password = password_hash($password, PASSWORD_ARGON2ID);
 
     // Vérifiez si l'e-mail existe déjà
     $stmt = $bd->prepare("SELECT * FROM users WHERE user_email = :email");

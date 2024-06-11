@@ -70,8 +70,11 @@ function moveLeft() {
 
 
 
-// Initialisation de la carte
-var map = L.map('map').setView([48.8566, 2.3522], 13); // Coordonnées de Paris
+var map = L.map('map').setView([48.2971626, 4.0746257   ], 13); // Coordonnées de Troyes
+
+var IconMap = L.icon({
+    iconUrl: '/src/assets/img/iconeMap.png',
+});
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
@@ -87,7 +90,7 @@ locations.forEach(location => {
     var gmaps = location.getAttribute('data-gmaps');
 
     // Création de chaque marqueur sur la carte avec un popup différent
-    var marker = L.marker([lat, lng]).addTo(map)
+    var marker = L.marker([lat, lng], {icon: IconMap}).addTo(map)
         .bindPopup('<strong>' + name + '</strong><br>' + adr + '<br><a href="' + gmaps + '" target="_blank">Voir sur Google Maps</a>');
 
     // Ajout d'un événement de clic pour centrer la carte et ouvrir le popup
@@ -96,7 +99,3 @@ locations.forEach(location => {
         marker.openPopup();
     });
 });
-
-
-
-
