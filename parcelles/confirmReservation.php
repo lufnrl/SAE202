@@ -4,6 +4,11 @@ require('../composants/head.php');
 require('../composants/header.php');
 ?>
 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 <h1>Récapitulatif de votre réservation</h1>
 
 <?php
@@ -34,8 +39,6 @@ if (isset($_GET['users']) && isset($_GET['parcelles'])) {
 <ul>
     <li>Nom du jardin: <?= $parcelle['jardin_nom'] ?></li>
     <li>Adresse du jardin: <?= $parcelle['jardin_adr'] ?></li>
-    <li>Ville du jardin: <?= $parcelle['jardin_ville'] ?></li>
-    <li>Coordonnée Latitude du jardin: <?= $parcelle['jardin_coordLat'] ?> <?= $parcelle['jardin_coordLong'] ?></li>
     <li>Itinéraire Google Maps: <a href="<?= $parcelle['jardin_maps'] ?>">Voir l'itinéraire</a></li>
 </ul>
 
@@ -45,9 +48,9 @@ if (isset($_GET['users']) && isset($_GET['parcelles'])) {
 
     <!-- choisir une date de départ et d'arrivée -->
     <label for="dateDeb">Date de début</label>
-    <input type="date" name="dateDeb" id="dateDeb">
+    <input type="date" name="dateDeb" id="dateDeb" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>" required>
     <label for="dateFin">Date de fin</label>
-    <input type="date" name="dateFin" id="dateFin">
+    <input type="date" name="dateFin" id="dateFin" min="<?php echo date('Y-m-d'); ?>" required>
     <br>
     <input type="submit" value="Confirmer">
 </form>

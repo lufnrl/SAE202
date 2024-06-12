@@ -59,14 +59,17 @@ $reservations = $req->fetchAll(PDO::FETCH_ASSOC);
         } else {
             foreach ($reservations as $reservation) {
                 echo '<tr>';
-                echo '<td>' . htmlspecialchars($reservation['parcelle_id']) . '</td>';
-                echo '<td>' . htmlspecialchars($reservation['reservation_user_id']) . '</td>';
-                echo '<td>' . htmlspecialchars($reservation['parcelle_nom']) . '</td>';
-                echo '<td>' . htmlspecialchars($reservation['parcelle_content']) . '</td>';
-                echo '<td>' . htmlspecialchars($reservation['parcelle_etat']) . '</td>';
-                echo '<td>' . htmlspecialchars($reservation['parcelle_desc']) . '</td>';
-                echo '<td>' . 'Du ' . htmlspecialchars($reservation['reservation_dateDeb']) . ' au ' . htmlspecialchars($reservation['reservation_dateFin']) . '</td>';
-                echo '<td><a href="verifDelReservationUser.php?users=' . htmlspecialchars($_SESSION['user_id']) . '&parcelles=' . htmlspecialchars($reservation['parcelle_id']) . '">Annuler la reservation</a></td>';
+                echo '<td>' . $reservation['parcelle_id'] . '</td>';
+                echo '<td>' . $reservation['reservation_user_id'] . '</td>';
+                echo '<td>' . $reservation['parcelle_nom'] . '</td>';
+                echo '<td>' . $reservation['parcelle_content'] . '</td>';
+                echo '<td>' . $reservation['parcelle_etat'] . '</td>';
+                echo '<td>' . $reservation['parcelle_desc'] . '</td>';
+                // changer le format de la date de réservation de yyyy-mm-dd à dd-mm-yyyy
+                $dateDeb = date_create($reservation['reservation_dateDeb']);
+                $dateFin = date_create($reservation['reservation_dateFin']);
+                echo '<td>' . date_format($dateDeb, 'd-m-Y') . ' au ' . date_format($dateFin, 'd-m-Y') . '</td>';
+                echo '<td><a href="verifDelReservationUser.php?users=' . $_SESSION['user_id'] . '&parcelles=' . $reservation['parcelle_id'] . '">Annuler la reservation</a></td>';
                 echo '</tr>';
             }
         }
