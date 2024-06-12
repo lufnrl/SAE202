@@ -57,29 +57,32 @@ table {
 
 /*----------------------------------------GÉNÉRAL------------------------------------------*/
 
-/* Style général pour le corps */
 body {
     font-family: "Inter", sans-serif;
+    background-color: #f5efe6;
 }
 
-/*----------------------------------------TITRES------------------------------------------*/
+.container {
+    padding: 0 20px;
+}
 
 h1 {
     text-align: center;
     font-size: 36px;
-    color: darkgreen;
+    color: #5E7B51;
     margin-top: 100px;
 }
 
 h2 {
     font-size: 30px;
+    margin-top: 100px;
 }
 
 hr {
     width: 100px;
     margin-left: 0;
     height: 3px;
-    background-color: darkgreen;
+    background-color: #5E7B51;
     border-radius: 5px;
     border: 0;
     margin-bottom: 50px;
@@ -153,11 +156,11 @@ header nav ul li a {
 }
 
 nav ul li.current a {
-    color: darkgreen;
+    color: #5E7B51;
 }
 
 nav ul li.current a::after {
-    background-color: darkgreen;
+    background-color: #5E7B51;
 }
 
 #main-header {
@@ -189,7 +192,7 @@ nav ul li.current a::after {
     height: 2px;
     top: 100%;
     left: 0;
-    background-color: darkgreen;
+    background-color: #5E7B51;
     transition: transform 0.5s;
     transform: scaleX(0);
     transform-origin: left;
@@ -204,9 +207,11 @@ nav ul li.current a::after {
 }
 
 #link-inscription{
-    background-color: darkgreen;
+    background-color: #5E7B51;
+    color: white;
     padding: 10px 20px;
     border-radius: 10px;
+    text-decoration: none;
 }
 
 #link-inscription a{
@@ -226,6 +231,70 @@ nav ul li.current a::after {
 
 #lien-pages li, #lien-inscription li {
     margin: 10px 0;
+}
+
+/*----------------------------------------MENU PROFILE------------------------------------------*/
+
+.block-profile {
+    display: none;
+    position: absolute;
+    top: 70px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    right: 15px;
+}
+
+.block-profile ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.block-profile ul li {
+    padding: 10px;
+    width: 100%;
+    margin-left: 0px;
+}
+
+.img-profile {
+    cursor: pointer;
+}
+
+.img-profile img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.block-profile span {
+    text-align: left;
+    padding: 10px;
+    font-weight: normal;
+}
+
+.block-profile a {
+    text-decoration: none;
+    color: #000;
+}
+
+.title-block-profile {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+#btn-logout {
+    background-color: #5E7B51;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
 /*----------------------------------------SECTION HÉRO------------------------------------------*/
@@ -261,25 +330,97 @@ nav ul li.current a::after {
     padding: 10px 20px;
     width: 100px;
     text-align: center;
-    border-radius: 25px;
-    background-color: darkgreen;
+    border-radius: 10px;
+    background-color: #5E7B51;
     color: white;
     font-size: 20px;
+}
+
+/*----------------------------------------SECTION ACTUALITES------------------------------------------*/
+
+.container-actualites{
+    margin: 0 50px;
+}
+
+.title-blog-post {
+    text-align: left;
+    font-size: 2em;
+}
+
+row, hr {
+    margin: 10px 0 50px 0;
+    max-width: 200px;
+    border: 2px solid #5E7B51;
+    height: 0px;
+    width: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    overflow: hidden;
+    margin: 20px;
+    transform: scale(1.0);
+    transition: transform 0.5s;
+}
+
+.card:hover {
+    transform: scale(1.01);
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card-body {
+    padding-top: 20px;
+}
+
+.card-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.list-item-blog {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: gray;
+    font-weight: lighter;
+}
+
+.link-blog {
+    color: #5E7B51;
+    text-decoration: none;
 }
 
 /*----------------------------------------SECTION À PROPOS------------------------------------------*/
 
 #a-propos-container {
     margin: 20px;
-    background-color: rgb(229, 236, 229);
     padding: 20px;
     text-align: center;
     border-radius: 20px;
+    background-color: #5E7B51;
+    color: white;
 }
 
 #a-propos-container p {
     text-align: center;
     margin-top: 30px;
+}
+
+#a-propos-container h2{
+    margin-top: 0;
 }
 
 /*----------------------------------------SECTION VALEURS------------------------------------------*/
@@ -335,7 +476,6 @@ nav ul li.current a::after {
     height: auto;
     object-fit: cover;
     display: block;
-    border-radius: 20px;
 }
 
 .large {
@@ -350,8 +490,7 @@ nav ul li.current a::after {
 
 .carousel-container {
     position: relative;
-    width: 90%;
-    margin: auto;
+    margin: 0 50px;
     overflow: hidden;
 }
 
@@ -369,8 +508,9 @@ nav ul li.current a::after {
     flex: 0 0 calc(50% - 100px);
     box-sizing: border-box;
     padding: 20px;
-    box-shadow: 0 0 10px gray;
+    box-shadow: 0 0 10px #d3ccbe;
     border-radius: 10px;
+    background-color: #fff;
 }
 
 .left-item {
@@ -448,6 +588,7 @@ nav ul li.current a::after {
 
 #locations {
     width: 100%;
+    background-color: white;
 }
 
 #location-list {
@@ -500,7 +641,7 @@ footer svg {
 
 #footer-colonne {
     display: block;
-    background-color: black;
+    background-color: rgb(77, 95, 67);
     color: white;
 }
 
@@ -515,8 +656,8 @@ footer svg {
 
 #footer-reseaux-sociaux {
     display: block;
-    padding: 30px;
-    background-color: darkgreen;
+    padding: 10px 30px;
+    background-color: #5E7B51;
     color: white;
 }
 
@@ -527,7 +668,7 @@ footer svg {
 #footer-mentions-legales {
     text-align: center;
     padding: 10px 20px;
-    background-color: rgb(23, 23, 23);
+    background-color: #5E7B51;
     color: white;
 }
 
@@ -570,8 +711,15 @@ footer a {
 
     .valeur-fiche {
         margin: 0;
-        width: 30%;
-        max-width: none;
+        width: 25%;
+        background-color: white;
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 0 10px #d3ccbe;
+    }
+
+    .valeur-fiche img{
+        width: 150px;
     }
 
     #galerie {
@@ -586,7 +734,6 @@ footer a {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 50px;
-        padding: 10px;
     }
 
     .galerie-item {
@@ -599,7 +746,6 @@ footer a {
         height: 300px;
         object-fit: cover;
         display: block;
-        border-radius: 20px;
     }
 
     .large {
@@ -617,7 +763,7 @@ footer a {
     }
 
     #a-propos-container{
-        margin: 50px;
+        margin: 100px;
         padding: 50px;
     }
 
@@ -634,19 +780,18 @@ footer a {
     text-align: center;
     font-size: 36px;
     margin-bottom: 40px;
-    color: darkgreen;
+    color: #5E7B51;
 }
 
 .contact-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #F9F9F9;
+    background-color: #5E7B51;
     border-radius: 10px;
     height: 750px;
     width: 80%;
     margin: auto;
-    padding: 0 20px;
 }
 
 #contact-form {
@@ -689,7 +834,7 @@ footer a {
     align-items: center;
     justify-content: center;
     padding: 10px;
-    background-color: darkgreen;
+    background-color: #5E7B51;
     color: white;
     border: none;
     border-radius: 5px;
@@ -699,7 +844,7 @@ footer a {
 }
 
 #contact-form button:hover {
-    background-color: green;
+    background-color: #6e8e60;
 }
 
 #contact-form .alt-send-button {
@@ -725,21 +870,18 @@ footer a {
 
 .contact-list .contact-text {
     font-size: 18px;
+    color: white;
 }
 
 .contact-list .contact-text a {
-    color: darkgreen;
+    color: white;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.contact-list .contact-text a:hover {
-    color: green;
-}
-
 .contact-list .list-item i {
-    margin-right: 10px; /* Space between icon and text */
-    color: green; /* Change to your preferred icon color */
+    margin-right: 10px;
+    color: white;
 }
 
 @media (min-width: 768px) {
@@ -757,6 +899,11 @@ footer a {
     .direct-contact-container {
         margin-left: 40px;
         text-align: left;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 }
 
@@ -835,8 +982,8 @@ footer a {
     height: 50px;
     padding: 10px;
     border-radius: 50%;
-    background-color: white;
-    border: 3px solid darkgreen;
+    background-color: transparent;
+    border: 3px solid white;
     font-weight: 600;
     display: flex;
     align-items: center;

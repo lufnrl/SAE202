@@ -41,7 +41,7 @@
                             echo'<div class="block-profile">';
                             echo '<div class="title-block-profile">';
                             echo '<span>' . $_SESSION['user_nom'] . ' ' . $_SESSION['user_prnm'] . '</span>';
-                            echo '<span><a href="">'. $_SESSION['user_email'] .'</a></span>';
+                            echo '<span>'. $_SESSION['user_email'] .'</span>';
                             echo '</div>';
                             echo '<ul>';
                             echo '<li><a href="/users/compte.php">Mon compte</a></li>';
@@ -109,67 +109,3 @@
         });
     });
 </script>
-
-<style>
-    .block-profile {
-        display: none;
-        position: absolute;
-        top: 70px;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .block-profile ul {
-        list-style-type: none;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .block-profile ul li {
-        padding: 10px;
-        width: 100%;
-        margin-left: 0px;
-    }
-
-    .img-profile {
-        cursor: pointer;
-    }
-
-    .img-profile img {
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-    }
-
-    .block-profile span {
-        text-align: left;
-        padding: 10px;
-        font-weight: normal;
-    }
-
-    .block-profile a {
-        text-decoration: none;
-        color: #000;
-    }
-
-    .title-block-profile {
-        padding: 10px;
-        border-bottom: 1px solid #ccc;
-        display: flex;
-        flex-direction: column;
-        font-size: 14px;
-    }
-
-    #btn-logout {
-        background-color: #84A170;
-        color: white;
-        padding: 10px;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 5px;
-    }
-
-</style>

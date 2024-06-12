@@ -11,20 +11,19 @@
 
 <div id="footer-colonne">
     <div>
-        <h4>POTAGERS PARTAGES</h4>
+        <h4>JARD'UNIS</h4>
         <hr>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus sequi cupiditate, quod debitis odio, aspernatur voluptas ipsum molestias commodi tenetur repellat fuga ullam voluptate blanditiis eaque eos. Sit, fugiat unde. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum, dolores sequi quasi modi libero possimus sit totam aperiam quas, sapiente facere odio odit commodi maiores autem error incidunt deserunt voluptas?
-        </p>
+        <p>Le cojardinage est une alliance fertile, où chacun donne et reçoit, dans un esprit de partage et de bienveillance. C'est un retour aux sources, une communion avec la nature qui offre en retour la fraîcheur et la saveur des récoltes saines. Dans cette démarche solidaire, le lien social s'épanouit, tissant des liens durables au sein d'une communauté unie par la passion du jardinage et le respect de l'environnement.</p>
     </div>
     <div>
         <h4>NAVIGATION</h4>
         <hr>
         <ul>
-            <li>Accueil</li>
-            <li>Jardins</li>
-            <li>Contact</li>
-            <li>Inscription</li>
-            <li>Connexion</li>
+            <li><a href="../index.php">Accueil</a></li>
+            <li><a href="../jardins.php">Jardins</a></li>
+            <li><a href="../contact.php">Contact</a></li>
+            <li><a href="../users/formConnexion.php">Connexion</a></li>
+            <li><a href="../users/formInscription.php">Inscription</a></li>
         </ul>
     </div>
     <div>
