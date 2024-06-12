@@ -10,21 +10,6 @@
                     <li <?php echo (basename($_SERVER['PHP_SELF']) == 'contact.php') ? 'class="current"' : ''; ?>><a href="/contact.php">Contact</a></li>
                 </ul>
 
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        var imgProfile = document.querySelector('.img-profile');
-                        var blockProfile = document.querySelector('.block-profile');
-
-                        imgProfile.addEventListener('click', function () {
-                            if (blockProfile.style.display === 'block') {
-                                blockProfile.style.display = 'none';
-                            } else {
-                                blockProfile.style.display = 'block';
-                            }
-                        });
-                    });
-                </script>
-
                 <ul>
                     <?php
                         session_start();

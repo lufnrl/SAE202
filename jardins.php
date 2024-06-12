@@ -11,7 +11,6 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
 <div class="container">
     <div id="map-container">
-        <div id="map"></div>
         <div id="locations">
             <ul id="location-list">
                 <?php
@@ -21,11 +20,16 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
                 foreach ($jardins as $jardin) {
                     echo '<li data-lat="' . $jardin['jardin_coordLat'] . '" data-lng="' . $jardin['jardin_coordLong'] . '" data-name="' . $jardin['jardin_nom'] . '" data-adr="' . $jardin['jardin_adr'] . '" data-gmaps="' . $jardin['jardin_maps'] . '">';
-                    echo '<p>' . $jardin['jardin_nom'] . '</p>';
-                    echo '<p>' . $jardin['jardin_adr'] . '</p>';
+                    
+                    echo '<div class="location-image" style="background: url(\'./src/assets/img/' . $jardin['jardin_photo'] . '\'); background-size: cover; background-position: center;"></div>';
+                    echo '<h6>' . $jardin['jardin_nom'] . '</h6>';
+                    echo '<p class="location-adresse"><i class="fas fa-map-marker-alt"></i> ' . $jardin['jardin_adr'] . '</p>';
+                    echo '<p>Surface : ' . $jardin['jardin_surface'] . ' m2</p>';
+                    echo '<p>Type : ' . $jardin['jardin_infoTerre'] . '</p>';
 
                     echo '<details>';
-                    echo '<summary>Réserver une parcelle</summary>';
+                    echo '<summary>Parcelles</summary>';
+                    
                     $stmt_parcelles = $bd->prepare("SELECT * FROM parcelles WHERE _jardin_id = ?");
                     $stmt_parcelles->execute([$jardin['jardin_id']]);
                     $parcelles = $stmt_parcelles->fetchAll(PDO::FETCH_ASSOC);
@@ -45,6 +49,8 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                 ?>
             </ul>
         </div>
+        
+        <div id="map"></div>
     </div>
 </div>
 

@@ -5,13 +5,13 @@
 
 <div id="hero-image">
     <h1>JARD'UNIS</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sunt suscipit sit quas blanditiis asperiores quibusdam provident quidem facilis libero ratione eius soluta nihil vero officia, dicta magni quasi enim.</p>
+    <p>Ensemble, cultivons des espaces verts et développons une véritable culture du partage. Rejoignez-nous et découvrez les nombreux avantages du co-jardinage !</p>
     <a href="jardins.php">Réservez</a>
 </div>
 
 <div id="a-propos-container">
     <h2>Le concept de Jard'Unis</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ut rem animi nam enim quasi. Repellat, suscipit. Illo at ab laudantium sequi laborum quos numquam ex aliquam! Explicabo, quod itaque! Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, laboriosam iure consequatur maxime et exercitationem, minima placeat obcaecati esse, consequuntur dolores quia iste nesciunt eligendi quibusdam amet quam voluptatibus omnis! Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+    <p>Notre site offre à chacun débutant ou expérimenté, la possibilité de réserver des parcelles de jardin pour cultiver, rencontrer d’autres passionnés et créer des liens. Notre plateforme facilite la mise en relation entre jardiniers de tous niveaux, favorisant le partage de connaissances et l'entraide. En cultivant ensemble, vous pouvez non seulement améliorer votre bien-être physique et mental, mais aussi participer à la création d'une communauté solidaire et écologique. Vous pouvez aussi mettre à disposition vos propres parcelles pour que d'autres jardiniers puissent en profiter.</p>
 </div>
 
 <div id="valeur-container">
@@ -21,17 +21,17 @@
         <div class="valeur-fiche">
             <img src="./src/assets/img/icon3.png">
             <h3>Bien-être et santé</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit exercitationem voluptas sunt fugit, tempore corporis, nemo fuga natus dolorem sint non rem dolore nihil. Dolor pariatur molestiae beatae illo ut.</p>
+            <p>Le co-jardinage vous permet de cultiver des jardins partagés, favorisant votre activité physique et réduisant ainsi le risque de maladies chroniques. Il vous apaise également sur le plan mental, diminuant le stress et l’anxiété, et améliorant la qualité de votre sommeil.</p>
         </div>
         <div class="valeur-fiche">
             <img src="./src/assets/img/icon2.png">
             <h3>Lien social</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit exercitationem voluptas sunt fugit, tempore corporis, nemo fuga natus dolorem sint non rem dolore nihil. Dolor pariatur molestiae beatae illo ut.</p>
+            <p>Le co-jardinage vous permet de développer un esprit de communautarisme. Travailler ensemble crée des liens, ce qui pousse à l’entraide. Ces interactions permettent de réduire le sentiment d’isolement. Le co-jardinage offre la possibilité aux différentes générations de se rencontrer et d’apprendre les unes des autres, renforçant ainsi la cohésion sociale.</p>
         </div>
         <div class="valeur-fiche">
             <img src="./src/assets/img/icon1.png">
             <h3>Respect de l'environnement</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit exercitationem voluptas sunt fugit, tempore corporis, nemo fuga natus dolorem sint non rem dolore nihil. Dolor pariatur molestiae beatae illo ut.</p>
+            <p>Le co-jardinage contribue également à l’éducation et à la sensibilisation environnementale. Les participants apprennent sur les cycles de la nature, les techniques de jardinage durable, la biodiversité et l'importance de préserver les ressources naturelles.</p>
         </div>
     </div>
 </div>
@@ -119,7 +119,7 @@
                         <h4>Juliette</h4>
                     </div>
                     <p>Je suis enchantée. Au-delà du jardinage, c’est une véritable aventure humaine. Et voir mon jardin ainsi entretenu me donne du courage.</p>
-                    <p>Il y a 1h</p>
+                    <p>Il y a 3j</p>
                 </div>
 
                 <div class="carousel-item left-item">
@@ -128,7 +128,7 @@
                         <h4>Damien</h4>
                     </div>
                     <p>J’ai ce terrain mais je n’ai pas beaucoup de temps ni d’idées pour le faire fructifier. Je suis heureux que Hugo et Louise puissent en profiter. Ils me sont d’une grande aide. C’est un véritable échange gagnant-gagnant.</p>
-                    <p>Il y a 1h</p>
+                    <p>Il y a 5j</p>
                 </div>
 
                 <div class="carousel-item right-item">
@@ -137,7 +137,7 @@
                         <h4>Monique</h4>
                     </div>
                     <p>Je n’ai jamais eu un jardin aussi beau et bien cultivé grâce à Sylvie. Une femme passionnée de jardinage et pleine d’idées.</p>
-                    <p>Il y a 1h</p>
+                    <p>Il y a 14h</p>
                 </div>
             </div>
         </div>
@@ -149,7 +149,7 @@
 
 <div id="remonter">
     <button class="button" onclick="scrollToTop()" title="Haut-de-page">
-        <svg class="svgIcon" viewBox="0 0 384 512" fill="white">
+        <svg class="svgIcon" viewBox="0 0 384 512">
             <path
                     d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
             ></path>
