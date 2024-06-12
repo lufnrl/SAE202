@@ -1,6 +1,7 @@
 <?php
-    require('composants/head.php');
-    require('composants/header.php');
+    require 'model/connectBD.php';
+    require 'composants/head.php';
+    require 'composants/header.php';
 ?>
 
 <section id="contact">

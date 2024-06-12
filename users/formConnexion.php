@@ -23,6 +23,19 @@ require('../composants/header.php');
                         <input type="password" name="password" id="password" placeholder="••••••••" required>
                     </div>
                     <button type="submit">Connexion</button>
+                    <?php
+                    if (isset($_SESSION['alert_type']) && isset($_SESSION['alert_message'])) {
+                        ?>
+                        <div>
+                            <p>
+                                <?php
+                                echo $_SESSION['alert_message'];
+                                ?>
+                            </p>
+                        </div>
+                        <?php
+                    }
+                    ?>
                 </form>
             </div>
         </div>

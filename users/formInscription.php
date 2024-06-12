@@ -2,7 +2,14 @@
 require '../composants/head.php';
 require('../composants/header.php');
 
-echo $_SESSION['alert_message'];
+if (isset($_SESSION['alert_message'])) {
+    echo '<div class="alert alert-' . $_SESSION['alert_type'] . ' alert-dismissible fade show" role="alert">
+    ' . $_SESSION['alert_message'] . '
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>';
+    unset($_SESSION['alert_message']);
+    unset($_SESSION['alert_type']);
+}
 ?>
 
 <form action="verifInscription.php" method="post">
@@ -23,9 +30,6 @@ echo $_SESSION['alert_message'];
 
     <label for="verif_password">Confirmer le mot de passe :</label>
     <input type="password" id="verif_password" name="verif_password" required>
-
-    <label for="photo">Photo :</label>
-    <input type="text" id="photo" name="photo">
 
     <button type="submit">S'inscrire</button>
 </form>
