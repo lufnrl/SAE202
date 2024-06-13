@@ -2,6 +2,17 @@
     require 'model/connectBD.php';
     require 'composants/head.php';
     require 'composants/header.php';
+
+    if (isset($_SESSION['information'])) {
+        echo '<label>
+        <input type="checkbox" class="alertCheckbox" autocomplete="off" />
+        <div class="alert warning">
+            <span class="alertClose">X</span>
+            <span class="alertText">'.$_SESSION['information'].'</span>
+        </div>
+    </label>'."\n";
+        session_unset();
+    }
 ?>
 
 <section id="contact">
@@ -12,7 +23,7 @@
   
     <!-- Left contact page --> 
     
-    <form id="contact-form" class="form-horizontal" role="form">
+    <form id="contact-form" class="form-horizontal" role="form" method="post" action="verifFormContact.php">
        
       <div class="form-group">
           <input type="text" class="form-control" id="nom" placeholder="Nom" name="nom" value="" required>
