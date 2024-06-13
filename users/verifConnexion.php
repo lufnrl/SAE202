@@ -37,12 +37,28 @@ if ($resultat) {
     } else {
         $_SESSION['alert_type'] = "error";
         $_SESSION['alert_message'] = "Mot de passe incorrect.";
+        if (isset($_SESSION['alert_message'])) {
+            echo '<div class="alert alert-' . $_SESSION['alert_type'] . ' alert-dismissible fade show" role="alert">
+    ' . $_SESSION['alert_message'] . '
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>';
+            unset($_SESSION['alert_message']);
+            unset($_SESSION['alert_type']);
+        }
         header('Location: formConnexion.php');
         //echo "Mot de passe incorrect.";
     }
 } else {
     $_SESSION['alert_type'] = "error";
     $_SESSION['alert_message'] = "Nom d'utilisateur incorrect.";
+    if (isset($_SESSION['alert_message'])) {
+        echo '<div class="alert alert-' . $_SESSION['alert_type'] . ' alert-dismissible fade show" role="alert">
+    ' . $_SESSION['alert_message'] . '
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>';
+        unset($_SESSION['alert_message']);
+        unset($_SESSION['alert_type']);
+    }
     header('Location: formConnexion.php');
     //echo "Nom d'utilisateur incorrect.";
 }
