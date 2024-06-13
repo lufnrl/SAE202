@@ -26,7 +26,7 @@
         <div class="valeur-fiche">
             <img src="./src/assets/img/icon2.png">
             <h3>Lien social</h3>
-            <p>Le co-jardinage vous permet de développer un esprit de communautarisme. Travailler ensemble crée des liens, ce qui pousse à l’entraide. Ces interactions permettent de réduire le sentiment d’isolement. Le co-jardinage offre la possibilité aux différentes générations de se rencontrer et d’apprendre les unes des autres, renforçant ainsi la cohésion sociale.</p>
+            <p>Le co-jardinage vous permet de développer un esprit de communautarisme. Ces interactions permettent de réduire le sentiment d’isolement. Le co-jardinage offre la possibilité aux différentes générations de se rencontrer et d’apprendre les unes des autres.</p>
         </div>
         <div class="valeur-fiche">
             <img src="./src/assets/img/icon1.png">
@@ -48,13 +48,10 @@
     </div>
 
     <div class="container-actualites">
-
-        <div class="row">
             <div>
-                <h2 class="title-blog-post">Les dernières <span class="news-title">actualités</span> de Jard'Unis</h2>
+                <h2 class="title-blog-post">Les dernières actualités de Jard'Unis</h2>
                 <hr>
             </div>
-        </div>
         <div class="grid">
             <div>
                 <div class="card">

@@ -11,6 +11,7 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
 <div class="container">
     <div id="map-container">
+        <div id="map"></div>
         <div id="locations">
             <ul id="location-list">
                 <?php
@@ -24,9 +25,10 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                     echo '<div class="location-image" style="background: url(\'./src/assets/img/' . $jardin['jardin_photo'] . '\'); background-size: cover; background-position: center;"></div>';
                     echo '<h6>' . $jardin['jardin_nom'] . '</h6>';
                     echo '<p class="location-adresse"><i class="fas fa-map-marker-alt"></i> ' . $jardin['jardin_adr'] . '</p>';
+                    echo '<div class="location-infos">';
                     echo '<p>Surface : ' . $jardin['jardin_surface'] . ' m2</p>';
                     echo '<p>Type : ' . $jardin['jardin_infoTerre'] . '</p>';
-
+                    echo '</div>';
                     echo '<details>';
                     echo '<summary>Parcelles</summary>';
                     
@@ -50,7 +52,6 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
             </ul>
         </div>
         
-        <div id="map"></div>
     </div>
 </div>
 
