@@ -36,7 +36,7 @@ if ($requete) {
     $_SESSION['alert_type'] = 'success';
 } else {
     $_SESSION['alert_message'] = 'Erreur lors de l\'ajout du jardin';
-    $_SESSION['alert_type'] = 'danger';
+    $_SESSION['alert_type'] = 'error';
 }
 
 header('Location: /users/compte.php');

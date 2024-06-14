@@ -14,7 +14,7 @@ if ($requete) {
     $_SESSION['alert_type'] = 'success';
 } else {
     $_SESSION['alert_message'] = 'Erreur lors de la suppression de la parcelle';
-    $_SESSION['alert_type'] = 'danger';
+    $_SESSION['alert_type'] = 'error';
 }
 
 header('Location: /admin/parcelles/tableParcelles.php');

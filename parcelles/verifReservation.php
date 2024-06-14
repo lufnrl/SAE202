@@ -27,14 +27,18 @@ if ($userId && $parcelleId) {
         $insertReq->bindParam(4, $userId);
         $insertReq->execute();
 
+        $_SESSION['alert_message'] = 'Réservation effectuée avec succès.';
+        $_SESSION['alert_type'] = 'success';
         header('Location: ../parcelles/reservationOk.php');
         exit();
     } catch (Exception $e) {
         // Annuler la transaction en cas d'erreur
         $bd->rollBack();
-        echo "Erreur lors de la réservation : " . $e->getMessage();
+        $_SESSION['alert_message'] = 'Erreur lors de la réservation.';
+        $_SESSION['alert_type'] = 'error';
     }
 } else {
-    echo "Tous les champs requis doivent être remplis.";
+    $_SESSION['alert_message'] = 'Tous les champs requis doivent être remplis.';
+    $_SESSION['alert_type'] = 'error';
 }
 ?>

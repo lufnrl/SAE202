@@ -1,15 +1,6 @@
 <?php
 require '../composants/head.php';
 require('../composants/header.php');
-
-if (isset($_SESSION['alert_message'])) {
-    echo '<div class="alert alert-' . $_SESSION['alert_type'] . ' alert-dismissible fade show" role="alert">
-    ' . $_SESSION['alert_message'] . '
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>';
-    unset($_SESSION['alert_message']);
-    unset($_SESSION['alert_type']);
-}
 ?>
 
 <section class="connexion-inscription">

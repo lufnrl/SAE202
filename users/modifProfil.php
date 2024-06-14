@@ -2,6 +2,15 @@
 require '../model/connectBD.php';
 require '../composants/head.php';
 require '../composants/header.php';
+
+
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['alert_type'] = "error";
+    $_SESSION['alert_message'] = "Vous devez être connecté";
+    header('Location: formConnexion.php');
+    exit();
+}
+
 ?>
 <h1>Mon profil</h1>
 <div class="profile-edit-container">

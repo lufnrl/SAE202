@@ -3,6 +3,8 @@ require '../model/connectBD.php';
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
+    $_SESSION['alert_type'] = "error";
+    $_SESSION['alert_message'] = "Vous devez être connecté";
     header('Location: formConnexion.php');
     exit();
 }
@@ -12,7 +14,8 @@ $reservationId = $_GET['parcelles'];
 
 // Ajout de vérification pour les paramètres
 if (empty($userId) || empty($reservationId)) {
-    echo "Tous les champs requis doivent être remplis.";
+    $_SESSION['alert_type'] = "error";
+    $_SESSION['alert_message'] = "Tous les champs requis doivent être remplis.";
     exit();
 }
 
@@ -37,16 +40,22 @@ if ($userId && $reservationId) {
     $deleteReq->execute();
 
     if ($deleteReq && $updateReq->execute()) {
+        $_SESSION['alert_type'] = "success";
+        $_SESSION['alert_message'] = "Réservation annulée avec succès.";
         header('Location: compte.php');
         //echo "Réservation annulée avec succès.";
         exit();
     } else {
         // Debug: Affichez les erreurs PDO si la requête échoue
         $errorInfo = $req->errorInfo();
+        $_SESSION['alert_type'] = "error";
+        $_SESSION['alert_message'] = "Erreur lors de l'annulation de la réservation : " . $errorInfo[2];
         //echo "Erreur lors de l'annulation de la réservation : " . $errorInfo[2];
         header('Location: compte.php');
     }
 } else {
+    $_SESSION['alert_type'] = "error";
+    $_SESSION['alert_message'] = "Tous les champs requis doivent être remplis.";
     //echo "Tous les champs requis doivent être remplis.";
     header('Location: compte.php');
 }

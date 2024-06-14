@@ -2,6 +2,13 @@
 session_start();
 require_once('../model/connectBD.php');
 
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['alert_type'] = "error";
+    $_SESSION['alert_message'] = "Vous devez être connecté";
+    header('Location: formConnexion.php');
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
@@ -13,11 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Vérifiez que les mots de passe correspondent
     if ($password !== $verif_password) {
-        echo "Les mots de passe ne correspondent pas.";
+        $_SESSION['alert_type'] = "error";
+        $_SESSION['alert_message'] = "Les mots de passe ne correspondent pas.";
         exit();
     }
 
-    $hashed_password = password_hash($password, PASSWORD_ARGON2ID);
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Vérifiez si l'e-mail existe déjà
     $stmt = $bd->prepare("SELECT * FROM users WHERE user_email = :email");
@@ -26,7 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($result) {
-        echo "L'e-mail est déjà pris.";
+        $_SESSION['alert_type'] = "error";
+        $_SESSION['alert_message'] = "L'e-mail est déjà pris.";
     } else {
 
         // Insérez le nouvel utilisateur dans la base de données
@@ -39,13 +48,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':photo', $photo);
 
         if ($stmt->execute()) {
+            $_SESSION['alert_type'] = "success";
+            $_SESSION['alert_message'] = "Inscription réussie. Vous pouvez maintenant vous connecter.";
             header('Location: formConnexion.php');
             exit();
         } else {
-            echo "Erreur lors de l'inscription.";
+            $_SESSION['alert_type'] = "error";
+            $_SESSION['alert_message'] = "Erreur lors de l'inscription.";
         }
     }
 } else {
-    echo "Requête invalide.";
+    $_SESSION['alert_type'] = "error";
+    $_SESSION['alert_message'] = "Requête invalide.";
 }
 ?>

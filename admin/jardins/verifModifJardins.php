@@ -35,7 +35,7 @@ if ($jardin_photo != '') {
         $_SESSION['alert_type'] = 'success';
     } else {
         $_SESSION['alert_message'] = 'Erreur lors de la modification du jardin';
-        $_SESSION['alert_type'] = 'danger';
+        $_SESSION['alert_type'] = 'error';
     }
 
     header('Location: /admin/jardins/tableJardins.php');
@@ -57,7 +57,7 @@ if ($jardin_photo != '') {
         $_SESSION['alert_type'] = 'success';
     } else {
         $_SESSION['alert_message'] = 'Erreur lors de la modification du jardin';
-        $_SESSION['alert_type'] = 'danger';
+        $_SESSION['alert_type'] = 'error';
     }
 
     header('Location: /admin/jardins/tableJardins.php');

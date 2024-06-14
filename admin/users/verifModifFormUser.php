@@ -28,13 +28,18 @@ if ($userId && !empty($nom) && !empty($prenom) && !empty($email) && !empty($logi
         $_SESSION['user_email'] = $email;
         $_SESSION['user_login'] = $login;
 
+        $_SESSION['alert_type'] = "success";
+        $_SESSION['alert_message'] = "Profil mis à jour avec succès.";
+
         // Redirection après une mise à jour réussie
-        header('Location: compte.php');
+        header('Location: /admin/users/tableUsers.php');
         exit();
     } else {
-        echo "Erreur lors de la mise à jour du profil.";
+        $_SESSION['alert_type'] = "error";
+        $_SESSION['alert_message'] = "Erreur lors de la mise à jour du profil.";
     }
 } else {
-    echo "Tous les champs requis doivent être remplis.";
+    $_SESSION['alert_type'] = "error";
+    $_SESSION['alert_message'] = "Tous les champs requis doivent être remplis.";
 }
 ?>

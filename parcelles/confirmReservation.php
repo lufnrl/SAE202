@@ -23,7 +23,8 @@ if (isset($_GET['users']) && isset($_GET['parcelles'])) {
     $parcelle = $requete->fetch(PDO::FETCH_ASSOC);
 
 } else {
-    echo '<p>Erreur lors de la réservation</p>';
+    $_SESSION['alert_message'] = 'Erreur lors de la réservation';
+    $_SESSION['alert_type'] = 'error';
 }
 ?>
 

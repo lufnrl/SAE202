@@ -3,6 +3,13 @@ require '../model/connectBD.php';
 
 session_start();
 
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['alert_type'] = "error";
+    $_SESSION['alert_message'] = "Vous devez être connecté";
+    header('Location: formConnexion.php');
+    exit();
+}
+
 $mdp = $_POST['newPassword'];
 $confirmMdp = $_POST['confirmNewPassword'];
 

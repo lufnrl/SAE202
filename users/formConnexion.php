@@ -20,21 +20,6 @@ require('../composants/header.php');
                     <button type="submit">Connexion</button>
 
                     <p class="lien-connexion-inscription">Vous n'êtes pas inscrit ? <a href=formInscription.php>Inscrivez-vous !</a></p>
-
-                    <?php
-                    if (isset($_SESSION['alert_type']) && isset($_SESSION['alert_message'])) {
-                        ?>
-                        <div>
-                            <p>
-                                <?php
-                                    echo $_SESSION['alert_message'];
-                                    session_unset();
-                                ?>
-                            </p>
-                        </div>
-                        <?php
-                    }
-                    ?>
                 </form>
             </div>
             

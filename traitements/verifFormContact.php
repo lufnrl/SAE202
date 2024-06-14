@@ -1,7 +1,9 @@
 <?php
 
 session_start();
-$_SESSION['information'] = '';
+
+$_SESSION['alert_message'] = '';
+$_SESSION['alert_type'] = '';
 
 // Vérification de l'appel via le formulaire
 if (count($_POST) == 0) {
@@ -185,7 +187,19 @@ if (count($_POST) == 0) {
             echo $affichage_retour;
         }
     }
-    $_SESSION['information'] = $affichage_retour;
+    switch ($erreurs) {
+        case 1:
+            $_SESSION['alert_type'] = 'error';
+            break;
+        case 0:
+            $_SESSION['alert_type'] = 'success';
+            break;
+        default:
+            $_SESSION['alert_type'] = 'error';
+            break;
+    }
+    $_SESSION['alert_message'] = $affichage_retour;
+
     header('location: contact.php');
 }
 ?>
