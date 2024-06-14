@@ -1085,7 +1085,7 @@ input[type="file"] {
     }
 }
 
-table{
+table th, table td{
     border: solid black 1px;
 }
 
