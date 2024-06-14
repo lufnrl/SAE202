@@ -1,42 +1,124 @@
 <?php
+require '../../model/connectBD.php';
 require '../../composants/head.php';
 require '../../composants/headerAdmin.php';
-require '../../model/connectBD.php';
 
 $user_id = $_GET['users'];
 
-$req = $bd->query("SELECT * FROM users WHERE user_id = $user_id");
-$users = $req->fetchAll(PDO::FETCH_ASSOC);
+$req = $bd->query("SELECT * FROM users WHERE user_id = '" . $user_id . "'");
+$user = $req->fetch();
 
-foreach ($users as $user) {
-    echo '<tr>';
-    echo '<td>' . $user['user_id'] . '</td>';
-    echo '<td>' . $user['user_nom'] . '</td>';
-    echo '<td>' . $user['user_prnm'] . '</td>';
-    echo '<td>' . $user['user_login'] . '</td>';
-    echo '<td>' . $user['user_email'] . '</td>';
-    echo '<td>' . $user['user_photo'] . '</td>';
-    echo '<td><a href="compte.php?users=' . $user['user_id'] . '">Modifier</a><a href="compte.php?users=' . $user['user_id'] . '">Supprimer</a></td>';
-    echo '</tr>';
-}
-
-echo '<br>';
-
-// recuperer les parcelles de l'utilisateur
-$requete = $bd->prepare('SELECT * FROM parcelles WHERE _user_id = ?');
-$requete->bindParam(1, $user_id);
-$requete->execute();
-$parcelles = $requete->fetchAll(PDO::FETCH_ASSOC);
-
-foreach ($parcelles as $parcelle) {
-    echo '<tr>';
-    echo '<td>' . $parcelle['parcelle_id'] . '</td>';
-    echo '<td>' . $parcelle['parcelle_nom'] . '</td>';
-    echo '<td>' . $parcelle['parcelle_content'] . '</td>';
-    echo '<td>' . $parcelle['parcelle_desc'] . '</td>';
-    echo '<td>' . $parcelle['parcelle_etat'] . '</td>';
-    echo '</tr>';
-}
 ?>
+    <h1>
+        Profil de <?php echo $user['user_nom'] . ' ' . $user['user_prnm'] ?>
+    </h1>
+    <div>
+        <div>
+            <?php
+            echo '<img src="/src/assets/uploads/' . $user['user_photo'] . '" alt="Photo de profil" style="width:100px;">';
+            ?>
+            <span><?php echo $user['user_nom'] ?></span>
+            <span><?php echo $user['user_prnm'] ?></span>
+            <span><?php echo $user['user_login'] ?></span>
+        </div>
+        <div>
+            <p><?php echo $user['user_email'] ?></p>
+        </div>
+        <div>
+        </div>
 
-<a href="/admin/users/tableUsers.php">Retour</a>
+        <h2>
+            Parcelles
+        </h2>
+        <div>
+            <table border="1">
+                <tr>
+                    <th>id</th>
+                    <th>nom</th>
+                    <th>contenu</th>
+                    <th>description</th>
+                    <th>etat</th>
+                </tr>
+                <?php
+                // afficher les parcelles que possede l'utilisateur avec le _user_id ne PDO
+                $req = $bd->query("SELECT * FROM parcelles WHERE _user_id = '" . $user_id . "'");
+                $parcelles = $req->fetchAll(PDO::FETCH_ASSOC);
+                if (empty($parcelles)) {
+                    echo 'Vous n\'avez aucune parcelles.';
+                } else {
+                    foreach ($parcelles as $parcelle) {
+                        echo '<tr>';
+                        echo '<td>' . $parcelle['parcelle_id'] . '</td>';
+                        echo '<td>' . $parcelle['parcelle_nom'] . '</td>';
+                        echo '<td>' . $parcelle['parcelle_content'] . '</td>';
+                        echo '<td>' . $parcelle['parcelle_desc'] . '</td>';
+                        echo '<td>' . $parcelle['parcelle_etat'] . '</td>';
+                        echo '</tr>';
+                    }
+                }
+                ?>
+            </table>
+        </div>
+
+        <h2>
+            Jardins
+        </h2>
+        <div>
+            <table border="1">
+                <tr>
+                    <th>id</th>
+                    <th>nom</th>
+                    <th>surface</th>
+                    <th>nombre de parcelles</th>
+                    <th>adresse</th>
+                    <th>ville</th>
+                    <th>latitude</th>
+                    <th>longitude</th>
+                    <th>photo</th>
+                    <th>maps</th>
+                    <th>infoTerre</th>
+                </tr>
+                <?php
+                // afficher les jardins que possede l'utilisateur avec le _user_id ne PDO
+                $req = $bd->query("SELECT * FROM jardins WHERE _user_id = '" . $user_id . "'");
+                $jardins = $req->fetchAll(PDO::FETCH_ASSOC);
+                if (empty($jardins)) {
+                    echo 'Vous n\'avez aucun jardin.';
+                } else {
+                    foreach ($jardins as $jardin) {
+                        echo '<tr>';
+                        echo '<td>' . $jardin['jardin_id'] . '</td>';
+                        echo '<td>' . $jardin['jardin_nom'] . '</td>';
+                        echo '<td>' . $jardin['jardin_surface'] . '</td>';
+                        echo '<td>' . $jardin['jardin_nbParcelles'] . '</td>';
+                        echo '<td>' . $jardin['jardin_adr'] . '</td>';
+                        echo '<td>' . $jardin['jardin_ville'] . '</td>';
+                        echo '<td>' . $jardin['jardin_coordLat'] . '</td>';
+                        echo '<td>' . $jardin['jardin_coordLong'] . '</td>';
+                        echo '<td><img src="/src/assets/uploads/' . $jardin['jardin_photo'] . '" alt="Photo de jardin" style="width:100px;"></td>';
+                        echo '<td>' . $jardin['jardin_maps'] . '</td>';
+                        echo '<td>' . $jardin['jardin_infoTerre'] . '</td>';
+                        echo '</tr>';
+                    }
+                }
+                ?>
+            </table>
+        </div>
+        <?php
+        if (isset($_SESSION['alert_type']) && isset($_SESSION['alert_message'])) {
+            ?>
+            <div>
+                <p>
+                    <?php
+                    echo $_SESSION['alert_message'];
+                    ?>
+                </p>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
+
+<?php
+require('../../composants/footer.php');
+?>

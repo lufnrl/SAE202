@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : sam. 08 juin 2024 à 17:00
+-- Généré le : ven. 14 juin 2024 à 08:46
 -- Version du serveur : 10.3.39-MariaDB-0+deb10u2
 -- Version de PHP : 8.3.7
 
@@ -31,40 +31,33 @@ CREATE TABLE `jardins` (
   `jardin_id` int(11) NOT NULL,
   `jardin_nom` varchar(50) NOT NULL,
   `jardin_surface` int(11) NOT NULL,
+  `jardin_nbParcelles` int(11) NOT NULL,
   `jardin_adr` varchar(100) NOT NULL,
   `jardin_ville` varchar(50) NOT NULL,
   `jardin_coordLat` varchar(10) NOT NULL,
   `jardin_coordLong` varchar(10) NOT NULL,
-  `jardin_photo` varchar(50) NOT NULL,
+  `jardin_photo` varchar(50) NOT NULL DEFAULT 'default_jardins.png',
   `jardin_maps` varchar(100) NOT NULL,
-  `jardin_infoTerre` varchar(100) NOT NULL
+  `jardin_infoTerre` varchar(100) NOT NULL,
+  `_user_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `jardins`
 --
 
-INSERT INTO `jardins` (`jardin_id`, `jardin_nom`, `jardin_surface`, `jardin_adr`, `jardin_ville`, `jardin_coordLat`, `jardin_coordLong`, `jardin_photo`, `jardin_maps`, `jardin_infoTerre`) VALUES
-(15, 'Jardin Massey', 20, 'Rue Massey, 65000 Tarbes', 'Tarbes', '43.2334', '0.0763', 'photo_jardin_massey.jpg', 'https://maps.app.goo.gl/fUGoqjvHPMjLfYRW9', 'Sol limoneux, bien drainé'),
-(14, 'Parc de Belleville', 20, '47 Rue des Couronnes, 75020 Paris', 'Paris', '48.8738', '2.3885', 'photo_parc_belleville.jpg', 'https://maps.google.com/14', 'Terre calcaire, pH neutre'),
-(13, 'Parc Montsouris', 20, '2 Rue Gazan, 75014 Paris', 'Paris', '48.8223', '2.3387', 'photo_parc_montsouris.jpg', 'https://maps.google.com/13', 'Terre fertile, bien drainée'),
-(12, 'Parc André Citroën', 20, '2 Rue Cauchy, 75015 Paris', 'Paris', '48.8447', '2.2771', 'photo_parc_citroen.jpg', 'https://maps.google.com/12', 'Terre sableuse, pH neutre'),
-(11, 'Jardin des Serres d\'Auteuil', 20, '3 Avenue de la Porte d\'Auteuil, 75016 Paris', 'Paris', '48.8476', '2.2523', 'photo_serres_auteuil.jpg', 'https://maps.google.com/11', 'Terre argileuse, bien arrosée'),
-(10, 'Parc de la Villette', 20, '211 Avenue Jean Jaurès, 75019 Paris', 'Paris', '48.8913', '2.3936', 'photo_parc_villette.jpg', 'https://maps.google.com/10', 'Sol limoneux, nécessite engrais'),
-(9, 'Jardin Botanique de Nice', 20, '78 Corniche Fleurie, 06200 Nice', 'Nice', '43.7085', '7.1935', 'photo_jardin_botanique_nice.jpg', 'https://maps.google.com/9', 'Terre calcaire, bien arrosée'),
-(8, 'Parc de la Beaujoire', 20, 'Boulevard de la Beaujoire, 44300 Nantes', 'Nantes', '47.2496', '-1.5266', 'photo_parc_beaujoire.jpg', 'https://maps.google.com/8', 'Terre fertile, pH légèrement acide'),
-(7, 'Jardin des Plantes de Nantes', 20, 'Rue Stanislas Baudry, 44000 Nantes', 'Nantes', '47.2184', '-1.5423', 'photo_jardin_nantes.jpg', 'https://maps.google.com/7', 'Terre sableuse, bien drainée'),
-(6, 'Parc Borély', 20, 'Avenue du Prado, 13008 Marseille', 'Marseille', '43.2643', '5.3744', 'photo_parc_borely.jpg', 'https://maps.google.com/6', 'Terre argileuse, nécessite engrais'),
-(5, 'Jardin Public', 20, 'Cours de Verdun, 33000 Bordeaux', 'Bordeaux', '44.8417', '-0.5812', 'photo_jardin_public.jpg', 'https://maps.google.com/5', 'Terre limoneuse, bien arrosée'),
-(4, 'Parc Monceau', 20, '35 Boulevard de Courcelles, 75008 Paris', 'Paris', '48.8791', '2.3087', 'photo_parc_monceau.jpg', 'https://maps.google.com/4', 'Terre sableuse, pH neutre'),
-(3, 'Parc de la Tête d\'Or', 20, 'Place du Général Leclerc, Lyon', 'Lyon', '45.7791', '4.8554', 'photo_parc_tete_or.jpg', 'https://maps.google.com/3', 'Sol argileux, bien drainé'),
-(2, 'Jardin du Luxembourg', 20, '6 Rue de Médicis, 75006 Paris', 'Paris', '48.8462', '2.3371', 'photo_jardin_luxembourg.jpg', 'https://maps.google.com/2', 'Terre calcaire, nécessite engrais'),
-(1, 'Jardin des Plantes', 20, '57 Rue Cuvier, 75005 Paris', 'Paris', '48.8443', '2.3570', 'photo_jardin_plantes.jpg', 'https://maps.google.com/1', 'Terre fertile, bien arrosée'),
-(16, 'Parc de Procé', 20, 'Rue des Dervallières, 44100 Nantes', 'Nantes', '47.2264', '-1.5875', 'photo_parc_proce.jpg', 'https://maps.google.com/16', 'Terre argileuse, pH légèrement acide'),
-(17, 'Jardin des Cinq Sens', 20, 'Rue du Bourg, 74240 Yvoire', 'Yvoire', '46.3704', '6.3263', 'photo_jardin_cinq_sens.jpg', 'https://maps.google.com/17', 'Terre fertile, bien arrosée'),
-(18, 'Jardin du Château de Versailles', 20, 'Place d\'Armes, 78000 Versailles', 'Versailles', '48.8049', '2.1204', 'photo_chateau_versailles.jpg', 'https://maps.google.com/18', 'Terre calcaire, nécessite engrais'),
-(19, 'Parc de la Pépinière', 20, '34 Cours Léopold, 54000 Nancy', 'Nancy', '48.6937', '6.1844', 'photo_parc_pepiniere.jpg', 'https://maps.google.com/19', 'Terre sableuse, bien drainée'),
-(20, 'Parc de Sceaux', 20, '8 Avenue Claude Perrault, 92330 Sceaux', 'Sceaux', '48.7752', '2.2964', 'photo_parc_sceaux.jpg', 'https://maps.google.com/20', 'Terre fertile, pH légèrement acide');
+INSERT INTO `jardins` (`jardin_id`, `jardin_nom`, `jardin_surface`, `jardin_nbParcelles`, `jardin_adr`, `jardin_ville`, `jardin_coordLat`, `jardin_coordLong`, `jardin_photo`, `jardin_maps`, `jardin_infoTerre`, `_user_id`) VALUES
+(1, 'Jardin des Roses', 500, 2, '123 Rue des Roses', 'Troyes', '48.297926', '4.078186', 'Image potager 011.jpg', 'map1.png', 'Sol fertile, bien drainé, ensoleillé', 1),
+(2, 'Jardin du Lac', 700, 2, '45 Avenue du Lac', 'Troyes', '48.297504', '4.081183', 'default_jardins.png', 'map2.png', 'Terre argileuse, près de l\'eau', 2),
+(3, 'Jardin des Tulipes', 400, 2, '12 Rue des Tulipes', 'Troyes', '48.305678', '4.064321', 'default_jardins.png', 'map3.png', 'Sol riche en nutriments, ensoleillé', 3),
+(4, 'Jardin du Verger', 600, 2, '78 Rue du Verger', 'Troyes', '48.306789', '4.073456', 'Photo cojardinage 8970.webp', 'map4.png', 'Terre bien drainée, exposition sud', 4),
+(5, 'Jardin de la Fontaine', 450, 2, '32 Rue de la Fontaine', 'Troyes', '48.299876', '4.090765', 'default_jardins.png', 'map5.png', 'Sol sablonneux, arrosage régulier', 5),
+(6, 'Jardin des Lavandes', 550, 2, '5 Rue des Lavandes', 'Troyes', '48.295678', '4.085432', 'default_jardins.png', 'map6.png', 'Terre légère, bien drainée', 6),
+(7, 'Jardin de la Vallée', 800, 2, '10 Rue de la Vallée', 'Saint-André-les-Vergers', '48.299012', '4.080123', 'default_jardins.png', 'map7.png', 'Sol profond, riche en matière organique', 7),
+(8, 'Jardin du Soleil', 600, 2, '25 Rue du Soleil', 'La Chapelle-Saint-Luc', '48.302345', '4.082456', 'default_jardins.png', 'map8.png', 'Terre limoneuse, exposition sud', 8),
+(9, 'Jardin des Orangers', 700, 2, '15 Rue des Orangers', 'Saint-Julien-les-Villas', '48.303456', '4.070987', 'default_jardins.png', 'map9.png', 'Sol bien drainé, exposition ensoleillée', 9),
+(10, 'Jardin des Oliviers', 500, 2, '20 Rue des Oliviers', 'Saint-André-les-Vergers', '48.299876', '4.090765', 'default_jardins.png', 'map10.png', 'Terre sableuse, arrosage régulier', 10),
+(25, 'Jardin Botanique', 200, 5, 'je ne connais pas l\'adresse', 'Paris', '123', '123', 'default_jardins.png', 'test', 'test des infos', 4);
 
 -- --------------------------------------------------------
 
@@ -78,8 +71,6 @@ CREATE TABLE `parcelles` (
   `parcelle_content` varchar(50) NOT NULL,
   `parcelle_etat` varchar(10) NOT NULL,
   `parcelle_desc` varchar(150) NOT NULL,
-  `parcelle_dateDeb` date NOT NULL,
-  `parcelle_dateFin` date NOT NULL,
   `parcelle_reservation` int(11) DEFAULT NULL,
   `_jardin_id` int(11) NOT NULL,
   `_user_id` int(255) NOT NULL
@@ -89,27 +80,41 @@ CREATE TABLE `parcelles` (
 -- Déchargement des données de la table `parcelles`
 --
 
-INSERT INTO `parcelles` (`parcelle_id`, `parcelle_nom`, `parcelle_content`, `parcelle_etat`, `parcelle_desc`, `parcelle_dateDeb`, `parcelle_dateFin`, `parcelle_reservation`, `_jardin_id`, `_user_id`) VALUES
-(12, 'Parterre de Fleurs 2', 'Fleurs', 'LIBRE', 'Floraison de printemps', '2023-04-15', '2023-10-15', NULL, 12, 2),
-(11, 'Potager Bio 2', 'Légumes', 'LIBRE', 'Culture de légumes bio', '2024-03-01', '2024-08-01', NULL, 11, 1),
-(10, 'Vignoble', 'Vignes', 'LIBRE', 'Culture de vignes', '2023-03-20', '2023-09-20', 7, 10, 10),
-(9, 'Champ de Céréales', 'Céréales', 'LIBRE', 'Champs de céréales', '2022-09-15', '2023-03-15', 7, 9, 9),
-(8, 'Champignonnière', 'Champignons', 'LIBRE', 'Culture de champignons', '2024-01-01', '2024-06-01', NULL, 8, 8),
-(7, 'Jardin Médicinal', 'Plantes médicinales', 'LIBRE', 'Plantes médicinales', '2023-07-01', '2023-12-01', NULL, 7, 7),
-(6, 'Arboretum', 'Arbres', 'LIBRE', 'Plantation d\'arbres', '2022-03-01', '2022-09-01', NULL, 6, 6),
-(5, 'Potager Mixte', 'Potager', 'LIBRE', 'Potager mixte', '2023-02-10', '2023-08-10', NULL, 5, 5),
-(4, 'Herbes Aromatiques', 'Herbes', 'LIBRE', 'Plantation d\'herbes', '2024-06-01', '2024-12-01', NULL, 4, 4),
-(3, 'Verger', 'Fruits', 'LIBRE', 'Vergers de fruits', '2023-05-20', '2023-11-20', NULL, 3, 3),
-(2, 'Parterre de Fleurs', 'Fleurs', 'LIBRE', 'Floraison de printemps', '2022-04-15', '2022-10-15', NULL, 2, 2),
-(1, 'Potager Bio', 'Légumes', 'LIBRE', 'Culture de légumes bio', '2023-03-01', '2023-08-01', 7, 1, 1),
-(13, 'Verger 2', 'Fruits', 'LIBRE', 'Vergers de fruits', '2023-05-20', '2023-11-20', NULL, 13, 3),
-(14, 'Herbes Aromatiques 2', 'Herbes', 'LIBRE', 'Plantation d\'herbes', '2022-06-01', '2022-12-01', 7, 14, 4),
-(15, 'Potager Mixte 2', 'Potager', 'LIBRE', 'Potager mixte', '2023-02-10', '2023-08-10', 7, 15, 5),
-(16, 'Arboretum 2', 'Arbres', 'LIBRE', 'Plantation d\'arbres', '2024-03-01', '2024-09-01', 7, 16, 6),
-(17, 'Jardin Médicinal 2', 'Plantes médicinales', 'LIBRE', 'Plantes médicinales', '2022-07-01', '2022-12-01', NULL, 17, 7),
-(18, 'Champignonnière 2', 'Champignons', 'LIBRE', 'Culture de champignons', '2023-01-01', '2023-06-01', NULL, 18, 8),
-(19, 'Champ de Céréales 2', 'Céréales', 'LIBRE', 'Champs de céréales', '2024-09-15', '2025-03-15', NULL, 19, 9),
-(20, 'Vignoble 2', 'Vignes', 'LIBRE', 'Culture de vignes', '2023-03-20', '2023-09-20', 7, 20, 10);
+INSERT INTO `parcelles` (`parcelle_id`, `parcelle_nom`, `parcelle_content`, `parcelle_etat`, `parcelle_desc`, `parcelle_reservation`, `_jardin_id`, `_user_id`) VALUES
+(1, 'Parcelle 1', 'Contenu parcelle 1', 'LIBRE', 'Description parcelle 1', NULL, 1, 1),
+(2, 'Parcelle 2', 'Contenu parcelle 2', 'LIBRE', 'Description parcelle 2', NULL, 1, 1),
+(3, 'Parcelle 3', 'Contenu parcelle 3', 'LIBRE', 'Description parcelle 3', NULL, 2, 2),
+(4, 'Parcelle 4', 'Contenu parcelle 4', 'LIBRE', 'Description parcelle 4', NULL, 2, 2),
+(5, 'Parcelle 5', 'Contenu parcelle 5', 'LIBRE', 'Description parcelle 5', NULL, 3, 3),
+(6, 'Parcelle 6', 'Contenu parcelle 6', 'LIBRE', 'Description parcelle 6', NULL, 3, 3),
+(7, 'Parcelle 7', 'Contenu parcelle 7', 'LIBRE', 'Description parcelle 7', NULL, 4, 4),
+(8, 'Parcelle 8', 'Contenu parcelle 8', 'LIBRE', 'Description parcelle 8', NULL, 4, 4),
+(9, 'Parcelle 9', 'Contenu parcelle 9', 'LIBRE', 'Description parcelle 9', NULL, 5, 5),
+(10, 'Parcelle 10', 'Contenu parcelle 10', 'LIBRE', 'Description parcelle 10', NULL, 5, 5),
+(11, 'Parcelle 11', 'Contenu parcelle 11', 'LIBRE', 'Description parcelle 11', NULL, 6, 6),
+(12, 'Parcelle 12', 'Contenu parcelle 12', 'LIBRE', 'Description parcelle 12', NULL, 6, 6),
+(13, 'Parcelle 13', 'Contenu parcelle 13', 'LIBRE', 'Description parcelle 13', NULL, 7, 7),
+(14, 'Parcelle 14', 'Contenu parcelle 14', 'LIBRE', 'Description parcelle 14', NULL, 7, 7),
+(15, 'Parcelle 15', 'Contenu parcelle 15', 'LIBRE', 'Description parcelle 15', NULL, 8, 8),
+(16, 'Parcelle 16', 'Contenu parcelle 16', 'LIBRE', 'Description parcelle 16', NULL, 8, 8),
+(17, 'Parcelle 17', 'Contenu parcelle 17', 'LIBRE', 'Description parcelle 17', NULL, 9, 9),
+(18, 'Parcelle 18', 'Contenu parcelle 18', 'LIBRE', 'Description parcelle 18', NULL, 9, 9),
+(19, 'Parcelle 19', 'Contenu parcelle 19', 'LIBRE', 'Description parcelle 19', NULL, 10, 10),
+(20, 'Parcelle 20', 'Contenu parcelle 20', 'LIBRE', 'Description parcelle 20', NULL, 10, 10);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reservations`
+--
+
+CREATE TABLE `reservations` (
+  `id` int(11) NOT NULL,
+  `reservation_dateDeb` date NOT NULL,
+  `reservation_dateFin` date NOT NULL,
+  `_parcelle_id` int(11) NOT NULL,
+  `_user_id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -124,7 +129,7 @@ CREATE TABLE `users` (
   `user_login` varchar(50) NOT NULL,
   `user_pass` varchar(255) NOT NULL,
   `user_email` varchar(100) NOT NULL,
-  `user_photo` varchar(30) NOT NULL DEFAULT 'default_profil.png'
+  `user_photo` varchar(100) NOT NULL DEFAULT 'logo.webp'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -132,16 +137,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_nom`, `user_prnm`, `user_login`, `user_pass`, `user_email`, `user_photo`) VALUES
-(4, 'Suffy', 'Sam', 'sam', '$2y$10$c/k2Mrj.16kJq83fTDNy5O0Di3N51wwJudCOt/Fi2jS8AUbxe92gm', 'test@mail4.com', 'photo.png'),
-(7, 'Blink', 'Zack', 'zack', '$2y$10$cbVJxY/SUwvSuyxEHeOmbeM66wNCPd15Rrj8EPP1oxi9nMvNJh9Bi', 'test@mail7.com', ''),
-(6, 'Tag', 'Bill', 'bill', '$2y$10$Xz9m2Vvo1YUPuIgF6KSioeIui2MTmgQw7887P68LX2m6888VmV8B6', 'test@mail6.com', 'photo.png'),
-(5, 'Point', 'Théo', 'theo', '$2y$10$G53v/iTZQfV9oFnnTTCQguctkdAGN59ObMGPXxS15d5jFaSW5LYCW', 'test@mail5.com', 'photo.png'),
-(1, 'Dylan', 'Bob ', 'bob', '$2y$10$/0Pu6NHFC87I0TMJ9srNEOrcb9qTIv2Qohew6qKk.97V.swXI2a4C', 'test@mail1.com', 'photo.png'),
-(2, 'Lataupe', 'René ', 'rene', '$2y$10$PB7qVXT2kmz4Oo0UwaahxO93HhmnANFE7sSubFH90cte96YXnjdse', 'test@mail2.com', 'profile.webp'),
-(3, 'Ochon', 'Paul', 'paul', '$2y$10$slEXINRLnQP4HXM7BS/nDOcD5p3dLXag3wQlfYNycHyFWn65rAxFK', 'test@mail3.com', 'photo.png'),
-(8, 'Bulga', 'Zoe', 'zoe', '$2y$10$VhoZDV7/x0DdgSwkjbaQ3OpBB1.tyZwrcjQmTlsKyrBuSF1V1lh32', 'test@mail8.com', 'photo.png'),
-(9, 'patos', 'Sandy', 'sandy', '$2y$10$8IfuX1Z8UAAzDgJbmN7Mb.4Q2qog6weHd.Y8QtGKBIQVE.X1zRatO', 'test@mail9.com', 'photo.png'),
-(10, 'Dupond', 'Polux', 'polux', '$2y$10$lwGqBjV9GQUJPKtIlqAtO.LZwm1vCOwZKFFGq98tAaiVmCsat9IH2', 'test@mail10.com', 'photo.png');
+(4, 'Suffy', 'Sam', 'sam', '$2y$10$zkWuogZUoZd07cB/XgwpJewSfXVQavFdO6oBaFJ/CAIxIn0JOqMvq', 'test@mail4.com', 'logo.webp'),
+(6, 'Tag', 'Bill', 'bill', '$2y$10$Xz9m2Vvo1YUPuIgF6KSioeIui2MTmgQw7887P68LX2m6888VmV8B6', 'test@mail6.com', 'logo.webp'),
+(5, 'Point', 'Théo', 'theo', '$2y$10$G53v/iTZQfV9oFnnTTCQguctkdAGN59ObMGPXxS15d5jFaSW5LYCW', 'test@mail5.com', 'logo.webp'),
+(1, 'Dylan', 'Bob ', 'bob', '$2y$10$/0Pu6NHFC87I0TMJ9srNEOrcb9qTIv2Qohew6qKk.97V.swXI2a4C', 'test@mail1.com', 'logo.webp'),
+(2, 'Lataupe', 'René ', 'rene', '$2y$10$PB7qVXT2kmz4Oo0UwaahxO93HhmnANFE7sSubFH90cte96YXnjdse', 'test@mail2.com', 'logo.webp'),
+(3, 'Ochon', 'Paul', 'paul', '$2y$10$slEXINRLnQP4HXM7BS/nDOcD5p3dLXag3wQlfYNycHyFWn65rAxFK', 'test@mail3.com', 'logo.webp'),
+(8, 'Bulga', 'Zoe', 'zoe', '$2y$10$VhoZDV7/x0DdgSwkjbaQ3OpBB1.tyZwrcjQmTlsKyrBuSF1V1lh32', 'test@mail8.com', 'logo.webp'),
+(9, 'patos', 'Sandy', 'sandy', '$2y$10$8IfuX1Z8UAAzDgJbmN7Mb.4Q2qog6weHd.Y8QtGKBIQVE.X1zRatO', 'test@mail9.com', 'logo.webp'),
+(10, 'Dupond', 'Polux', 'polux', '$2y$10$lwGqBjV9GQUJPKtIlqAtO.LZwm1vCOwZKFFGq98tAaiVmCsat9IH2', 'test@mail10.com', 'logo.webp'),
+(7, 'Blink', 'Zack', 'zack', '$2y$10$Pa3u0EpLXU7mMMd0HbB8julsYYz8I.MQ3KnkpEM5MSX6GrNAkCdpO', 'zack.email@mail.com', 'logo.webp');
 
 --
 -- Index pour les tables déchargées
@@ -160,6 +165,12 @@ ALTER TABLE `parcelles`
   ADD PRIMARY KEY (`parcelle_id`);
 
 --
+-- Index pour la table `reservations`
+--
+ALTER TABLE `reservations`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
@@ -173,19 +184,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `jardins`
 --
 ALTER TABLE `jardins`
-  MODIFY `jardin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `jardin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT pour la table `parcelles`
 --
 ALTER TABLE `parcelles`
-  MODIFY `parcelle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `parcelle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT pour la table `reservations`
+--
+ALTER TABLE `reservations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

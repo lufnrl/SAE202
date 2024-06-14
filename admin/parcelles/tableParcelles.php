@@ -18,6 +18,7 @@ $parcelles = $req->fetchAll(PDO::FETCH_ASSOC);
         <th>Contenu</th>
         <th>Description</th>
         <th>Etat</th>
+        <th>Jardins</th>
         <th>Actions</th>
     </tr>
     <?php
@@ -29,8 +30,12 @@ foreach ($parcelles as $parcelle) {
     echo '<td>' . $parcelle['parcelle_content'] . '</td>';
     echo '<td>' . $parcelle['parcelle_desc'] . '</td>';
     echo '<td>' . $parcelle['parcelle_etat'] . '</td>';
-    // modifier une parcelle
-    echo '<td><a href="parcelle.php?parcelles=' . $parcelle['parcelle_id'] . '">Modifier</a>';
+    $query = "SELECT * FROM jardins WHERE jardin_id = '" . $parcelle['_jardin_id'] . "'";
+    $req = $bd->query($query);
+    $jardins = $req->fetchAll();
+    echo '<td>'. $jardins[0]['jardin_nom'] . '</td>';
+    echo '<td><a href="modifParcelles.php?parcelles=' . $parcelle['parcelle_id'] . '">Modifier</a>';
+    echo '<a href="verifDelParcelles.php?parcelles=' . $parcelle['parcelle_id'] . '">Supprimer</a></td>';
     echo '</tr>';
 }
 ?>
@@ -74,3 +79,7 @@ $parcelles = $req->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 </table>
+
+<?php
+require('../../composants/footer.php');
+?>

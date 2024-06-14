@@ -15,8 +15,7 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
         <div id="locations">
             <ul id="location-list">
                 <?php
-                // Afficher les jardins et dans une balise details si il y a plusieurs parcelles par jardins.
-                $reqJardins = $bd->query("SELECT * FROM jardins");
+                $reqJardins = $bd->query("SELECT * FROM jardins WHERE _user_id != $user_id ");
                 $jardins = $reqJardins->fetchAll(PDO::FETCH_ASSOC);
 
                 foreach ($jardins as $jardin) {
@@ -30,7 +29,12 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                     echo '<p>Type : ' . $jardin['jardin_infoTerre'] . '</p>';
                     echo '</div>';
                     echo '<details>';
-                    echo '<summary>Parcelles</summary>';
+                    $reqCountParcelles = $bd->query("SELECT * FROM parcelles WHERE _jardin_id = " . $jardin['jardin_id'] . " AND parcelle_etat = 'LIBRE'");
+                    $countParcelles = $reqCountParcelles->fetchAll(PDO::FETCH_ASSOC);
+
+                    $countTotalParcelles = $bd->query("SELECT * FROM parcelles WHERE _jardin_id = " . $jardin['jardin_id']);
+                    $totalParcelles = $countTotalParcelles->fetchAll(PDO::FETCH_ASSOC);
+                    echo '<summary>Parcelles ' . count($countParcelles).'/'.count($totalParcelles).'</summary>';
                     
                     $stmt_parcelles = $bd->prepare("SELECT * FROM parcelles WHERE _jardin_id = ?");
                     $stmt_parcelles->execute([$jardin['jardin_id']]);
