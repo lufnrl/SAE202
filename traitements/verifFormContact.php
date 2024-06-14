@@ -200,6 +200,6 @@ if (count($_POST) == 0) {
     }
     $_SESSION['alert_message'] = $affichage_retour;
 
-    header('location: contact.php');
+    header('location: ../contact.php');
 }
 ?>
