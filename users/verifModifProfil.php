@@ -1,3 +1,5 @@
+<h1>Vérification modification profil</h1>
+
 <?php
 require '../model/connectBD.php';
 require '../composants/head.php';

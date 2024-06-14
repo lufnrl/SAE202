@@ -99,3 +99,38 @@ locations.forEach(location => {
         marker.openPopup();
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const navButtons = document.querySelectorAll('.nav-button');
+    const sections = document.querySelectorAll('.profile-section');
+
+    console.log('Nav buttons:', navButtons);
+    console.log('Sections:', sections);
+
+    // Function to show the section based on the button clicked
+    const showSection = (targetId) => {
+        console.log('Section affichée:', targetId);
+        sections.forEach(section => {
+            if (section.id === targetId) {
+                section.style.display = 'block';  // Show the selected section
+            } else {
+                section.style.display = 'none';   // Hide all other sections
+            }
+        });
+    };
+
+    // Attach click event listeners to nav buttons
+    navButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const target = button.getAttribute('data-target');
+            console.log('Click:', target);
+            showSection(target);  // Call the showSection function with the target section id
+        });
+    });
+
+    // Show the first section by default
+    if (sections.length > 0) {
+        console.log('Première section:', sections[0].id);
+        showSection(sections[0].id);  // Show the first section initially
+    }
+});

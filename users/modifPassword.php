@@ -4,23 +4,21 @@ require '../composants/head.php';
 require '../composants/header.php';
 ?>
 
-<h1>
-    Modifier le mot de passe
-</h1>
+<h1>Modifier le mot de passe</h1>
 
-<div>
+<div class="profile-edit-container">
     <form action="verifModifPassword.php" method="post">
-        <div>
+        <div class="form-group">
             <label for="newPassword">Nouveau mot de passe</label>
-            <input type="password" name="newPassword">
+            <input type="password" id="newPassword" name="newPassword">
         </div>
-        <div>
+        <div class="form-group">
             <label for="confirmNewPassword">Confirmer le nouveau mot de passe</label>
-            <input type="password" name="confirmNewPassword">
+            <input type="password" id="confirmNewPassword" name="confirmNewPassword">
         </div>
-        <div>
-            <input type="submit" value="Modifier">
-            <a href="compte.php">Retour</a>
+        <div class="form-actions">
+            <input type="submit" class="btn-submit" value="Modifier">
+            <a class="btn-back" href="compte.php">Retour</a>
         </div>
     </form>
 </div>

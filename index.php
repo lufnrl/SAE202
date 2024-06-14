@@ -108,7 +108,7 @@
                         <h4>Karim</h4>
                     </div>
                     <p>Je suis très heureux de pouvoir à nouveau assouvir ma passion du jardinage, et mes enfants aussi. J’adore toucher la terre, c’est un réel plaisir de récolter ce que l’on a semé et de partager les récoltes avec d’autres personnes.</p>
-                    <p>Il y a 1h</p>
+                    <p class="carousel-time">Il y a 1h</p>
                 </div>
 
                 <div class="carousel-item right-item">
@@ -117,7 +117,7 @@
                         <h4>Juliette</h4>
                     </div>
                     <p>Je suis enchantée. Au-delà du jardinage, c’est une véritable aventure humaine. Et voir mon jardin ainsi entretenu me donne du courage.</p>
-                    <p>Il y a 3j</p>
+                    <p class="carousel-time">Il y a 3j</p>
                 </div>
 
                 <div class="carousel-item left-item">
@@ -126,7 +126,7 @@
                         <h4>Damien</h4>
                     </div>
                     <p>J’ai ce terrain mais je n’ai pas beaucoup de temps ni d’idées pour le faire fructifier. Je suis heureux que Hugo et Louise puissent en profiter. Ils me sont d’une grande aide. C’est un véritable échange gagnant-gagnant.</p>
-                    <p>Il y a 5j</p>
+                    <p class="carousel-time">Il y a 5j</p>
                 </div>
 
                 <div class="carousel-item right-item">
@@ -135,15 +135,13 @@
                         <h4>Monique</h4>
                     </div>
                     <p>Je n’ai jamais eu un jardin aussi beau et bien cultivé grâce à Sylvie. Une femme passionnée de jardinage et pleine d’idées.</p>
-                    <p>Il y a 14h</p>
+                    <p class="carousel-time">Il y a 14h</p>
                 </div>
             </div>
         </div>
         <button class="carousel-button right" onclick="moveRight()">&#10095;</button>
     </div>
 </div>
-
-<?php require("./composants/footer.php") ?>
 
 <div id="remonter">
     <button class="button" onclick="scrollToTop()" title="Haut-de-page">
@@ -154,6 +152,8 @@
         </svg>
     </button>
 </div>
+
+<?php require("./composants/footer.php") ?>
 
 
 <script src="./src/assets/js/script.js"></script>

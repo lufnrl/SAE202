@@ -15,7 +15,8 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
         <div id="locations">
             <ul id="location-list">
                 <?php
-                $reqJardins = $bd->query("SELECT * FROM jardins WHERE _user_id != $user_id ");
+                // Afficher les jardins et dans une balise details si il y a plusieurs parcelles par jardins.
+                $reqJardins = $bd->query("SELECT * FROM jardins");
                 $jardins = $reqJardins->fetchAll(PDO::FETCH_ASSOC);
 
                 foreach ($jardins as $jardin) {
@@ -25,30 +26,33 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                     echo '<h6>' . $jardin['jardin_nom'] . '</h6>';
                     echo '<p class="location-adresse"><i class="fas fa-map-marker-alt"></i> ' . $jardin['jardin_adr'] . '</p>';
                     echo '<div class="location-infos">';
-                    echo '<p>Surface : ' . $jardin['jardin_surface'] . ' m2</p>';
+                    echo '<p>Surface : ' . $jardin['jardin_surface'] . ' m²</p>';
                     echo '<p>Type : ' . $jardin['jardin_infoTerre'] . '</p>';
                     echo '</div>';
                     echo '<details>';
+
                     $reqCountParcelles = $bd->query("SELECT * FROM parcelles WHERE _jardin_id = " . $jardin['jardin_id'] . " AND parcelle_etat = 'LIBRE'");
                     $countParcelles = $reqCountParcelles->fetchAll(PDO::FETCH_ASSOC);
 
                     $countTotalParcelles = $bd->query("SELECT * FROM parcelles WHERE _jardin_id = " . $jardin['jardin_id']);
                     $totalParcelles = $countTotalParcelles->fetchAll(PDO::FETCH_ASSOC);
                     echo '<summary>Parcelles ' . count($countParcelles).'/'.count($totalParcelles).'</summary>';
-                    
+
+                    echo '<div class="location-parcelles-reservation">';
                     $stmt_parcelles = $bd->prepare("SELECT * FROM parcelles WHERE _jardin_id = ?");
                     $stmt_parcelles->execute([$jardin['jardin_id']]);
                     $parcelles = $stmt_parcelles->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($parcelles as $parcelle) {
                         echo '<p>' . $parcelle['parcelle_nom'] . ' ' . $parcelle['parcelle_etat'] . '</p>';
                         if ($parcelle['parcelle_etat'] === 'ATTENTE' || $parcelle['parcelle_etat'] === 'RESERVE') {
-                            echo'parcelle indisponible';
+                            echo'Parcelle indisponible';
                         } else if($user_id) {
                             echo '<a href="/parcelles/confirmReservation.php?users=' . $user_id . '&parcelles=' . $parcelle['parcelle_id'] . '">Réserver</a>';
                         } else {
-                            echo '<a href="/users/formConnexion.php">Connecter vous pour réserver</a>';
+                            echo '<a href="/users/formConnexion.php">Réserver</a>';
                         }
                     }
+                    echo '</div>';
                     echo '</details>';
                     echo '</li>';
                 }
