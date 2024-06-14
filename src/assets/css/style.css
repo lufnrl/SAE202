@@ -1091,7 +1091,7 @@ input[type="file"] {
 /*----------------------------------------PIED DE PAGE------------------------------------------*/
 
 footer{
-    margin-top: auto;
+    margin-top: 100px;
 }
 
 footer hr{
