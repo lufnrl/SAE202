@@ -2,13 +2,6 @@
 session_start();
 require_once('../model/connectBD.php');
 
-if (!isset($_SESSION['user_id'])) {
-    $_SESSION['alert_type'] = "error";
-    $_SESSION['alert_message'] = "Vous devez être connecté";
-    header('Location: formConnexion.php');
-    exit();
-}
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
@@ -16,7 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $verif_password = $_POST['verif_password'];
-    $photo = $_POST['photo'];
 
     // Vérifiez que les mots de passe correspondent
     if ($password !== $verif_password) {
@@ -39,13 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
 
         // Insérez le nouvel utilisateur dans la base de données
-        $stmt = $bd->prepare("INSERT INTO users (user_nom, user_prnm, user_login, user_pass, user_email, user_photo) VALUES (:nom, :prenom, :username, :password, :email, :photo)");
+        $stmt = $bd->prepare("INSERT INTO users (user_nom, user_prnm, user_login, user_pass, user_email) VALUES (:nom, :prenom, :username, :password, :email)");
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':prenom', $prenom);
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':password', $hashed_password);
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':photo', $photo);
 
         if ($stmt->execute()) {
             $_SESSION['alert_type'] = "success";

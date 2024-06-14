@@ -790,26 +790,6 @@ nav ul li.current a::after {
     color: gray;
 }
 
-.connexion-inscription .alert {
-    padding: 10px;
-    border-radius: 4px;
-    margin-top: 20px;
-}
-
-.alert p {
-    margin: 0;
-}
-
-.alert.success {
-    background-color: #d4edda;
-    color: #155724;
-}
-
-.alert.error {
-    background-color: #f8d7da;
-    color: #721c24;
-}
-
 
 /*-----------------------------------------PROFIL-----------------------------------------------*/
 

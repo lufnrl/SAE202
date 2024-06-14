@@ -24,10 +24,6 @@ if (!isset($_SESSION['user_id'])) {
             ?>
         </div>
         <div class="form-group">
-            <label for="photo">Changer la couverture:</label>
-            <input type="file" id="photo" name="photo">
-        </div>
-        <div class="form-group">
             <label for="nom">Nom</label>
             <input type="text" id="nom" name="nom" value="<?php echo $_SESSION['user_nom'] ?>">
         </div>

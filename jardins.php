@@ -32,12 +32,12 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                     echo '<h6>' . $jardin['jardin_nom'] . '</h6>';
                     echo '<p class="location-adresse"><i class="fas fa-map-marker-alt"></i> ' . $jardin['jardin_adr'] . '</p>';
                     echo '<div class="location-infos">';
-                    echo '<p>Surface : ' . $jardin['jardin_surface'] . ' m²</p>';
+                    echo '<p>Surface : ' . $jardin['jardin_surface'] . ' m2</p>';
                     echo '<p>Type : ' . $jardin['jardin_infoTerre'] . '</p>';
                     echo '</div>';
                     echo '<details>';
 
-                    $reqCountParcelles = $bd->query("SELECT * FROM parcelles WHERE _jardin_id = " . $jardin['jardin_id'] . " AND parcelle_etat = 'LIBRE'");
+                    $reqCountParcelles = $bd->prepare("SELECT * FROM parcelles WHERE _jardin_id = ? AND parcelle_etat = 'LIBRE'");
                     $reqCountParcelles->execute([$jardin['jardin_id']]);
                     $countParcelles = $reqCountParcelles->fetchAll(PDO::FETCH_ASSOC);
 
@@ -45,7 +45,7 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                     $countTotalParcelles->execute([$jardin['jardin_id']]);
                     $totalParcelles = $countTotalParcelles->fetchAll(PDO::FETCH_ASSOC);
 
-                    echo '<summary>Parcelles ' . count($countParcelles).'/'.count($totalParcelles).'</summary>';
+                    echo '<summary>Parcelles ' . count($countParcelles) . '/' . count($totalParcelles) . '</summary>';
 
                     echo '<div class="location-parcelles-reservation">';
                     $stmt_parcelles = $bd->prepare("SELECT * FROM parcelles WHERE _jardin_id = ?");
@@ -72,10 +72,9 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                 ?>
             </ul>
         </div>
-        
     </div>
 </div>
 
-<?php require("./composants/footer.php") ?>
+<?php require("./composants/footer.php"); ?>
 
 <script src="./src/assets/js/script.js"></script>

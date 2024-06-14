@@ -1,4 +1,5 @@
+DirectoryIndex dashboard.php
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([^/]+)$ index.php/$2/$3
+RewriteRule users /var/www/sae202/admin/user/tableUsers.php
+RewriteRule parcelles /var/www/sae202/admin/parcelles/tableParcelles.php
+RewriteRule jardins /var/www/sae202/admin/jardins/tableJardins.php
