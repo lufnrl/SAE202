@@ -153,7 +153,7 @@ if (count($_POST) == 0) {
         $headers['content-type'] = 'text/html; charset=utf-8';
 
         // On fixe l'adresse du destinataire - Pour ce Mail il s'agit de notre adresse MMI@mmi-troyes.fr
-        $email_dest = "mmi23f06@mmi-troyes.fr";
+        $email_dest = "lucyfeneyrol@gmail.com";
 
         // Envoi de l'email avec le contenu approprié
         if (isset($contenu_email)) {
