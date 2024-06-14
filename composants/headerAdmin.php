@@ -1,7 +1,7 @@
 
 <header id="main-header">
     <div id="items-header">
-        <a href="/index.php" title="ACCUEIL"><img src="../src/assets/img/logo.webp" alt="Logo"></a>
+        <a href="/index.php" title="ACCUEIL"><img src="/src/assets/img/logo.webp" alt="Logo"></a>
         <div id="links-header">
             <nav>
                 <ul>

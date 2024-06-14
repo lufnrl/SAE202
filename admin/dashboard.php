@@ -13,6 +13,7 @@ require '../composants/headerAdmin.php';
 
 <a href="parcelles/tableParcelles.php">
     <div>Parcelles disponibles</div>
+    <br>
     <div>
         <span>
             <?php
@@ -23,8 +24,11 @@ require '../composants/headerAdmin.php';
         </span>
     </div>
 </a>
+<br>
+<br>
 <a href="parcelles/tableParcelles.php">
     <div>Parcelles en attentes de validation</div>
+    <br>
     <div>
         <span>
             <?php
@@ -35,8 +39,11 @@ require '../composants/headerAdmin.php';
         </span>
     </div>
 </a>
+<br>
+<br>
 <a href="parcelles/tableParcelles.php">
     <div>Parcelles réservés</div>
+    <br>
     <div>
         <span>
             <?php
@@ -47,7 +54,10 @@ require '../composants/headerAdmin.php';
         </span>
     </div>
 </a>
+<br>
+<br>
 <a href="users/tableUsers.php">
+    <br>
     <div>Nombres d'utilisateurs</div>
     <div>
         <span>

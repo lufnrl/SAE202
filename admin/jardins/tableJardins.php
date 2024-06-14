@@ -10,7 +10,7 @@ require '../../composants/headerAdmin.php';
     <a href="ajoutJardin.php">Ajouter un jardin</a>
 </div>
 
-<table>
+<table border="1">
     <tr>
         <th>Id</th>
         <th>Photo</th>

@@ -11,7 +11,7 @@ $parcelles = $req->fetchAll(PDO::FETCH_ASSOC);
 
 <h1>Toute les parcelles</h1>
 
-<table>
+<table border="1">
     <tr>
         <th>Id</th>
         <th>Nom</th>
@@ -48,7 +48,7 @@ $req = $bd->query("SELECT * FROM parcelles WHERE parcelle_etat = 'ATTENTE'");
 $parcelles = $req->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<table>
+<table border="1">
     <tr>
         <th>Id</th>
         <th>Nom</th>
