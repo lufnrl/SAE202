@@ -12,7 +12,7 @@ $users = $req->fetchAll(PDO::FETCH_ASSOC);
 
 <h1>Les utilisateurs</h1>
 
-<table border="1">
+<table border=1>
     <tr>
         <th>Id</th>
         <th>Photo</th>
