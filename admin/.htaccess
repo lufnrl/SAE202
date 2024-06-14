@@ -1,5 +1,0 @@
-DirectoryIndex dashboard.php
-RewriteEngine On
-RewriteRule users /var/www/sae202/admin/user/tableUsers.php
-RewriteRule parcelles /var/www/sae202/admin/parcelles/tableParcelles.php
-RewriteRule jardins /var/www/sae202/admin/jardins/tableJardins.php
