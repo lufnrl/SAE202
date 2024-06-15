@@ -188,4 +188,5 @@ if (count($_POST) == 0) {
     $_SESSION['information'] = $affichage_retour;
     header('location: contact.php');
 }
+
 ?>

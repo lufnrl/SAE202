@@ -39,6 +39,6 @@ require('../composants/header.php');
             </div>
             
             <div class="inscription-image"></div>
-</section
+</section>
 
 <?php require("../composants/footer.php") ?>

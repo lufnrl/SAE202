@@ -38,21 +38,19 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                     $totalParcelles = $countTotalParcelles->fetchAll(PDO::FETCH_ASSOC);
                     echo '<summary>Parcelles ' . count($countParcelles).'/'.count($totalParcelles).'</summary>';
 
-                    echo '<div class="location-parcelles-reservation">';
                     $stmt_parcelles = $bd->prepare("SELECT * FROM parcelles WHERE _jardin_id = ?");
                     $stmt_parcelles->execute([$jardin['jardin_id']]);
                     $parcelles = $stmt_parcelles->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($parcelles as $parcelle) {
-                        echo '<p>' . $parcelle['parcelle_nom'] . ' ' . $parcelle['parcelle_etat'] . '</p>';
+                        echo '<div class="location-parcelles-reservation"><p>' . $parcelle['parcelle_nom'] . ' ' . $parcelle['parcelle_etat'] . '</p>';
                         if ($parcelle['parcelle_etat'] === 'ATTENTE' || $parcelle['parcelle_etat'] === 'RESERVE') {
-                            echo'Parcelle indisponible';
+                            echo'Parcelle indisponible</div>';
                         } else if($user_id) {
-                            echo '<a href="/parcelles/confirmReservation.php?users=' . $user_id . '&parcelles=' . $parcelle['parcelle_id'] . '">Réserver</a>';
+                            echo '<a href="/parcelles/confirmReservation.php?users=' . $user_id . '&parcelles=' . $parcelle['parcelle_id'] . '">Réserver</a></div>';
                         } else {
-                            echo '<a href="/users/formConnexion.php">Réserver</a>';
+                            echo '<a href="/users/formConnexion.php">Réserver</a></div>';
                         }
                     }
-                    echo '</div>';
                     echo '</details>';
                     echo '</li>';
                 }

@@ -46,7 +46,6 @@ if (!isset($_SESSION['user_id'])) {
             <h2 class="section-title">Mes parcelles</h2>
             <table class="profile-table">
                 <tr>
-                    <th>ID</th>
                     <th>Nom</th>
                     <th>Contenu</th>
                     <th>Description</th>
@@ -63,7 +62,6 @@ if (!isset($_SESSION['user_id'])) {
                 } else {
                     foreach ($parcelles as $parcelle) {
                         echo '<tr>';
-                        echo '<td>' . $parcelle['parcelle_id'] . '</td>';
                         echo '<td>' . $parcelle['parcelle_nom'] . '</td>';
                         echo '<td>' . $parcelle['parcelle_content'] . '</td>';
                         echo '<td>' . $parcelle['parcelle_desc'] . '</td>';
@@ -82,18 +80,17 @@ if (!isset($_SESSION['user_id'])) {
             <h2 class="section-title">Mes jardins</h2>
             <table class="profile-table">
                 <tr>
-                    <th>ID</th>
+                    <th>Photo</th>
                     <th>Nom</th>
-                    <th>Surface</th>
-                    <th>Nombre de parcelles</th>
                     <th>Adresse</th>
                     <th>Ville</th>
+                    <th>Surface</th>
+                    <th>Nombre de parcelles</th>
                     <th>Latitude</th>
                     <th>Longitude</th>
-                    <th>Photo</th>
                     <th>Maps</th>
                     <th>Informations</th>
-                    <th colspan="2">action</th>
+                    <th colspan="2">Action</th>
                 </tr>
                 <?php
                 $requete = $bd->prepare('SELECT * FROM jardins WHERE _user_id = ?');
@@ -105,15 +102,14 @@ if (!isset($_SESSION['user_id'])) {
                 } else {
                     foreach ($jardins as $jardin) {
                         echo '<tr>';
-                        echo '<td>' . $jardin['jardin_id'] . '</td>';
+                        echo '<td><img class="jardin-photo" src="/src/assets/uploads/' . $jardin['jardin_photo'] . '" alt="Photo de jardin"></td>';
                         echo '<td>' . $jardin['jardin_nom'] . '</td>';
-                        echo '<td>' . $jardin['jardin_surface'] . '</td>';
-                        echo '<td>' . $jardin['jardin_nbParcelles'] . '</td>';
                         echo '<td>' . $jardin['jardin_adr'] . '</td>';
                         echo '<td>' . $jardin['jardin_ville'] . '</td>';
+                        echo '<td>' . $jardin['jardin_surface'] . '</td>';
+                        echo '<td>' . $jardin['jardin_nbParcelles'] . '</td>';
                         echo '<td>' . $jardin['jardin_coordLat'] . '</td>';
                         echo '<td>' . $jardin['jardin_coordLong'] . '</td>';
-                        echo '<td><img class="jardin-photo" src="/src/assets/uploads/' . $jardin['jardin_photo'] . '" alt="Photo de jardin"></td>';
                         echo '<td>' . $jardin['jardin_maps'] . '</td>';
                         echo '<td>' . $jardin['jardin_infoTerre'] . '</td>';
                         echo '<td><a href="/jardins/modifJardinUser.php?jardins=' . $jardin['jardin_id'] . '">Modifier</a></td>';

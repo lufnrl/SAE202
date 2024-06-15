@@ -27,7 +27,6 @@
                         echo '</div>';
                         echo '<ul>';
                         echo '<li><a href="/users/compte.php">Mon compte</a></li>';
-                        echo '<li><a href="/users/tableReservationUser.php">Mes réservations</a></li>';
                         echo '</ul>';
                         echo '<div class="title-block-profile">';
                         echo '<a id="btn-logout" href="/users/deconnexion.php">Déconnexion</a>';

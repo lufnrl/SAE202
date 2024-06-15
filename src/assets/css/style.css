@@ -71,6 +71,7 @@ h1 {
 
 h2 {
     font-size: 30px;
+    font-weight: 500;
 
 }
 
@@ -81,7 +82,7 @@ hr {
     background-color: #5E7B51;
     border-radius: 5px;
     border: 0;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 /*----------------------------------------BARRE DE NAVIGATION------------------------------------------*/
@@ -116,14 +117,13 @@ header nav {
 
 header nav ul {
     display: flex;
-    align-items: center;
     list-style: none;
-    padding: 0;
     margin: 0 30px;
+    align-items: start;
 }
 
 header nav ul li {
-    margin: 0 20px;
+    margin: 10px 20px;
 }
 
 header nav ul li a {
@@ -303,7 +303,7 @@ nav ul li.current a::after {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 100px;
+    padding: 0 20px;
     color: white;
 }
 
@@ -316,7 +316,6 @@ nav ul li.current a::after {
 
 #hero-image p {
     margin: 10px 0;
-    width: 55%;
     font-size: 20px;
 }
 
@@ -335,7 +334,7 @@ nav ul li.current a::after {
 /*----------------------------------------SECTION ACTUALITES------------------------------------------*/
 
 .container-actualites {
-    margin: 50px;
+    margin: 50px 20px;
 }
 
 .title-blog-post {
@@ -405,22 +404,12 @@ nav ul li.current a::after {
     }
 }
 
-@media (max-width: 480px) {
-    .container-actualites {
-        margin: 0 10px;
-    }
-
-    .card-title {
-        font-size: 1em;
-    }
-}
-
 
 /*----------------------------------------SECTION À PROPOS------------------------------------------*/
 
 #a-propos-container {
-    margin: 50px;
-    padding: 20px;
+    margin: 50px 20px;
+    padding: 30px;
     text-align: center;
     border-radius: 10px;
     background-color: #5E7B51;
@@ -439,7 +428,7 @@ nav ul li.current a::after {
 /*----------------------------------------SECTION VALEURS------------------------------------------*/
 
 #valeur-container {
-    margin: 50px;
+    margin: 50px 20px;
 }
 
 #valeur {
@@ -465,12 +454,13 @@ nav ul li.current a::after {
 .valeur-fiche h3 {
     font-size: 20px;
     padding: 30px 0;
+    font-weight: bold;
 }
 
 /*----------------------------------------SECTION GALERIE------------------------------------------*/
 
 #galerie-container {
-    margin: 50px;
+    margin: 50px 20px;
 }
 
 #galerie {
@@ -504,7 +494,7 @@ nav ul li.current a::after {
 
 .carousel-container {
     position: relative;
-    margin: 50px;
+    margin: 50px 20px;
     overflow: hidden;
 }
 
@@ -596,7 +586,7 @@ nav ul li.current a::after {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     padding: 20px;
 }
 
@@ -607,7 +597,7 @@ nav ul li.current a::after {
 
 #locations {
     width: 100%;
-    background-color: #d3ccbe;
+    background-color: white;
 }
 
 #location-list {
@@ -622,6 +612,7 @@ nav ul li.current a::after {
     background-color: white;
     transform: scale(1.0);
     transition: transform 0.5s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #location-list li:hover {
@@ -632,11 +623,11 @@ nav ul li.current a::after {
 #location-list h6 {
     font-size: 18px;
     font-weight: bold;
-    padding: 20px 0 0 20px;
+    padding: 10px 0 0 10px;
 }
 
 .location-infos {
-    padding: 20px;
+    padding: 10px;
 }
 
 .location-infos p {
@@ -670,7 +661,7 @@ nav ul li.current a::after {
 }
 
 .location-parcelles-reservation a{
-    margin: 20px;
+    margin: 10px;
     background-color: #fff;
     padding: 5px 10px;
     border-radius: 5px;
@@ -679,7 +670,7 @@ nav ul li.current a::after {
 }
 
 #location-list details p{
-    padding: 10px 20px;
+    padding: 10px;
 }
 
 .location-image {
@@ -690,19 +681,18 @@ nav ul li.current a::after {
 
 .location-adresse{
     color: #5E7B51;
-    padding: 5px 20px;
+    padding: 5px 10px;
 }
 
 /*----------------------------------------MEDIA QUERIES------------------------------------------*/
 
-@media (min-width: 769px) {
+@media (min-width: 768px) {
     #map-container {
         flex-direction: row;
-        padding: 50px;
     }
 
     #map {
-        width: 60%;
+        width: 70%;
         height: 500px;
     }
 
@@ -710,7 +700,10 @@ nav ul li.current a::after {
         width: 30%;
         height: 500px;
         overflow-y: auto;
-        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    }
+
+    header nav ul {
+        align-items: center;
     }
 }
 
@@ -719,19 +712,19 @@ nav ul li.current a::after {
 .connexion-inscription {
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin: 100px auto;
+    margin-bottom: 50px;
     width: 80%;
     display: flex;
-    justify-content: space-between;
 }
 
 .connexion-inscription-content{
     padding: 50px;
+    width: 100%;
 }
 
 .inscription-image{
-    width: 50%;
+    width: 0;
     background: url("../img/inscription.webp");
     background-size: cover;
 }
@@ -816,32 +809,33 @@ nav ul li.current a::after {
 /* Profile Container */
 #profile-container {
     display: flex;
-    margin: 50px;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px #d3ccbe;
+    margin: 50px 20px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 /* Profile Navigation */
 #profile-nav {
-    width: 200px;
-    min-width: 200px;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-right: 1px solid #ddd;
+    width: 250px;
+    padding: 25px;
+    background-color: #f9f9f9;
+    border-right: 1px solid #e0e0e0;
     overflow-y: auto;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .nav-button {
     display: block;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 12px 15px;
+    margin-bottom: 12px;
     text-align: left;
-    background-color: #f4f4f4;
-    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
     color: #333;
     cursor: pointer;
+    border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -853,10 +847,10 @@ nav ul li.current a::after {
 /* Profile Content */
 #profile-content {
     flex: 1;
-    padding: 20px;
-    background-color: #ffffff;
+    padding: 25px;
+    background-color: #fff;
     overflow-x: scroll;
-    border-radius: 10px;
+    border-radius: 0 10px 10px 0;
 }
 
 /* Profile Sections */
@@ -866,7 +860,7 @@ nav ul li.current a::after {
 
 .profile-section.active {
     display: block;
-    animation: fadeIn 0.5s ease; /* Fade in animation */
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 @keyframes fadeIn {
@@ -878,62 +872,96 @@ nav ul li.current a::after {
     }
 }
 
-.profile-info{
+.profile-info {
     display: flex;
-    margin: 50px 20px;
+    margin: 30px 0;
     align-items: center;
 }
 
-.profile-text{
-    margin-left: 20px;
+.profile-text {
+    margin-left: 25px;
 }
 
-.profile-text p{
-    margin: 10px 0;
+.profile-text p {
+    margin: 12px 0;
 }
 
-.profile-text p span{
-    font-weight: bold;
+.profile-text p span {
+    font-weight: 600;
 }
 
-/* Profile Tables */
 .profile-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    margin-bottom: 50px;
+    margin: 25px 0;
 }
 
 .profile-table th, .profile-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
     text-align: center;
 }
 
 .profile-table th {
-    background-color: #f4f4f4;
+    background-color: #f9f9f9;
+    font-weight: 600;
 }
 
-/* Profile Photos */
+.profile-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 16px;
+}
+
+.profile-table th, .profile-table td {
+    border: 1px solid #e0e0e0;
+    padding: 12px 15px;
+    text-align: center;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+.profile-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.profile-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.profile-table tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+.profile-table td {
+    vertical-align: middle;
+}
+
+.profile-table-responsive {
+    overflow-x: auto;
+}
+
 .jardin-photo, .profile-photo {
     width: 100px;
-    height: auto;
+    height: 100px;
     border-radius: 50%;
+    object-fit: cover;
     margin: 0 10px;
 }
 
-/* Profile Action Links */
-
-.profil-links{
+.profil-links {
     display: flex;
+    gap: 15px;
 }
 
 .profile-action-link {
-    padding: 10px 15px;
+    padding: 12px 20px;
     background-color: #5E7B51;
     color: #fff;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 5px;
     transition: background-color 0.3s;
     text-decoration: none;
 }
@@ -949,23 +977,9 @@ nav ul li.current a::after {
     border-radius: 5px;
 }
 
-.alert.success {
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
-    color: #155724;
-}
-
-.alert.error {
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-    color: #721c24;
-}
-
-/* Responsive Adjustments */
 @media (max-width: 768px) {
     #profile-container {
         flex-direction: column;
-        margin: 20px;
     }
 
     #profile-nav {
@@ -1089,11 +1103,10 @@ table th, table td{
     border: solid black 1px;
 }
 
-
 /*----------------------------------------PIED DE PAGE------------------------------------------*/
 
 footer{
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 footer hr{
@@ -1112,7 +1125,7 @@ footer svg {
 }
 
 #footer-colonne > * {
-    padding: 50px;
+    padding: 20px;
     align-items: center;
 }
 
@@ -1125,6 +1138,7 @@ footer svg {
     padding: 10px 30px;
     background-color: #a9a396;
     color: white;
+    text-align: center;
 }
 
 #footer-reseaux-sociaux ul li {
@@ -1187,10 +1201,6 @@ footer a {
     #galerie {
         grid-template-columns: 1fr 1fr;
     }
-    
-    #galerie-container{
-        margin: 50px;
-    }
 
     #galerie {
         display: grid;
@@ -1225,7 +1235,7 @@ footer a {
     }
 
     #a-propos-container{
-        margin: 100px;
+        margin: 50px;
         padding: 50px;
     }
 
@@ -1320,7 +1330,7 @@ footer a {
 
 .contact-list {
     list-style: none;
-    padding: 0;
+    padding: 30px;
     margin: 0;
     height: 100%;
 }
@@ -1367,6 +1377,22 @@ footer a {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
+
+    #hero-image p {
+        width: 55%;
+    }
+
+    #hero-image {
+        padding-left: 100px;
+    }
+
+    .inscription-image{
+        width: 50%;
+    }
+
+    .connexion-inscription-content{
+        width: 50%;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -1396,6 +1422,7 @@ footer a {
 
     #mobile-menu-btn {
         display: block;
+        margin: 10px;
     }
 
     #mobile-menu {
@@ -1426,15 +1453,10 @@ footer a {
         color: #000;
         font-size: 16px;
     }
-
-    #map-container{
-        width: 80%;
-        margin: auto;
-    }
 }
 
 
-
+/*---------------------------------------BOUTON BACK TO TOP--------------------------------------*/
 
 #remonter {
     display: flex;
