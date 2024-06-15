@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../../model/connectBD.php';
 require '../../composants/head.php';
 require '../../composants/headerAdmin.php';

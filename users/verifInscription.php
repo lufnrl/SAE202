@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('../model/connectBD.php');
+require '../model/connectBD.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nom = $_POST['nom'];

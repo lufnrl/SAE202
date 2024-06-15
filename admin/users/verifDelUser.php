@@ -1,7 +1,6 @@
 <?php
-require '../../model/connectBD.php';
-
 session_start();
+require '../../model/connectBD.php';
 
 $user_id = $_GET['users'];
 

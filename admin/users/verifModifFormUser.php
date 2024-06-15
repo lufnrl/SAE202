@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../../model/connectBD.php';
 
 $userId = $_POST['user_id'];

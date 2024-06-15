@@ -1,7 +1,6 @@
 <?php
-require '../../model/connectBD.php';
-
 session_start();
+require '../../model/connectBD.php';
 
 $parcelle_id = $_GET['parcelles'];
 

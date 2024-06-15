@@ -1,6 +1,6 @@
 <?php
-require '../model/connectBD.php';
 session_start();
+require '../model/connectBD.php';
 
 if (!isset($_SESSION['user_id'])) {
     $_SESSION['alert_type'] = "error";

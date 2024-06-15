@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <header id="main-header">
     <div id="items-header">
         <a href="/index.php" title="ACCUEIL"><img src="../src/assets/img/logo.webp" alt="Logo"></a>
@@ -12,7 +14,6 @@
 
                 <ul>
                     <?php
-                    session_start();
                     if (isset($_SESSION['user_id'])) {
                         echo '<div class="img-profile">';
                         $reqPhoto = "SELECT user_photo FROM users WHERE user_id = '" . $_SESSION['user_id'] . "'";

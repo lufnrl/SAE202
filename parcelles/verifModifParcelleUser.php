@@ -1,7 +1,13 @@
 <?php
+session_start();
 require '../model/connectBD.php';
 
-session_start();
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['alert_type'] = "error";
+    $_SESSION['alert_message'] = "Vous devez être connecté";
+    header('Location: /users/formConnexion.php');
+    exit();
+}
 
 $parcelle_id = $_POST['parcelle_id'];
 $parcelle_nom = $_POST['parcelle_nom'];

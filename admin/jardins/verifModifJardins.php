@@ -1,7 +1,6 @@
 <?php
-require '../../model/connectBD.php';
-
 session_start();
+require '../../model/connectBD.php';
 
 $jardin_id = $_POST['jardin_id'];
 $jardin_nom = $_POST['jardin_nom'];

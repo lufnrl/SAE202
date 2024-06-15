@@ -1,9 +1,6 @@
-<h1>Vérification modification profil</h1>
-
 <?php
+session_start();
 require '../model/connectBD.php';
-require '../composants/head.php';
-require '../composants/header.php';
 
 if (!isset($_SESSION['user_id'])) {
     $_SESSION['alert_type'] = "error";
@@ -41,13 +38,18 @@ if ($userId && !empty($nom) && !empty($prenom) && !empty($email) && !empty($logi
 
         $_SESSION['alert_type'] = "success";
         $_SESSION['alert_message'] = "Profil mis à jour avec succès.";
-
+        header('Location: compte.php');
+        exit();
     } else {
         $_SESSION['alert_type'] = "error";
         $_SESSION['alert_message'] = "Erreur lors de la mise à jour du profil.";
+        header('Location: compte.php');
+        exit();
     }
 } else {
     $_SESSION['alert_type'] = "error";
     $_SESSION['alert_message'] = "Tous les champs requis doivent être remplis.";
+    header('Location: compte.php');
+    exit();
 }
 ?>

@@ -1,7 +1,6 @@
 <?php
-require '../../model/connectBD.php';
-
 session_start();
+require '../../model/connectBD.php';
 
 $jardin_id = $_GET['jardins'];
 

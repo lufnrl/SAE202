@@ -2,7 +2,6 @@
 require '../../model/connectBD.php';
 require '../../composants/head.php';
 require '../../composants/headerAdmin.php';
-session_start();
 
 $req = $bd->query("SELECT * FROM parcelles");
 $parcelles = $req->fetchAll(PDO::FETCH_ASSOC);
