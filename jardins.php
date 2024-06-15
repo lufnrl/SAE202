@@ -7,7 +7,7 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
 ?>
 
-<h1>Réservation</h1>
+<h1>Tous les jardins de Troyes et des alentours</h1>
 
 <div class="container">
     <div id="map-container">

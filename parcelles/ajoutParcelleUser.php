@@ -19,6 +19,13 @@ $parcelle_desc = $_POST['parcelle_desc'];
 $_jardin_id = $_POST['_jardin_id'];
 $_user_id = $_POST['_user_id'];
 
+if (empty($parcelle_nom) || empty($parcelle_content) || empty($parcelle_etat) || empty($parcelle_desc) || empty($_jardin_id) || empty($_user_id)) {
+    $_SESSION['alert_message'] = 'Veuillez remplir tous les champs';
+    $_SESSION['alert_type'] = 'error';
+    header('Location: /parcelles/formParcelleUser.php');
+    exit();
+}
+
 $requete = $bd->prepare('INSERT INTO parcelles (parcelle_nom, parcelle_content, parcelle_etat, parcelle_desc, _jardin_id, _user_id) VALUES (?, ?, ?, ?, ?, ?)');
 $requete->bindParam(1, $parcelle_nom);
 $requete->bindParam(2, $parcelle_content);

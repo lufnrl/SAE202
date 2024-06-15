@@ -26,6 +26,10 @@ $user = $req->fetch();
             ?>
         </div>
         <div>
+            <label for="photo">Photo de profil</label>
+            <input type="file" name="photo">
+        </div>
+        <div>
             <label for="nom">Nom</label>
             <input type="text" name="nom" value="<?php echo $user['user_nom'] ?>">
         </div>

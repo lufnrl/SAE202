@@ -11,7 +11,9 @@ if (!isset($_SESSION['user_id'])) {
 
 // Ajouter l'id de l'utilisateur à la parcelle et changer l'état de la parcelle en "ATTENTE"
 $userId = $_POST['users'];
+$_SESSION['users'] = $userId;
 $parcelleId = $_POST['parcelles'];
+$_SESSION['parcelles'] = $parcelleId;
 $reservationDateDeb = $_POST['dateDeb']; // Date actuelle pour la réservation
 $reservationDateFin = $_POST['dateFin']; // Date actuelle pour la réservation
 
@@ -37,13 +39,13 @@ if ($userId && $parcelleId) {
         header('Location: ../parcelles/reservationOk.php');
         exit();
     } catch (Exception $e) {
-        // Annuler la transaction en cas d'erreur
-        $bd->rollBack();
         $_SESSION['alert_message'] = 'Erreur lors de la réservation.';
         $_SESSION['alert_type'] = 'error';
+        header('Location: /parcelles/confirmReservation.php?users=' . $_SESSION['users'] . '&parcelles=' . $_SESSION['parcelles'] . '"');
     }
 } else {
     $_SESSION['alert_message'] = 'Tous les champs requis doivent être remplis.';
     $_SESSION['alert_type'] = 'error';
+    header('Location: /parcelles/confirmReservation.php?users=' . $_SESSION['users'] . '&parcelles=' . $_SESSION['parcelles'] . '"');
 }
 ?>

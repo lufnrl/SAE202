@@ -21,6 +21,14 @@ $jardin_photo = $_FILES['jardin_photo']['name'];
 $jardin_maps = $_POST['jardin_maps'];
 $jardin_infoTerre = $_POST['jardin_infoTerre'];
 
+
+if (empty($jardin_nom) || empty($jardin_surface) || empty($jardin_nbParcelles) || empty($jardin_adr) || empty($jardin_ville) || empty($jardin_coordLat) || empty($jardin_coordLong) || empty($jardin_photo) || empty($jardin_maps) || empty($jardin_infoTerre)) {
+    $_SESSION['alert_message'] = 'Veuillez remplir tous les champs';
+    $_SESSION['alert_type'] = 'error';
+    header('Location: /jardins/formJardinUser.php');
+    exit();
+}
+
 $requete = $bd->prepare('INSERT INTO jardins (jardin_nom, jardin_surface, jardin_nbParcelles, jardin_adr, jardin_ville, jardin_coordLat, jardin_coordLong, jardin_photo, jardin_maps, jardin_infoTerre, _user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
 $requete->bindParam(1, $jardin_nom);
 $requete->bindParam(2, $jardin_surface);

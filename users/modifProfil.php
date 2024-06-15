@@ -25,6 +25,10 @@ require '../composants/header.php';
             ?>
         </div>
         <div class="form-group">
+            <label for="photo">Photo de profil</label>
+            <input type="file" id="photo" name="photo">
+        </div>
+        <div class="form-group">
             <label for="nom">Nom</label>
             <input type="text" id="nom" name="nom" value="<?php echo $_SESSION['user_nom'] ?>">
         </div>

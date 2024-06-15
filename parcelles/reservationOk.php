@@ -27,6 +27,6 @@ foreach ($reservations as $reservation) {
 <h1>Votre réservation à bien été prise en compte !</h1>
 <p>Votre réservation <strong>#<?= $reservationID ?></strong> est en cours de validation par l'équipe de Jard'Unis</p>
 <div>
-    <a href="/users/tableReservationUser.php">Voir mes réservations</a>
-    <a href="/users/compte.php">Retour</a>
+    <a href="/users/compte.php">Voir mes réservations</a>
+    <a href="/parcelles/tableReservation.php">Retour</a>
 </div>
