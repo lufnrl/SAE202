@@ -191,3 +191,7 @@ if (isset($_SESSION['alert_type']) && isset($_SESSION['alert_message'])) {
         });
     });
 </script>
+
+<?php
+require 'cookie.php';
+?>

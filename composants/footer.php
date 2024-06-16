@@ -39,7 +39,7 @@
 </div>
 
 <div id="footer-mentions-legales">
-    <p>&copy; 2024 Copyright : Digital Horizon - <a href=#>Mentions Légales</a></p>
+    <p>&copy; 2024 Copyright : Digital Horizon - <a href=/mentions.php>Mentions Légales</a></p>
 </div>
 
 </footer>
