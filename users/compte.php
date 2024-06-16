@@ -50,7 +50,7 @@ if (!isset($_SESSION['user_id'])) {
                     <th>Contenu</th>
                     <th>Description</th>
                     <th>Etat</th>
-                    <th colspan="2">Action</th>
+                    <th colspan="2">Actions</th>
                 </tr>
                 <?php
                 $requete = $bd->prepare('SELECT * FROM parcelles WHERE _user_id = ?');
