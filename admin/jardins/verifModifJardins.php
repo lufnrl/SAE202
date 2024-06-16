@@ -1,7 +1,6 @@
 <?php
-require '../../model/connectBD.php';
-
 session_start();
+require '../../model/connectBD.php';
 
 $jardin_id = $_POST['jardin_id'];
 $jardin_nom = $_POST['jardin_nom'];
@@ -35,7 +34,7 @@ if ($jardin_photo != '') {
         $_SESSION['alert_type'] = 'success';
     } else {
         $_SESSION['alert_message'] = 'Erreur lors de la modification du jardin';
-        $_SESSION['alert_type'] = 'danger';
+        $_SESSION['alert_type'] = 'error';
     }
 
     header('Location: /admin/jardins/tableJardins.php');
@@ -57,7 +56,7 @@ if ($jardin_photo != '') {
         $_SESSION['alert_type'] = 'success';
     } else {
         $_SESSION['alert_message'] = 'Erreur lors de la modification du jardin';
-        $_SESSION['alert_type'] = 'danger';
+        $_SESSION['alert_type'] = 'error';
     }
 
     header('Location: /admin/jardins/tableJardins.php');

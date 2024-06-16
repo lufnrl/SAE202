@@ -1,13 +1,17 @@
 <?php
-require('../model/connectBD.php');
-require('../composants/head.php');
-require('../composants/header.php');
-?>
+session_start();
+require '../model/connectBD.php';
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['alert_type'] = "error";
+    $_SESSION['alert_message'] = "Vous devez être connecté";
+    header('Location: /users/formConnexion.php');
+    exit();
+}
+
+require '../composants/head.php';
+require '../composants/header.php';
+?>
 
 <h1>Récapitulatif de votre réservation</h1>
 
@@ -23,7 +27,8 @@ if (isset($_GET['users']) && isset($_GET['parcelles'])) {
     $parcelle = $requete->fetch(PDO::FETCH_ASSOC);
 
 } else {
-    echo '<p>Erreur lors de la réservation</p>';
+    $_SESSION['alert_message'] = 'Erreur lors de la réservation';
+    $_SESSION['alert_type'] = 'error';
 }
 ?>
 

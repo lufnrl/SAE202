@@ -1,7 +1,9 @@
 <?php
 
 session_start();
-$_SESSION['information'] = '';
+
+$_SESSION['alert_message'] = '';
+$_SESSION['alert_type'] = '';
 
 // Vérification de l'appel via le formulaire
 if (count($_POST) == 0) {
@@ -151,7 +153,7 @@ if (count($_POST) == 0) {
         $headers['content-type'] = 'text/html; charset=utf-8';
 
         // On fixe l'adresse du destinataire - Pour ce Mail il s'agit de notre adresse MMI@mmi-troyes.fr
-        $email_dest = "mmi23f03@mmi-troyes.fr";
+        $email_dest = "mmi23f06@mmi-troyes.fr";
 
         // Envoi de l'email avec le contenu approprié
         if (isset($contenu_email)) {
@@ -185,8 +187,20 @@ if (count($_POST) == 0) {
             echo $affichage_retour;
         }
     }
-    $_SESSION['information'] = $affichage_retour;
-    header('location: contact.php');
+    switch ($erreurs) {
+        case 1:
+            $_SESSION['alert_type'] = 'error';
+            break;
+        case 0:
+            $_SESSION['alert_type'] = 'success';
+            break;
+        default:
+            $_SESSION['alert_type'] = 'error';
+            break;
+    }
+    $_SESSION['alert_message'] = $affichage_retour;
+
+    header('location: ../contact.php');
 }
 
 ?>

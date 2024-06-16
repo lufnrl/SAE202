@@ -104,19 +104,6 @@ $user = $req->fetch();
                 ?>
             </table>
         </div>
-        <?php
-        if (isset($_SESSION['alert_type']) && isset($_SESSION['alert_message'])) {
-            ?>
-            <div>
-                <p>
-                    <?php
-                    echo $_SESSION['alert_message'];
-                    ?>
-                </p>
-            </div>
-            <?php
-        }
-        ?>
     </div>
 
 <?php

@@ -1,11 +1,10 @@
-<h1>Vérification modification profil</h1>
-
 <?php
+session_start();
 require '../model/connectBD.php';
-require '../composants/head.php';
-require '../composants/header.php';
 
 if (!isset($_SESSION['user_id'])) {
+    $_SESSION['alert_type'] = "error";
+    $_SESSION['alert_message'] = "Vous devez être connecté";
     header('Location: formConnexion.php');
     exit();
 }
@@ -17,12 +16,12 @@ $login = $_POST['login'];
 $email = $_POST['email'];
 $photo = $_FILES['photo']['name'];
 
+$nouvelleImage = null;
+
 // Vérifiez que l'utilisateur est connecté et que les champs nécessaires sont remplis
-if ($userId && !empty($nom) && !empty($prenom) && !empty($email) && !empty($login) && !empty($photo)) {
+if ($userId && !empty($nom) && !empty($prenom) && !empty($email) && !empty($login)) {
 
-    $imageName = $_FILES["photo"]["name"];
-    if ($imageName != "") {
-
+    if (!empty($photo)) {
         //vérification du format de l'image téléchargée
         $imageType = $_FILES["photo"]["type"];
         if (($imageType != "image/png") &&
@@ -35,14 +34,11 @@ if ($userId && !empty($nom) && !empty($prenom) && !empty($email) && !empty($logi
         }
 
         //creation d'un nouveau nom pour cette image téléchargée
-        // pour éviter d'avoir 2 fichiers avec le même nom
         $nouvelleImage = date("Y_m_d_H_i_s") . "---" . $_FILES["photo"]["name"];
-
 
         // dépot du fichier téléchargé dans le dossier /var/www/sae202/src/assets/uploads
         if (is_uploaded_file($_FILES["photo"]["tmp_name"])) {
-            if (!move_uploaded_file($_FILES["photo"]["tmp_name"],
-                "../src/assets/uploads/" . $nouvelleImage)) {
+            if (!move_uploaded_file($_FILES["photo"]["tmp_name"], "../src/assets/uploads/" . $nouvelleImage)) {
                 echo '<p>Problème avec la sauvegarde de l\'image, désolé...</p>' . "\n";
                 die();
             }
@@ -52,8 +48,13 @@ if ($userId && !empty($nom) && !empty($prenom) && !empty($email) && !empty($logi
         }
     }
 
-    // Utilisation de PDO
-    $query = "UPDATE users SET user_nom = :nom, user_prnm = :prenom, user_email = :email, user_login = :login, user_photo = :photo WHERE user_id = :userId";
+    // Construction dynamique de la requête SQL
+    $query = "UPDATE users SET user_nom = :nom, user_prnm = :prenom, user_email = :email, user_login = :login";
+    if ($nouvelleImage !== null) {
+        $query .= ", user_photo = :photo";
+    }
+    $query .= " WHERE user_id = :userId";
+
     $req = $bd->prepare($query);
 
     // Liaison des paramètres
@@ -61,7 +62,9 @@ if ($userId && !empty($nom) && !empty($prenom) && !empty($email) && !empty($logi
     $req->bindParam(':prenom', $prenom);
     $req->bindParam(':email', $email);
     $req->bindParam(':login', $login);
-    $req->bindParam(':photo', $nouvelleImage);
+    if ($nouvelleImage !== null) {
+        $req->bindParam(':photo', $nouvelleImage);
+    }
     $req->bindParam(':userId', $userId, PDO::PARAM_INT);
 
     if ($req->execute()) {
@@ -70,14 +73,24 @@ if ($userId && !empty($nom) && !empty($prenom) && !empty($email) && !empty($logi
         $_SESSION['user_prnm'] = $prenom;
         $_SESSION['user_email'] = $email;
         $_SESSION['user_login'] = $login;
+        if ($nouvelleImage !== null) {
+            $_SESSION['user_photo'] = $nouvelleImage;
+        }
 
-        // Redirection après une mise à jour réussie
+        $_SESSION['alert_type'] = "success";
+        $_SESSION['alert_message'] = "Profil mis à jour avec succès.";
         header('Location: compte.php');
         exit();
     } else {
-        echo "Erreur lors de la mise à jour du profil.";
+        $_SESSION['alert_type'] = "error";
+        $_SESSION['alert_message'] = "Erreur lors de la mise à jour du profil.";
+        header('Location: compte.php');
+        exit();
     }
 } else {
-    echo "Tous les champs requis doivent être remplis.";
+    $_SESSION['alert_type'] = "error";
+    $_SESSION['alert_message'] = "Tous les champs requis doivent être remplis.";
+    header('Location: compte.php');
+    exit();
 }
 ?>

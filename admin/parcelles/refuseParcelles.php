@@ -11,6 +11,9 @@ if (isset($_GET['parcelles'])) {
     $req->bindParam(1, $parcelle_id);
     $req->execute();
 
+    $_SESSION['alert_message'] = 'Parcelle refusée';
+    $_SESSION['alert_type'] = 'success';
+
     header('Location: tableParcelles.php');
     exit();
 }

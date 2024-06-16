@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../../model/connectBD.php';
 require '../../composants/head.php';
 require '../../composants/headerAdmin.php';
@@ -23,6 +24,10 @@ $user = $req->fetch();
             <?php
             echo '<img src="/src/assets/uploads/' . $user['user_photo'] . '" alt="Photo de profil">';
             ?>
+        </div>
+        <div>
+            <label for="photo">Photo de profil</label>
+            <input type="file" name="photo">
         </div>
         <div>
             <label for="nom">Nom</label>

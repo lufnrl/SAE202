@@ -1,5 +1,14 @@
 <?php
+session_start();
 require '../model/connectBD.php';
+
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['alert_type'] = "error";
+    $_SESSION['alert_message'] = "Vous devez être connecté";
+    header('Location: /users/formConnexion.php');
+    exit();
+}
+
 require '../composants/head.php';
 require '../composants/header.php';
 
@@ -18,6 +27,6 @@ foreach ($reservations as $reservation) {
 <h1>Votre réservation à bien été prise en compte !</h1>
 <p>Votre réservation <strong>#<?= $reservationID ?></strong> est en cours de validation par l'équipe de Jard'Unis</p>
 <div>
-    <a href="/users/tableReservationUser.php">Voir mes réservations</a>
-    <a href="/users/compte.php">Retour</a>
+    <a href="/users/compte.php">Voir mes réservations</a>
+    <a href="/parcelles/tableReservation.php">Retour</a>
 </div>

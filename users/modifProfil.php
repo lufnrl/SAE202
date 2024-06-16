@@ -1,7 +1,17 @@
 <?php
+session_start();
 require '../model/connectBD.php';
+
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['alert_type'] = "error";
+    $_SESSION['alert_message'] = "Vous devez être connecté";
+    header('Location: formConnexion.php');
+    exit();
+}
+
 require '../composants/head.php';
 require '../composants/header.php';
+
 ?>
 <h1>Mon profil</h1>
 <div class="profile-edit-container">
@@ -15,7 +25,7 @@ require '../composants/header.php';
             ?>
         </div>
         <div class="form-group">
-            <label for="photo">Changer la couverture:</label>
+            <label for="photo">Photo de profil</label>
             <input type="file" id="photo" name="photo">
         </div>
         <div class="form-group">

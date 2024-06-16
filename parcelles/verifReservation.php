@@ -1,12 +1,19 @@
 <?php
-
+session_start();
 require '../model/connectBD.php';
 
-session_start();
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['alert_type'] = "error";
+    $_SESSION['alert_message'] = "Vous devez être connecté";
+    header('Location: /users/formConnexion.php');
+    exit();
+}
 
 // Ajouter l'id de l'utilisateur à la parcelle et changer l'état de la parcelle en "ATTENTE"
 $userId = $_POST['users'];
+$_SESSION['users'] = $userId;
 $parcelleId = $_POST['parcelles'];
+$_SESSION['parcelles'] = $parcelleId;
 $reservationDateDeb = $_POST['dateDeb']; // Date actuelle pour la réservation
 $reservationDateFin = $_POST['dateFin']; // Date actuelle pour la réservation
 
@@ -27,14 +34,18 @@ if ($userId && $parcelleId) {
         $insertReq->bindParam(4, $userId);
         $insertReq->execute();
 
+        $_SESSION['alert_message'] = 'Réservation effectuée avec succès.';
+        $_SESSION['alert_type'] = 'success';
         header('Location: ../parcelles/reservationOk.php');
         exit();
     } catch (Exception $e) {
-        // Annuler la transaction en cas d'erreur
-        $bd->rollBack();
-        echo "Erreur lors de la réservation : " . $e->getMessage();
+        $_SESSION['alert_message'] = 'Erreur lors de la réservation.';
+        $_SESSION['alert_type'] = 'error';
+        header('Location: /parcelles/confirmReservation.php?users=' . $_SESSION['users'] . '&parcelles=' . $_SESSION['parcelles'] . '"');
     }
 } else {
-    echo "Tous les champs requis doivent être remplis.";
+    $_SESSION['alert_message'] = 'Tous les champs requis doivent être remplis.';
+    $_SESSION['alert_type'] = 'error';
+    header('Location: /parcelles/confirmReservation.php?users=' . $_SESSION['users'] . '&parcelles=' . $_SESSION['parcelles'] . '"');
 }
 ?>

@@ -1,5 +1,14 @@
 <?php
+session_start();
 require '../model/connectBD.php';
+
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['alert_type'] = "error";
+    $_SESSION['alert_message'] = "Vous devez être connecté";
+    header('Location: /users/formConnexion.php');
+    exit();
+}
+
 require '../composants/head.php';
 require '../composants/header.php';
 ?>
@@ -10,25 +19,25 @@ require '../composants/header.php';
     <form action="ajoutParcelleUser.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="parcelle_nom">Nom de la parcelle</label>
-            <input type="text" name="parcelle_nom" id="parcelle_nom">
+            <input type="text" name="parcelle_nom" id="parcelle_nom" required>
         </div>
         <div class="form-group">
             <label for="parcelle_content">Contenu de la parcelle</label>
-            <input type="text" name="parcelle_content" id="parcelle_content">
+            <input type="text" name="parcelle_content" id="parcelle_content" required>
         </div>
         <div class="form-group">
             <label for="parcelle_etat">Etat de la parcelle</label>
-            <select name="parcelle_etat" id="parcelle_etat">
+            <select name="parcelle_etat" id="parcelle_etat" required>
                 <option value="LIBRE" selected>Libre</option>
             </select>
         </div>
         <div class="form-group">
             <label for="parcelle_desc">Description de la parcelle</label>
-            <textarea name="parcelle_desc" id="parcelle_desc"></textarea>
+            <textarea name="parcelle_desc" id="parcelle_desc" required></textarea>
         </div>
         <div class="form-group">
             <label for="_jardin_id">Le jardin</label>
-            <select name="_jardin_id" id="_jardin_id">
+            <select name="_jardin_id" id="_jardin_id" required>
                 <?php
                 $query = "SELECT * FROM jardins WHERE _user_id = '" . $_SESSION['user_id'] . "'";
                 $req = $bd->query($query);
@@ -40,7 +49,7 @@ require '../composants/header.php';
         </div>
         <div class="form-group">
             <label for="_user_id">Le propriétaire</label>
-            <select name="_user_id" id="_user_id">
+            <select name="_user_id" id="_user_id" required>
                 <?php
                 $query = "SELECT * FROM users WHERE user_id = '" . $_SESSION['user_id'] . "'";
                 $req = $bd->query($query);

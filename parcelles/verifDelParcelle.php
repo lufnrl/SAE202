@@ -1,7 +1,13 @@
 <?php
+session_start();
 require '../model/connectBD.php';
 
-session_start();
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['alert_type'] = "error";
+    $_SESSION['alert_message'] = "Vous devez être connecté";
+    header('Location: /users/formConnexion.php');
+    exit();
+}
 
 $parcelle_id = $_GET['parcelles'];
 
@@ -13,8 +19,8 @@ if ($requete) {
     $_SESSION['alert_message'] = 'Parcelle supprimée';
     $_SESSION['alert_type'] = 'success';
 } else {
-    $_SESSION['alert_message'] = 'Erreur lors de la suppression de la parcelle';
-    $_SESSION['alert_type'] = 'danger';
+    $_SESSION['alert_message'] = 'Erreur lors de la réservation';
+    $_SESSION['alert_type'] = 'error';
 }
 
 header('Location: /users/compte.php');

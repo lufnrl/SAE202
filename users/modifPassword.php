@@ -1,7 +1,17 @@
 <?php
+session_start();
 require '../model/connectBD.php';
+
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['alert_type'] = "error";
+    $_SESSION['alert_message'] = "Vous devez être connecté";
+    header('Location: formConnexion.php');
+    exit();
+}
+
 require '../composants/head.php';
 require '../composants/header.php';
+
 ?>
 
 <h1>Modifier le mot de passe</h1>

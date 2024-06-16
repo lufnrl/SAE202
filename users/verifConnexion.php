@@ -3,16 +3,6 @@ session_start(); // Démarrer la session
 
 require_once('../model/connectBD.php'); // Inclure le fichier de connexion à la base de données
 
-
-// si l'utilisateur est connecté, on le redirige vers la page d'accueil
-if (isset($_SESSION['user_id'])) {
-    header('Location: ../../index.php');
-    exit();
-} else {
-    //echo "Vous n'êtes pas connecté.";
-    header('Location: formConnexion.php');
-}
-
 $username = $_POST['username'];
 $password = $_POST['password'];
 
@@ -31,36 +21,22 @@ if ($resultat) {
         $_SESSION['user_prnm'] = $resultat['user_prnm'];
         $_SESSION['user_login'] = $resultat['user_login'];
         $_SESSION['user_photo'] = $resultat['user_photo'];
+        $_SESSION['alert_type'] = "success";
+        $_SESSION['alert_message'] = "Vous êtes connecté.";
         header('Location: ../../index.php'); // Redirigez vers la page de tableau de bord ou d'accueil
         //echo "Connexion réussie.";
         exit();
     } else {
+        //echo "Mot de passe incorrect.";
         $_SESSION['alert_type'] = "error";
         $_SESSION['alert_message'] = "Mot de passe incorrect.";
-        if (isset($_SESSION['alert_message'])) {
-            echo '<div class="alert alert-' . $_SESSION['alert_type'] . ' alert-dismissible fade show" role="alert">
-    ' . $_SESSION['alert_message'] . '
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>';
-            unset($_SESSION['alert_message']);
-            unset($_SESSION['alert_type']);
-        }
         header('Location: formConnexion.php');
-        //echo "Mot de passe incorrect.";
     }
 } else {
+    //echo "Nom d'utilisateur incorrect.";
     $_SESSION['alert_type'] = "error";
     $_SESSION['alert_message'] = "Nom d'utilisateur incorrect.";
-    if (isset($_SESSION['alert_message'])) {
-        echo '<div class="alert alert-' . $_SESSION['alert_type'] . ' alert-dismissible fade show" role="alert">
-    ' . $_SESSION['alert_message'] . '
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>';
-        unset($_SESSION['alert_message']);
-        unset($_SESSION['alert_type']);
-    }
     header('Location: formConnexion.php');
-    //echo "Nom d'utilisateur incorrect.";
 }
 
 ?>

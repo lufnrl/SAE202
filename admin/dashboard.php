@@ -11,7 +11,7 @@ require '../composants/headerAdmin.php';
 <br>
 <h1>Dashboard</h1>
 
-<a href="parcelles/tableParcelles.php">
+<a href="/admin/parcelles/tableParcelles.php">
     <div>Parcelles disponibles</div>
     <br>
     <div>
@@ -26,7 +26,7 @@ require '../composants/headerAdmin.php';
 </a>
 <br>
 <br>
-<a href="parcelles/tableParcelles.php">
+<a href="/admin/parcelles/tableParcelles.php">
     <div>Parcelles en attentes de validation</div>
     <br>
     <div>
@@ -41,7 +41,7 @@ require '../composants/headerAdmin.php';
 </a>
 <br>
 <br>
-<a href="parcelles/tableParcelles.php">
+<a href="/admin/parcelles/tableParcelles.php">
     <div>Parcelles réservés</div>
     <br>
     <div>
@@ -56,13 +56,28 @@ require '../composants/headerAdmin.php';
 </a>
 <br>
 <br>
-<a href="users/tableUsers.php">
+<a href="/admin/users/tableUsers.php">
     <br>
     <div>Nombres d'utilisateurs</div>
     <div>
         <span>
             <?php
             $req = $bd->query("SELECT COUNT(*) FROM users");
+            $jardins = $req->fetch(PDO::FETCH_ASSOC);
+            echo $jardins['COUNT(*)'];
+            ?>
+        </span>
+    </div>
+</a>
+<br>
+<br>
+<a href="/admin/jardins/tableJardins.php">
+    <br>
+    <div>Nombres de jardins</div>
+    <div>
+        <span>
+            <?php
+            $req = $bd->query("SELECT COUNT(*) FROM jardins");
             $jardins = $req->fetch(PDO::FETCH_ASSOC);
             echo $jardins['COUNT(*)'];
             ?>
