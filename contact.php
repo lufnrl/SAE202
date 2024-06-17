@@ -55,4 +55,3 @@
 <?php require("./composants/footer.php") ?>
 
 <script src="./src/assets/js/script.js"></script>
-

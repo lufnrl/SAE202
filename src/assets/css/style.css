@@ -97,7 +97,6 @@ html, body {
     margin: 100px auto;
     padding: 20px;
     max-width: 1200px;
-    min-height: 100vh;
 }
 
 a {
@@ -109,68 +108,68 @@ svg {
 }
 
 .alert {
-    padding: 10px;
-    line-height: 1.8;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    margin-bottom: 20px;
-    margin-right: 20px;
-    z-index: 9999;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 200px;
-    width: 100%;
-    flex-direction: row-reverse;
+        padding: 10px;
+        line-height: 1.8;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        margin-bottom: 20px;
+        margin-right: 20px;
+        z-index: 9999;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 200px;
+        width: 100%;
+        flex-direction: row-reverse;
 
-}
+    }
 
-.alertCheckbox {
-    display: none;
-}
+    .alertCheckbox {
+        display: none;
+    }
 
-:checked + .alert {
-    display: none;
-}
+    :checked + .alert {
+        display: none;
+    }
 
-.alertText {
-    display: table;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 13px;
+    .alertText {
+        display: table;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 13px;
 
-}
+    }
 
-.alertClose {
-    float: right;
-    font-size: 10px;
-}
+    .alertClose {
+        float: right;
+        font-size: 10px;
+    }
 
-.clear {
-    clear: both;
-}
-.warning {
-    background-color: #FDF7DF;
-    border: 1px solid #FEEC6F;
-    color: #C9971C;
-}
+    .clear {
+        clear: both;
+    }
+    .warning {
+        background-color: #FDF7DF;
+        border: 1px solid #FEEC6F;
+        color: #C9971C;
+    }
 
-.error {
-    background-color: #FDECEA;
-    border: 1px solid #FBC2C4;
-    color: #D64550;
-}
+    .error {
+        background-color: #FDECEA;
+        border: 1px solid #FBC2C4;
+        color: #D64550;
+    }
 
-.success {
-    background-color: #E9F7EF;
-    border: 1px solid #A3E9A4;
-    color: #2E854B;
-}
+    .success {
+        background-color: #E9F7EF;
+        border: 1px solid #A3E9A4;
+        color: #2E854B;
+    }
 
 /*----------------------------------------BARRE DE NAVIGATION------------------------------------------*/
 
@@ -670,7 +669,6 @@ nav ul li.current a::after {
 
 /*----------------------------------------CARTE------------------------------------------*/
 
-
 #map-container {
     display: flex;
     flex-direction: column;
@@ -682,6 +680,10 @@ nav ul li.current a::after {
 #map {
     width: 100%;
     height: 300px;
+}
+
+.location-item {
+    cursor: pointer;
 }
 
 #locations {
@@ -766,11 +768,128 @@ nav ul li.current a::after {
     height: 200px;
     width: 100%;
     border-radius: 10px 10px 0 0;
+    height: 100px;
 }
 
 .location-adresse{
     color: #5E7B51;
     padding: 5px 10px;
+}
+
+#jardin-details {
+    padding: 20px;
+}
+
+#jardin-info {
+    margin-top: 20px;
+}
+
+.reservation-parcelle {
+    padding: 20px;
+    border: 1px solid #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.infos-jardin-flex {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: start;
+    gap: 50px;
+}
+
+.infos-jardin-flex img {
+    border-radius: 10px;
+    width: 500px;
+}
+
+.content-infojardins {
+    width: 100%;
+}
+
+.content-infojardins h3 {
+    font-family: "Inter", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.content-infojardins p {
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+}
+
+.block-reservations {
+    margin-top: 20px;
+}
+
+.flex-items-reservation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.flex-items-info {
+    display: flex;
+    gap: 20px;
+}
+
+.badge-table {
+    font-family: 'Inter', sans-serif;
+    border-collapse: collapse;
+    text-align: center;
+    padding-top: .125rem;
+    padding-bottom: .125rem;
+    padding-left: .625rem;
+    padding-right: .625rem;
+    border-radius: .25rem;
+    font-size: 12px;
+    line-height: 1rem;
+    font-weight: 500;
+}
+
+.attente {
+    color: #92400E;
+    background-color: #FEF3C7;
+}
+
+.libre {
+    color: #0F5132;
+    background-color: #D1E7DD;
+}
+
+.reserve {
+    color: #C53030;
+    background-color: #FED7D7;
+}
+
+.infos-parcelle-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#parcelles-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reservation-parcelle a {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #5E7B51;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.location-description {
+    font-size: 1rem;
+    margin-bottom: 20px;
 }
 
 /*----------------------------------------MEDIA QUERIES------------------------------------------*/

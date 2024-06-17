@@ -3,8 +3,6 @@ require '../composants/head.php';
 require('../composants/header.php');
 ?>
 
-<div class="container">
-
 <section class="connexion-inscription">
 
 <div class="inscription-image"></div>
@@ -51,7 +49,5 @@ require('../composants/header.php');
 
 </div>
 </section>
-
-</div>
 
 <?php require("../composants/footer.php") ?>
