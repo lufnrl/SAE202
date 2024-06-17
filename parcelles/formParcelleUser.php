@@ -15,7 +15,7 @@ require '../composants/head.php';
 require '../composants/header.php';
 ?>
 
-<h1>Ajouter une parcelle</h1>
+<h1 class="title-form">Ajouter une parcelle</h1>
 
 <div class="profile-edit-container">
     <form action="ajoutParcelleUser.php" method="post" enctype="multipart/form-data">
@@ -63,3 +63,5 @@ require '../composants/header.php';
         </div>
     </form>
 </div>
+
+<?php require('../composants/footer.php'); ?>

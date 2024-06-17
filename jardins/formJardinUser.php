@@ -15,7 +15,7 @@ require '../composants/head.php';
 require '../composants/header.php';
 ?>
 
-<h1>Ajouter un jardin</h1>
+<h1 class="title-form">Ajouter un jardin</h1>
 
 <div class="profile-edit-container">
     <form action="ajoutJardinUser.php" method="post" enctype="multipart/form-data">
@@ -69,3 +69,5 @@ require '../composants/header.php';
         </div>
     </form>
 </div>
+
+<?php require('../composants/footer.php'); ?>
