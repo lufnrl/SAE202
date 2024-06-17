@@ -1,4 +1,6 @@
 <?php
+$titre = 'Modifier une parcelle';
+$desc = 'Page de modification d\'une parcelle utilisateur';
 session_start();
 require '../model/connectBD.php';
 
@@ -40,10 +42,6 @@ $parcelle = $req->fetch();
     <div>
         <label for="parcelle_etat">Etat de la parcelle</label>
         <input type="text" name="parcelle_etat" id="parcelle_etat" value="<?php echo $parcelle['parcelle_etat'] ?>">
-    </div>
-    <div>
-        <label for="parcelle_desc">Description de la parcelle</label>
-        <input type="text" name="parcelle_desc" id="parcelle_desc" value="<?php echo $parcelle['parcelle_desc'] ?>">
     </div>
     <div>
         <label for="_jardin_id">Jardin de la parcelle</label>

@@ -1,4 +1,6 @@
 <?php
+$titre = 'Modifier le mot de passe';
+$desc = 'Page de modification du mot de passe utilisateur';
 session_start();
 require '../model/connectBD.php';
 

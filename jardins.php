@@ -1,12 +1,16 @@
 <?php
+
+$titre = 'Réservation de parcelles de jardins';
+$desc = 'Page de reservation de parcelles de jardins';
+
 require('model/connectBD.php');
 require('composants/head.php');
 require('composants/header.php');
 
+$title = "Jardins";
+
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 ?>
-
-<div class="container">
 
 <div class="container-jardins">
     <h1>Tous les jardins de Troyes et des alentours</h1>
@@ -41,7 +45,7 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                     $etatParcelle = $etatParcelles->fetch(PDO::FETCH_ASSOC);
                     $etatParcelle = $etatParcelle ? $etatParcelle['parcelle_etat'] : '';
 
-                    echo '<li class="location-item" data-photo="' . $jardin['jardin_photo'] . '" data-id="' . $jardin['jardin_id'] . '" data-name="' . $jardin['jardin_nom'] . '" data-adr="' . $jardin['jardin_adr'] . '" data-surface="' . $jardin['jardin_surface'] . '" data-info="' . $jardin['jardin_infoTerre'] . '" data-lat="' . $jardin['jardin_coordLat'] . '" data-lng="' . $jardin['jardin_coordLong'] . '" data-count-parcelles="' . $countParcelles . '" data-total-parcelles="' . $totalParcelles . '" data-etat="'.$etatParcelle.'" data-desc="'.$jardin['jardin_desc'].'" >';
+                    echo '<li class="location-item" data-photo="' . $jardin['jardin_photo'] . '" data-id="' . $jardin['jardin_id'] . '" data-name="' . $jardin['jardin_nom'] . '" data-adr="' . $jardin['jardin_adr'] . '" data-surface="' . $jardin['jardin_surface'] . '" data-info="' . $jardin['jardin_infoTerre'] . '" data-lat="' . $jardin['jardin_coordLat'] . '" data-lng="' . $jardin['jardin_coordLong'] . '" data-count-parcelles="' . $countParcelles . '" data-total-parcelles="' . $totalParcelles . '" data-etat="'.$etatParcelle.'" data-desc="'.$jardin['jardin_desc'].'" data-gmaps="'.$jardin['jardin_maps'].'" >';
                     echo '<div class="location-image" style="background: url(\'/src/assets/uploads/' . $jardin['jardin_photo'] . '\'); background-size: cover; background-position: center;"></div>';
                     echo '<h6>' . $jardin['jardin_nom'] . '</h6>';
                     echo '<p class="location-adresse"><i class="fas fa-map-marker-alt"></i> ' . $jardin['jardin_adr'] . '</p>';
@@ -61,8 +65,6 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
         <hr>
         <div id="jardin-info"></div>
     </div>
-</div>
-
 </div>
 
 <script>

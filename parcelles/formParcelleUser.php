@@ -1,4 +1,6 @@
 <?php
+$titre = 'Ajout d\'une parcelle';
+$desc = 'Page d\'ajout d\'une parcelle utilisateur';
 session_start();
 require '../model/connectBD.php';
 
@@ -30,10 +32,6 @@ require '../composants/header.php';
             <select name="parcelle_etat" id="parcelle_etat" required>
                 <option value="LIBRE" selected>Libre</option>
             </select>
-        </div>
-        <div class="form-group">
-            <label for="parcelle_desc">Description de la parcelle</label>
-            <textarea name="parcelle_desc" id="parcelle_desc" required></textarea>
         </div>
         <div class="form-group">
             <label for="_jardin_id">Le jardin</label>

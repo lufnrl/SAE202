@@ -1,7 +1,11 @@
 <?php
+$titre = 'S\'inscrire';
+$desc = 'Page d\'inscription à votre compte utilisateur';
 require '../composants/head.php';
 require('../composants/header.php');
 ?>
+
+<div class="container">
 
 <section class="connexion-inscription">
 
@@ -49,5 +53,7 @@ require('../composants/header.php');
 
 </div>
 </section>
+
+</div>
 
 <?php require("../composants/footer.php") ?>

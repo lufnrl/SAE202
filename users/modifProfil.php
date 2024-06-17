@@ -1,4 +1,6 @@
 <?php
+$titre = 'Modifier le profil';
+$desc = 'Page de modification du profil utilisateur';
 session_start();
 require '../model/connectBD.php';
 

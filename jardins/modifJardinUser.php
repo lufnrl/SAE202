@@ -1,4 +1,6 @@
 <?php
+$titre = 'Modifier un jardin';
+$desc = 'Page de modification d\'un jardin utilisateur';
 session_start();
 require '../model/connectBD.php';
 

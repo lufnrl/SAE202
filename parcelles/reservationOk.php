@@ -1,4 +1,6 @@
 <?php
+$titre = 'Merci pour votre réservation !';
+$desc = 'Page de confirmation de réservation';
 session_start();
 require '../model/connectBD.php';
 
@@ -36,70 +38,3 @@ foreach ($reservations as $reservation) {
 <?php
 require '../composants/footer.php';
 ?>
-
-<style>
-
-    strong {
-        font-weight: bold;
-    }
-
-    .container-ok {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 72vh;
-    }
-
-    .container-ok h1 {
-        color: #5E7B51;
-        font-size: 2rem;
-        margin-bottom: 1rem;
-        margin-top: 20px;
-    }
-
-    .container-ok p {
-        color: #5E7B51;
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-    }
-
-    .container-ok div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .container-ok a {
-        background-color: #5E7B51;
-        color: white;
-        padding: 1rem 2rem;
-        margin: 0 1rem;
-        border-radius: 5px;
-        text-decoration: none;
-        transition: .3s ease-in-out;
-    }
-
-    .container-ok a:hover {
-        background-color: #6e8e60;
-        transition: .2s ease-in-out;
-    }
-
-    .block-ok span {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 1rem;
-    }
-
-    .block-ok {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 4rem;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        background-color: white;
-        border-radius: 10px;
-    }
-</style>

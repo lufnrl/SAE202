@@ -6,16 +6,14 @@ $parcelle_id = $_POST['parcelle_id'];
 $parcelle_nom = $_POST['parcelle_nom'];
 $parcelle_content = $_POST['parcelle_content'];
 $parcelle_etat = $_POST['parcelle_etat'];
-$parcelle_desc = $_POST['parcelle_desc'];
 $_jardin_id = $_POST['_jardin_id'];
 
-$requete = $bd->prepare('UPDATE parcelles SET parcelle_nom = ?, parcelle_content = ?, parcelle_etat = ?, parcelle_desc = ?, _jardin_id = ? WHERE parcelle_id = ?');
+$requete = $bd->prepare('UPDATE parcelles SET parcelle_nom = ?, parcelle_content = ?, parcelle_etat = ?, _jardin_id = ? WHERE parcelle_id = ?');
 $requete->bindParam(1, $parcelle_nom);
 $requete->bindParam(2, $parcelle_content);
 $requete->bindParam(3, $parcelle_etat);
-$requete->bindParam(4, $parcelle_desc);
-$requete->bindParam(5, $_jardin_id);
-$requete->bindParam(6, $parcelle_id);
+$requete->bindParam(4, $_jardin_id);
+$requete->bindParam(5, $parcelle_id);
 $requete->execute();
 
 if ($requete) {

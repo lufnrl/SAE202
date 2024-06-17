@@ -1,4 +1,6 @@
 <?php
+$titre = 'Tableau de bord admin';
+$desc = 'Tableau de bord de l\'administrateur';
 require '../model/connectBD.php';
 require '../composants/head.php';
 require '../composants/headerAdmin.php';

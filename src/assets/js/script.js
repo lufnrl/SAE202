@@ -91,7 +91,7 @@ locations.forEach(location => {
 
     // Création de chaque marqueur sur la carte avec un popup différent
     var marker = L.marker([lat, lng], {icon: IconMap}).addTo(map)
-        .bindPopup('<strong>' + name + '</strong><br>' + adr + '<br><a href="' + gmaps + '" target="_blank">Voir sur Google Maps</a>');
+        .bindPopup('<strong>' + name + '</strong><br>' + adr + '<br><a href="https://maps.app.goo.gl/' + gmaps + '" target="_blank">Voir sur Google Maps</a>');
 
     // Ajout d'un événement de clic pour centrer la carte et ouvrir le popup
     location.addEventListener('click', () => {

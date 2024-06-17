@@ -1,4 +1,6 @@
 <?php
+$titre = 'Modifier un utilisateur';
+$desc = 'Page de modification d\'un utilisateur';
 session_start();
 require '../../model/connectBD.php';
 

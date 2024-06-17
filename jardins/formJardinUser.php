@@ -1,4 +1,6 @@
 <?php
+$titre = 'Ajouter un jardin';
+$desc = 'Page d\'ajout d\'un jardin utilisateur';
 session_start();
 require '../model/connectBD.php';
 
@@ -20,6 +22,10 @@ require '../composants/header.php';
         <div class="form-group">
             <label for="jardin_nom">Nom du jardin</label>
             <input type="text" name="jardin_nom" id="jardin_nom" required>
+        </div>
+        <div class="form-group">
+            <label for="jardin-desc">Description du jardin</label>
+            <textarea name="jardin_desc" id="jardin-desc" required></textarea>
         </div>
         <div class="form-group">
             <label for="jardin_surface">Surface du jardin</label>

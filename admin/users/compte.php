@@ -1,4 +1,6 @@
 <?php
+$titre = 'Profil utilisateur admin';
+$desc = 'Page de profil utilisateur';
 session_start();
 require '../../model/connectBD.php';
 
@@ -26,20 +28,20 @@ $user = $req->fetch();
 
 <div class="profile-container">
 <div class="profile-admin-section">
-<h2 class="section-title">Mes Informations</h2>
+<h2 class="section-title">Informations sur l'utilisateur <?= $user['user_prnm'] . ' ' . $user['user_nom'] ?></h2>
 <div class="profile-info">
     <?php
     // Fetch the user photo from the database
-    $query = "SELECT user_photo FROM users WHERE user_id = '" . $_SESSION['user_id'] . "'";
+    $query = "SELECT user_photo FROM users WHERE user_id = '" . $user_id . "'";
     $req = $bd->query($query);
     $photo = $req->fetch()['user_photo'];
     echo '<img class="profile-photo" src="/src/assets/uploads/' . htmlspecialchars($photo) . '" alt="Photo de profil">';
     ?>
     <div class="profile-text">
-        <p class="profile-name"><span>Nom : </span><?php echo htmlspecialchars($_SESSION['user_nom']); ?></p>
-        <p class="profile-name"><span>Prénom : </span><?php echo htmlspecialchars($_SESSION['user_prnm']); ?></p>
-        <p class="profile-login"><span>Nom d'utilisateur : </span><?php echo htmlspecialchars($_SESSION['user_login']); ?></p>
-        <p class="profile-mail"><span>Adresse mail : </span><?php echo htmlspecialchars($_SESSION['user_email']); ?></p>
+        <p class="profile-name"><span>Nom : </span><?php echo htmlspecialchars($user['user_nom']); ?></p>
+        <p class="profile-name"><span>Prénom : </span><?php echo htmlspecialchars($user['user_prnm']); ?></p>
+        <p class="profile-login"><span>Nom d'utilisateur : </span><?php echo htmlspecialchars($user['user_login']); ?></p>
+        <p class="profile-mail"><span>Adresse mail : </span><?php echo htmlspecialchars($user['user_email']); ?></p>
     </div>
 </div>
 
@@ -50,7 +52,6 @@ $user = $req->fetch();
                 <th>ID</th>
                 <th>Nom</th>
                 <th>Contenu</th>
-                <th>Description</th>
                 <th>État</th>
             </tr>
             <?php
@@ -68,7 +69,6 @@ $user = $req->fetch();
                     echo '<td>' . htmlspecialchars($parcelle['parcelle_id']) . '</td>';
                     echo '<td>' . htmlspecialchars($parcelle['parcelle_nom']) . '</td>';
                     echo '<td>' . htmlspecialchars($parcelle['parcelle_content']) . '</td>';
-                    echo '<td>' . htmlspecialchars($parcelle['parcelle_desc']) . '</td>';
                     echo '<td>' . htmlspecialchars($parcelle['parcelle_etat']) . '</td>';
                     echo '</tr>';
                 }

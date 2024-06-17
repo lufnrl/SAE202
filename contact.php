@@ -1,4 +1,6 @@
 <?php
+$titre = 'Nous contacter - Jard\'Unis';
+$desc = 'Page de contact de Jard\'Unis';
     require 'model/connectBD.php';
     require 'composants/head.php';
     require 'composants/header.php';
@@ -55,3 +57,4 @@
 <?php require("./composants/footer.php") ?>
 
 <script src="./src/assets/js/script.js"></script>
+

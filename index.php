@@ -1,4 +1,6 @@
 <?php
+$titre = 'Jard\'Unis - Accueil';
+$desc = 'Page d\'accueil de Jard\'Unis';
     require 'model/connectBD.php';
     require('composants/head.php');
     require('composants/header.php');

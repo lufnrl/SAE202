@@ -1,4 +1,6 @@
 <?php
+$titre = 'Modifier un jardin';
+$desc = 'Page de modification d\'un jardin utilisateur';
 session_start();
 require '../../model/connectBD.php';
 
@@ -40,6 +42,10 @@ $jardin = $req->fetch();
         <div class="form-group">
             <label for="jardin_nom">Nom du jardin</label>
             <input type="text" name="jardin_nom" id="jardin_nom" value="<?php echo htmlspecialchars($jardin['jardin_nom']); ?>" required>
+        </div>
+        <div class="form-group">
+            <label for="jardin_desc">Description du jardin</label>
+            <textarea name="jardin_desc" id="jardin_desc" required><?php echo htmlspecialchars($jardin['jardin_desc']); ?></textarea>
         </div>
         <div class="form-group">
             <label for="jardin_surface">Surface du jardin</label>

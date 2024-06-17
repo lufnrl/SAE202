@@ -1,4 +1,6 @@
 <?php
+$titre = 'Mon compte';
+$desc = 'Page de contact de Jard\'Unis';
 session_start();
 require '../model/connectBD.php';
 
@@ -13,14 +15,6 @@ require '../composants/head.php';
 require '../composants/header.php';
 
 ?>
-
-<style>
-    .container-compte-user {
-        max-width: 1250px;
-        margin: 100px auto;
-        min-height: 60vh;
-    }
-</style>
 
 <div class="container">
     <h1 id="profile-title">Mon profil</h1>
@@ -52,7 +46,7 @@ require '../composants/header.php';
                 </div>
                 <div class="profile-links">
                     <a class="profile-action-link" href='modifProfil.php?users=<?php echo $_SESSION['user_id'] ?>'>Modifier mon profil</a>
-                    <a class="profile-action-link" href="#" onclick="openModal()">Supprimer mon compte</a>
+                    <a class="profile-action-link" href="#" onclick="openModalUser()">Supprimer mon compte</a>
                 </div>
             </div>
 
@@ -81,7 +75,7 @@ require '../composants/header.php';
                             echo '<td><a href="/parcelles/modifParcelleUser.php?parcelles=' . $parcelle['parcelle_id'] . '"><svg clip-rule="evenodd" fill="currentColor" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path d="m19 20.25c0-.402-.356-.75-.75-.75-2.561 0-11.939 0-14.5 0-.394 0-.75.348-.75.75s.356.75.75.75h14.5c.394 0 .75-.348.75-.75zm-7.403-3.398 9.124-9.125c.171-.171.279-.423.279-.684 0-.229-.083-.466-.28-.662l-3.115-3.104c-.185-.185-.429-.277-.672-.277s-.486.092-.672.277l-9.143 9.103c-.569 1.763-1.555 4.823-1.626 5.081-.02.075-.029.15-.029.224 0 .461.349.848.765.848.511 0 .991-.189 5.369-1.681zm-3.27-3.342 2.137 2.137-3.168 1.046zm.955-1.166 7.651-7.616 2.335 2.327-7.637 7.638z" fill-rule="nonzero"/>
 </svg></a></td>';
-                            echo '<td><a href="/parcelles/verifDelParcelle.php?parcelles=' . $parcelle['parcelle_id'] . '"><svg clip-rule="evenodd" fill="currentColor" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            echo '<td><a onclick="openModalParcelle()" href="#"><svg clip-rule="evenodd" fill="currentColor" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path d="m4.015 5.494h-.253c-.413 0-.747-.335-.747-.747s.334-.747.747-.747h5.253v-1c0-.535.474-1 1-1h4c.526 0 1 .465 1 1v1h5.254c.412 0 .746.335.746.747s-.334.747-.746.747h-.254v15.435c0 .591-.448 1.071-1 1.071-2.873 0-11.127 0-14 0-.552 0-1-.48-1-1.071zm14.5 0h-13v15.006h13zm-4.25 2.506c-.414 0-.75.336-.75.75v8.5c0 .414.336.75.75.75s.75-.336.75-.75v-8.5c0-.414-.336-.75-.75-.75zm-4.5 0c-.414 0-.75.336-.75.75v8.5c0 .414.336.75.75.75s.75-.336.75-.75v-8.5c0-.414-.336-.75-.75-.75zm3.75-4v-.5h-3v.5z" fill-rule="nonzero"/>
 </svg></a></td>';
                             echo '</tr>';
@@ -133,7 +127,7 @@ require '../composants/header.php';
                             echo '<td><a href="/jardins/modifJardinUser.php?jardins=' . $jardin['jardin_id'] . '"><svg clip-rule="evenodd" fill="currentColor" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path d="m19 20.25c0-.402-.356-.75-.75-.75-2.561 0-11.939 0-14.5 0-.394 0-.75.348-.75.75s.356.75.75.75h14.5c.394 0 .75-.348.75-.75zm-7.403-3.398 9.124-9.125c.171-.171.279-.423.279-.684 0-.229-.083-.466-.28-.662l-3.115-3.104c-.185-.185-.429-.277-.672-.277s-.486.092-.672.277l-9.143 9.103c-.569 1.763-1.555 4.823-1.626 5.081-.02.075-.029.15-.029.224 0 .461.349.848.765.848.511 0 .991-.189 5.369-1.681zm-3.27-3.342 2.137 2.137-3.168 1.046zm.955-1.166 7.651-7.616 2.335 2.327-7.637 7.638z" fill-rule="nonzero"/>
 </svg></a></td>';
-                            echo '<td><a href="/jardins/verifDelJardinUser.php?jardins=' . $jardin['jardin_id'] . '"><svg clip-rule="evenodd" fill="currentColor" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            echo '<td><a onclick="openModalJardin()" href="#"><svg clip-rule="evenodd" fill="currentColor" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path d="m4.015 5.494h-.253c-.413 0-.747-.335-.747-.747s.334-.747.747-.747h5.253v-1c0-.535.474-1 1-1h4c.526 0 1 .465 1 1v1h5.254c.412 0 .746.335.746.747s-.334.747-.746.747h-.254v15.435c0 .591-.448 1.071-1 1.071-2.873 0-11.127 0-14 0-.552 0-1-.48-1-1.071zm14.5 0h-13v15.006h13zm-4.25 2.506c-.414 0-.75.336-.75.75v8.5c0 .414.336.75.75.75s.75-.336.75-.75v-8.5c0-.414-.336-.75-.75-.75zm-4.5 0c-.414 0-.75.336-.75.75v8.5c0 .414.336.75.75.75s.75-.336.75-.75v-8.5c0-.414-.336-.75-.75-.75zm3.75-4v-.5h-3v.5z" fill-rule="nonzero"/>
 </svg></a></td>';
                             echo '</tr>';
@@ -217,15 +211,16 @@ require '../composants/header.php';
     </div>
 </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <!-- Modal suppression compte -->
+    <div class="modal fade" id="modalUserDel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
                     <h5 class="modal-title" id="myModalLabel">Confirmer la suppression</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span onclick="closeModal()" aria-hidden="true">&times;</span>
+                        <span onclick="closeModalUser()" aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <!-- Modal Body -->
@@ -234,79 +229,60 @@ require '../composants/header.php';
                 </div>
                 <!-- Modal Footer -->
                 <div class="modal-footer">
-                    <a class="profile-action-link" href="#" onclick="closeModal()" data-dismiss="modal">Annuler</a>
-                    <a class="profile-action-link" href='verifDelCompte.php?users=<?php echo $_SESSION['user_id'] ?>'>Oui, supprimer mon compte</a>
+                    <a class="profile-action-link" href="#" onclick="closeModalUser()" data-dismiss="modal">Annuler</a>
+                    <a class="profile-action-link" href='verifDelCompte.php?users=<?php echo $_SESSION['user_id'] ?>'>Oui, supprimer le compte</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <style>
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-        }
+<!-- Modal suppression parcelle -->
+    <div class="modal fade" id="modalParcelleDel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Confirmer la suppression</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span onclick="closeModalParcelle()" aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    Êtes-vous sûr de vouloir supprimer la parcelle ?
+                </div>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <a class="profile-action-link" href="#" onclick="closeModalParcelle()" data-dismiss="modal">Annuler</a>
+                    <a class="profile-action-link" href="/parcelles/verifDelParcelle.php?parcelles=<?=$parcelle['parcelle_id']?>">Oui, supprimer la parcelle</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            width: 50%;
-            border-radius: 10px;
-        }
-
-        .modal-header {
-            padding: 5px 16px;
-            color: white;
-        }
-
-        .modal-body {
-            padding: 20px 16px;
-            text-align: center;
-        }
-
-        .modal-footer {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 2px 16px;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .modal h5 {
-            text-align: center;
-            font-size: 25px;
-            font-weight: 500;
-            color: #5E7B51;
-        }
-
-        .close {
-            color: white;
-            font-size: 28px;
-            position: absolute;
-            right: 20px;
-            top: 100px;
-            background: none;
-            border: none;
-            width: 50px;
-        }
-
-        .hide {
-            display: none;
-        }
-
-        .show {
-            display: block;
-        }
-    </style>
-
+<!-- Modal suppression jardin -->
+    <div class="modal fade" id="modalJardinDel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Confirmer la suppression</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span onclick="closeModalJardin()" aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    Êtes-vous sûr de vouloir supprimer le jardin ?
+                </div>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <a class="profile-action-link" href="#" onclick="closeModalJardin()" data-dismiss="modal">Annuler</a>
+                    <a class="profile-action-link" href="/jardins/verifDelJardinUser.php?jardins=<?=$jardin['jardin_id']?>">Oui, supprimer le jardin</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const navButtons = document.querySelectorAll('.nav-button');
@@ -334,15 +310,39 @@ require '../composants/header.php';
             }
         });
 
-        function openModal() {
-            const modal = document.getElementById('myModal');
+        // modal suppression compte
+        function openModalUser() {
+            const modal = document.getElementById('modalUserDel');
             modal.style.display = 'block';
         }
 
-        function closeModal() {
-            const modal = document.getElementById('myModal');
+        function closeModalUser() {
+            const modal = document.getElementById('modalUserDel');
             modal.style.display = 'none';
         }
+
+        // modal suppression parcelle
+        function openModalParcelle() {
+            const modal = document.getElementById('modalParcelleDel');
+            modal.style.display = 'block';
+        }
+
+        function closeModalParcelle() {
+            const modal = document.getElementById('modalParcelleDel');
+            modal.style.display = 'none';
+        }
+
+        // modal suppression jardin
+        function openModalJardin() {
+            const modal = document.getElementById('modalJardinDel');
+            modal.style.display = 'block';
+        }
+
+        function closeModalJardin() {
+            const modal = document.getElementById('modalJardinDel');
+            modal.style.display = 'none';
+        }
+
     </script>
 
 <?php
