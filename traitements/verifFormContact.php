@@ -85,7 +85,7 @@ if (count($_POST) == 0) {
                     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                 }
                 h1 {
-                    color: #f9ad0e;
+                    color: #5e7b51;
                 }
                 p {
                     margin-bottom: 10px;
@@ -96,12 +96,7 @@ if (count($_POST) == 0) {
         <body>
         <div class='container'>
             <h1>Demande de contact</h1>
-            <p>Bonjour <strong>$prenom $nom</strong>,</p>
-            <p>Votre demande de contact a été transmise.</p>
-            <p>Votre demande :</p>
             <p>$message</p>
-            <p>Cordialement,</p>
-            <p>L'équipe de Jard'Unis</p>
         </div>
         </body>
         </html>";

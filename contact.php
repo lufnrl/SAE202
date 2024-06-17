@@ -4,6 +4,8 @@
     require 'composants/header.php';
 ?>
 
+<div class="container">
+
 <section id="contact">
   
     <h1 class="section-header">Contact</h1>
@@ -46,10 +48,9 @@
     
     </div>
   
-</section>  
-  
-  
+</section>
 
+</div>
 
 <?php require("./composants/footer.php") ?>
 

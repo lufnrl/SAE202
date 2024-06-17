@@ -22,10 +22,10 @@ require '../composants/header.php';
     }
 </style>
 
-<div class="container-compte-user">
+<div class="container">
     <h1 id="profile-title">Mon profil</h1>
 
-    <div id="profile-container">
+    <div class="profile-container">
         <div id="profile-nav">
             <button class="nav-button" data-target="profile-info">Mes Informations</button>
             <button class="nav-button" data-target="profile-parcelles">Mes Parcelles</button>
@@ -52,7 +52,7 @@ require '../composants/header.php';
                 </div>
                 <div class="profile-links">
                     <a class="profile-action-link" href='modifProfil.php?users=<?php echo $_SESSION['user_id'] ?>'>Modifier mon profil</a>
-                    <a class="profile-action-link" href='verifDelCompte.php?users=<?php echo $_SESSION['user_id'] ?>'>Supprimer mon compte</a>
+                    <a class="profile-action-link" href="#" onclick="openModal()">Supprimer mon compte</a>
                 </div>
             </div>
 
@@ -62,7 +62,6 @@ require '../composants/header.php';
                     <tr>
                         <th>Nom</th>
                         <th>Contenu</th>
-                        <th>Description</th>
                         <th>Etat</th>
                         <th colspan="2">Actions</th>
                     </tr>
@@ -78,7 +77,6 @@ require '../composants/header.php';
                             echo '<tr>';
                             echo '<td>' . $parcelle['parcelle_nom'] . '</td>';
                             echo '<td>' . $parcelle['parcelle_content'] . '</td>';
-                            echo '<td>' . $parcelle['parcelle_desc'] . '</td>';
                             echo '<td>' . $parcelle['parcelle_etat'] . '</td>';
                             echo '<td><a href="/parcelles/modifParcelleUser.php?parcelles=' . $parcelle['parcelle_id'] . '"><svg clip-rule="evenodd" fill="currentColor" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path d="m19 20.25c0-.402-.356-.75-.75-.75-2.561 0-11.939 0-14.5 0-.394 0-.75.348-.75.75s.356.75.75.75h14.5c.394 0 .75-.348.75-.75zm-7.403-3.398 9.124-9.125c.171-.171.279-.423.279-.684 0-.229-.083-.466-.28-.662l-3.115-3.104c-.185-.185-.429-.277-.672-.277s-.486.092-.672.277l-9.143 9.103c-.569 1.763-1.555 4.823-1.626 5.081-.02.075-.029.15-.029.224 0 .461.349.848.765.848.511 0 .991-.189 5.369-1.681zm-3.27-3.342 2.137 2.137-3.168 1.046zm.955-1.166 7.651-7.616 2.335 2.327-7.637 7.638z" fill-rule="nonzero"/>
@@ -100,6 +98,7 @@ require '../composants/header.php';
                     <tr>
                         <th>Photo</th>
                         <th>Nom</th>
+                        <th>Description</th>
                         <th>Adresse</th>
                         <th>Ville</th>
                         <th>Surface</th>
@@ -122,6 +121,7 @@ require '../composants/header.php';
                             echo '<tr>';
                             echo '<td><img class="jardin-photo" src="/src/assets/uploads/' . $jardin['jardin_photo'] . '" alt="Photo de jardin"></td>';
                             echo '<td>' . $jardin['jardin_nom'] . '</td>';
+                            echo '<td>' . $jardin['jardin_desc'] . '</td>';
                             echo '<td>' . $jardin['jardin_adr'] . '</td>';
                             echo '<td>' . $jardin['jardin_ville'] . '</td>';
                             echo '<td>' . $jardin['jardin_surface'] . '</td>';
@@ -156,7 +156,6 @@ require '../composants/header.php';
                     p.parcelle_nom, 
                     p.parcelle_content, 
                     p.parcelle_etat, 
-                    p.parcelle_desc, 
                     p.parcelle_reservation,
                     r.reservation_dateDeb, 
                     r.reservation_dateFin,
@@ -185,7 +184,6 @@ require '../composants/header.php';
                             <th>Nom</th>
                             <th>Contenu</th>
                             <th>Etat</th>
-                            <th>Description</th>
                             <th>Date de réservations</th>
                             <th>Actions</th>
                         </tr>
@@ -201,7 +199,6 @@ require '../composants/header.php';
                                 echo '<td>' . $reservation['parcelle_nom'] . '</td>';
                                 echo '<td>' . $reservation['parcelle_content'] . '</td>';
                                 echo '<td>' . $reservation['parcelle_etat'] . '</td>';
-                                echo '<td>' . $reservation['parcelle_desc'] . '</td>';
                                 // changer le format de la date de réservation de yyyy-mm-dd à dd-mm-yyyy
                                 $dateDeb = date_create($reservation['reservation_dateDeb']);
                                 $dateFin = date_create($reservation['reservation_dateFin']);
@@ -220,45 +217,135 @@ require '../composants/header.php';
     </div>
 </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Confirmer la suppression</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span onclick="closeModal()" aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    Êtes-vous sûr de vouloir supprimer votre compte ?
+                </div>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <a class="profile-action-link" href="#" onclick="closeModal()" data-dismiss="modal">Annuler</a>
+                    <a class="profile-action-link" href='verifDelCompte.php?users=<?php echo $_SESSION['user_id'] ?>'>Oui, supprimer mon compte</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            width: 50%;
+            border-radius: 10px;
+        }
+
+        .modal-header {
+            padding: 5px 16px;
+            color: white;
+        }
+
+        .modal-body {
+            padding: 20px 16px;
+            text-align: center;
+        }
+
+        .modal-footer {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 2px 16px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .modal h5 {
+            text-align: center;
+            font-size: 25px;
+            font-weight: 500;
+            color: #5E7B51;
+        }
+
+        .close {
+            color: white;
+            font-size: 28px;
+            position: absolute;
+            right: 20px;
+            top: 100px;
+            background: none;
+            border: none;
+            width: 50px;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navButtons = document.querySelectorAll('.nav-button');
+            const sections = document.querySelectorAll('.profile-section');
+
+            const showSection = (targetId) => {
+                sections.forEach(section => {
+                    if (section.id === targetId) {
+                        section.style.display = 'block';  // Show the selected section
+                    } else {
+                        section.style.display = 'none';   // Hide all other sections
+                    }
+                });
+            };
+
+            navButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const target = button.getAttribute('data-target');
+                    showSection(target);  // Call the showSection function with the target section id
+                });
+            });
+
+            if (sections.length > 0) {
+                showSection(sections[0].id);  // Show the first section initially
+            }
+        });
+
+        function openModal() {
+            const modal = document.getElementById('myModal');
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+        }
+    </script>
+
 <?php
 require '../composants/footer.php';
 ?>
 
-<script>
-
-document.addEventListener('DOMContentLoaded', () => {
-    const navButtons = document.querySelectorAll('.nav-button');
-    const sections = document.querySelectorAll('.profile-section');
-
-    console.log('Nav buttons:', navButtons);
-    console.log('Sections:', sections);
-
-    // Function to show the section based on the button clicked
-    const showSection = (targetId) => {
-        console.log('Section affichée:', targetId);
-        sections.forEach(section => {
-            if (section.id === targetId) {
-                section.style.display = 'block';  // Show the selected section
-            } else {
-                section.style.display = 'none';   // Hide all other sections
-            }
-        });
-    };
-
-    // Attach click event listeners to nav buttons
-    navButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const target = button.getAttribute('data-target');
-            console.log('Click:', target);
-            showSection(target);  // Call the showSection function with the target section id
-        });
-    });
-
-    // Show the first section by default
-    if (sections.length > 0) {
-        console.log('Première section:', sections[0].id);
-        showSection(sections[0].id);  // Show the first section initially
-    }
-});
-
-</script>
