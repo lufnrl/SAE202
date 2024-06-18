@@ -143,7 +143,6 @@ $desc = 'Page d\'accueil de Jard\'Unis';
     <button class="carousel-button right" onclick="moveRight()">&#10095;</button>
   </div>
 </div>
-</div>
 <div id="remonter">
   <button class="button" onclick="scrollToTop()" title="Haut-de-page">
     <svg class="svgIcon" viewBox="0 0 384 512">
@@ -151,5 +150,4 @@ $desc = 'Page d\'accueil de Jard\'Unis';
     </svg>
   </button>
 </div>
-<script src="./src/assets/js/script.js"></script> 
 <?php require("./composants/footer.php") ?> 

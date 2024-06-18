@@ -43,7 +43,6 @@ if (isset($_SESSION['alert_type']) && isset($_SESSION['alert_message'])) {
 ?>
 
 <style>
-    /**** ALERT ****/
 
     .alert {
         padding: 10px;
@@ -109,7 +108,6 @@ if (isset($_SESSION['alert_type']) && isset($_SESSION['alert_message'])) {
         color: #2E854B;
     }
 
-    /**** ALERT ****/
 </style>
 
 <script>

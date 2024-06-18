@@ -105,9 +105,8 @@ if (isset($_SESSION['alert_type']) && isset($_SESSION['alert_message'])) {
             }
         });
     });
-</script>
 
-<script>
+    
     document.addEventListener('DOMContentLoaded', function () {
         var imgProfile = document.querySelector('.img-profile');
         var blockProfile = document.querySelector('.block-profile');

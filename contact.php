@@ -16,7 +16,7 @@ $desc = 'Page de contact de Jard\'Unis';
   
     <!-- Left contact page --> 
     
-    <form id="contact-form" class="form-horizontal" role="form" method="post" action="traitements/verifFormContact.php">
+    <form id="contact-form" class="form-horizontal" method="post" action="traitements/verifFormContact.php">
        
       <div class="form-group">
           <input type="text" class="form-control" id="nom" placeholder="Nom" name="nom" value="" required>
@@ -42,7 +42,7 @@ $desc = 'Page de contact de Jard\'Unis';
     <ul class="contact-list">
       <li class="list-item"><i class="fas fa-home"></i><p class="contact-text place">Association des jardins ouvriers et familiaux de Troyes</p></li>
       <li class="list-item"><i class="fas fa-map-marker-alt"></i><p class="contact-text place">125 AVENUE ROBERT SCHUMANN 10000 TROYES</p></li>
-      <li class="list-item"><i class="fas fa-phone-alt"></i><p class="contact-text phone"><a href="tel:+33 3 25 80 97 04" title="Appelez">+33 3 25 80 97 04</a></p></li>
+      <li class="list-item"><i class="fas fa-phone-alt"></i><p class="contact-text phone"><a href="tel:+33325809704" title="Appelez">+33 3 25 80 97 04</a></p></li>
       <li class="list-item"><i class="fas fa-envelope"></i><p class="contact-text gmail"><a href="mailto:lesjardinsouvriers3@outlook.fr" title="Envoyez un mail">lesjardinsouvriers3@outlook.fr</a></p></li>
     </ul>
 
@@ -55,6 +55,4 @@ $desc = 'Page de contact de Jard\'Unis';
 </div>
 
 <?php require("./composants/footer.php") ?>
-
-<script src="./src/assets/js/script.js"></script>
 

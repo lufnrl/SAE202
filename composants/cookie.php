@@ -8,12 +8,12 @@
     <div class="lstbutton">
         <ul class="ul">
             <li class="li1">
-                <form action="">
+                <form action="#">
                     <button id="accept" class="btn_accept">Accepter</button>
                 </form>
             </li>
             <li class="li2">
-                <form action="">
+                <form action="#">
                     <button id="refuse" class="btn_refuse">Refuser</button>
                 </form>
             </li>

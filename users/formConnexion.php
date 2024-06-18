@@ -5,8 +5,6 @@ require '../composants/head.php';
 require('../composants/header.php');
 ?>
 
-<div class="container">
-
 <section class="connexion-inscription">
     <div class="connexion-inscription-content">
                 <h1>
@@ -29,7 +27,5 @@ require('../composants/header.php');
             
             <div class="inscription-image"></div>
 </section>
-
-</div>
 
 <?php require("../composants/footer.php") ?>

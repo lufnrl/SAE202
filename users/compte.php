@@ -1,4 +1,5 @@
 <?php
+
 $titre = 'Mon compte';
 $desc = 'Page de contact de Jard\'Unis';
 session_start();
@@ -22,8 +23,8 @@ require '../composants/header.php';
     <div class="profile-container">
         <div id="profile-nav">
             <button class="nav-button" data-target="profile-info">Mes Informations</button>
-            <button class="nav-button" data-target="profile-parcelles">Mes Parcelles</button>
             <button class="nav-button" data-target="profile-jardins">Mes Jardins</button>
+            <button class="nav-button" data-target="profile-parcelles">Mes Parcelles</button>
             <button class="nav-button" data-target="profile-actions">Mes Réservations</button>
         </div>
 

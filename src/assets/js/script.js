@@ -134,3 +134,66 @@ document.addEventListener('DOMContentLoaded', () => {
         showSection(sections[0].id);  // Show the first section initially
     }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Vérifier si le consentement a déjà été accepté
+    if (localStorage.getItem('cookie_consent') === 'accepted') {
+        document.getElementById('banner').style.display = 'none';
+    } else {
+        document.getElementById('banner').style.display = 'block';
+    }
+
+    // Ajouter un écouteur sur le bouton "Refuser"
+    document.getElementById('refuse').addEventListener('click', function (event) {
+        event.preventDefault(); // Empêcher le comportement par défaut du formulaire
+        localStorage.setItem('cookie_consent', 'refused');
+        document.getElementById('banner').style.display = 'none'; // Cacher la bannière après refus
+    });
+
+    // Ajouter un écouteur sur le bouton "Accepter"
+    document.getElementById('accept').addEventListener('click', function (event) {
+        event.preventDefault(); // Empêcher le comportement par défaut du formulaire
+        localStorage.setItem('cookie_consent', 'accepted');
+        document.getElementById('banner').style.display = 'none'; // Cacher la bannière après acceptation
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuBtn.addEventListener('click', function () {
+        if (mobileMenu.style.display === 'block') {
+            mobileMenu.style.display = 'none';
+        } else {
+            mobileMenu.style.display = 'block';
+        }
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    var imgProfile = document.querySelector('.img-profile');
+    var blockProfile = document.querySelector('.block-profile');
+
+    imgProfile.addEventListener('click', function () {
+        if (blockProfile.style.display === 'block') {
+            blockProfile.style.display = 'none';
+        } else {
+            blockProfile.style.display = 'block';
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuBtn.addEventListener('click', function () {
+        if (mobileMenu.style.display === 'block') {
+            mobileMenu.style.display = 'none';
+        } else {
+            mobileMenu.style.display = 'block';
+        }
+    });
+});
