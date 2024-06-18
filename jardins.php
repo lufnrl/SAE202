@@ -67,4 +67,85 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
     </div>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const locations = document.querySelectorAll('.location-item');
+        const jardinInfo = document.getElementById('jardin-info');
+        const user_id = <?php echo json_encode($user_id); ?>;
+
+        locations.forEach(location => {
+            location.addEventListener('click', function() {
+                const jardinId = this.dataset.id;
+                const jardinName = this.dataset.name;
+                const jardinDesc = this.dataset.desc;
+                const jardinAdr = this.dataset.adr;
+                const jardinSurface = this.dataset.surface;
+                const jardinInfoTerre = this.dataset.info;
+                const jardinLat = this.dataset.lat;
+                const jardinLng = this.dataset.lng;
+                const jardinPhoto = this.dataset.photo;
+                const nbParcelleDispo = this.dataset.countParcelles;
+                const nbParcelleTotal = this.dataset.totalParcelles;
+
+                jardinInfo.innerHTML = `
+                <div class="infos-jardin-flex">
+                    <img src="/src/assets/uploads/${jardinPhoto}" alt="${jardinName}" style="max-width: 800px; border-radius: 10px;">
+                    <div class="content-infojardins">
+                        <div class="flex-items-reservation">
+                            <h3>${jardinName}</h3>
+                            <div class="flex-items-info">
+                                <span class="badge badge-primary">Parcelles disponibles: ${nbParcelleDispo} / ${nbParcelleTotal}</span>
+                            </div>
+                        </div>
+                        <p class="location-description">${jardinDesc}</p>
+                        <p class="location-adresse-reservation">Adresse : ${jardinAdr}</p>
+                        <p class="location-infos-reservation">Surface : ${jardinSurface} m²</p>
+                        <p>Type de terre : ${jardinInfoTerre}</p>
+                        <p>Coordonnées GPS : ${jardinLat}, ${jardinLng}</p>
+                        <div class="block-reservations">
+                            <h2>Parcelles disponibles</h2>
+                            <div id="parcelles-info"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+                // Fetching parcelles information
+                fetchParcelles(jardinId, user_id);
+            });
+        });
+
+        function fetchParcelles(jardinId, user_id) {
+            const parcelles = <?php
+                try {
+                    $reqParcelles = $bd->query("SELECT * FROM parcelles");
+                    echo json_encode($reqParcelles->fetchAll(PDO::FETCH_ASSOC));
+                } catch (Exception $e) {
+                    echo json_encode([]);
+                }
+                ?>;
+
+            const filteredParcelles = parcelles.filter(parcelle => parcelle._jardin_id == jardinId);
+            const parcellesInfo = document.getElementById('parcelles-info');
+
+            if (filteredParcelles.length > 0) {
+                parcellesInfo.innerHTML = filteredParcelles.map(parcelle => `
+                <div class="reservation-parcelle">
+                    <div class="infos-parcelle-flex">
+                        <h4>${parcelle.parcelle_nom}</h4>
+                        <span class="badge-table ${parcelle.parcelle_etat.toLowerCase()}">${parcelle.parcelle_etat}</span>
+                    </div>
+                    <p>Informations : ${parcelle.parcelle_content}</p>
+                    ${user_id && (parcelle.parcelle_etat.toLowerCase() === 'libre') ?
+                    `<a href="/parcelles/confirmReservation.php?users=${user_id}&parcelles=${parcelle.parcelle_id}">Réserver</a>` :
+                    (parcelle.parcelle_etat.toLowerCase() !== 'libre' ? '<p>Parcelle indisponible</p>' : '<a href="/users/formConnexion.php">Connectez-vous pour réserver</a>')}
+                </div>
+            `).join('');
+            } else {
+                parcellesInfo.innerHTML = '<p>Aucune parcelle disponible dans ce jardin.</p>';
+            }
+        }
+    });
+</script>
+
 <?php require("./composants/footer.php"); ?>
