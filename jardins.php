@@ -67,6 +67,8 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
     </div>
 </div>
 
+<?php require("./composants/footer.php"); ?>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const locations = document.querySelectorAll('.location-item');
@@ -147,5 +149,3 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
         }
     });
 </script>
-
-<?php require("./composants/footer.php"); ?>

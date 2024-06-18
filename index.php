@@ -150,4 +150,5 @@ $desc = 'Page d\'accueil de Jard\'Unis';
     </svg>
   </button>
 </div>
+
 <?php require("./composants/footer.php") ?> 

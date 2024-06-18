@@ -1,4 +1,7 @@
 <?php
+
+$titre = "Confirmation de réservation";
+$desc = "Page de confirmation de réservation de parcelles de jardins";
 session_start();
 require '../model/connectBD.php';
 

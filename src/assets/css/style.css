@@ -689,6 +689,7 @@ nav ul li.current a::after {
     border-radius: 10px;
     width: 100%;
     border: 1px solid #f1f1f1;
+    height: 500px;
 }
 
 #locations {
@@ -709,6 +710,7 @@ nav ul li.current a::after {
 #location-list {
     list-style: none;
     padding: 0;
+    width: 100%;
 }
 
 #location-list li {
@@ -799,7 +801,6 @@ nav ul li.current a::after {
 
     #map {
         width: 70%;
-        height: 500px;
     }
 
     #locations {

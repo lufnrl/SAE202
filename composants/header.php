@@ -105,7 +105,6 @@ if (isset($_SESSION['alert_type']) && isset($_SESSION['alert_message'])) {
             }
         });
     });
-
     
     document.addEventListener('DOMContentLoaded', function () {
         var imgProfile = document.querySelector('.img-profile');
