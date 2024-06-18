@@ -1,4 +1,6 @@
 <?php
+$titre = 'Liste des jardins';
+$desc = 'Page de liste des jardins';
 require '../../model/connectBD.php';
 require '../../composants/head.php';
 require '../../composants/headerAdmin.php';
@@ -7,7 +9,7 @@ require '../../composants/headerAdmin.php';
 <div class="container-dashboard">
     <h1>Les jardins</h1>
     <div>
-        <a class="profile-action-link" href="ajoutJardin.php">Ajouter un jardin</a>
+        <a class="profile-action-link" href="formJardinAdmin.php">Ajouter un jardin</a>
     </div>
     <div class="block-tempJardins">
         <table border="1">

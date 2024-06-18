@@ -1,5 +1,5 @@
 <?php
-$titre = 'Tableau des utilisateurs';
+$titre = 'Liste des utilisateurs';
 $desc = 'Tableau des utilisateurs de l\'application';
 require('../../model/connectBD.php');
 require('../../composants/head.php');

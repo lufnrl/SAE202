@@ -22,7 +22,7 @@ $_user_id = $_POST['_user_id'];
 if (empty($parcelle_nom) || empty($parcelle_content) || empty($parcelle_etat) || empty($parcelle_desc) || empty($_jardin_id) || empty($_user_id)) {
     $_SESSION['alert_message'] = 'Veuillez remplir tous les champs';
     $_SESSION['alert_type'] = 'error';
-    header('Location: /parcelles/formParcelleUser.php');
+    header('Location: /parcelles/formParcelleAdmin.php');
     exit();
 }
 

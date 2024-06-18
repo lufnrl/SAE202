@@ -25,7 +25,7 @@ $jardin_infoTerre = $_POST['jardin_infoTerre'];
 if (empty($jardin_nom) || empty($jardin_surface) || empty($jardin_nbParcelles) || empty($jardin_adr) || empty($jardin_ville) || empty($jardin_coordLat) || empty($jardin_coordLong) || empty($jardin_photo) || empty($jardin_maps) || empty($jardin_infoTerre)) {
     $_SESSION['alert_message'] = 'Veuillez remplir tous les champs';
     $_SESSION['alert_type'] = 'error';
-    header('Location: /jardins/formJardinUser.php');
+    header('Location: /jardins/formJardinAdmin.php');
     exit();
 }
 

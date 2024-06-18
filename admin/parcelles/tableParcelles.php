@@ -7,6 +7,7 @@ require '../../composants/headerAdmin.php';
 ?>
 <div class="container-dashboard">
     <h1>Parcelles</h1>
+    <a class="profile-action-link" href="formParcelleAdmin.php">Ajouter une parcelle</a>
     <div class="block-tempParcelles">
         <table border="1">
             <tr>
